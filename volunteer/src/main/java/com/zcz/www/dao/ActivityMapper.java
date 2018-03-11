@@ -2,8 +2,9 @@ package com.zcz.www.dao;
 
 import com.zcz.www.entity.Activity;
 import com.zcz.www.entity.ActivityExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface ActivityMapper {
     /**
