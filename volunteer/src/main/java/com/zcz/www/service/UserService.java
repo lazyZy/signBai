@@ -8,4 +8,6 @@ import com.zcz.www.pojo.BaseResult;
 public interface UserService {
     BaseResult selectAdminByEmail(String userEmail ,String userPwd);
     BaseResult selectVolunteerByEmail(String userEmail ,String userPwd);
+    BaseResult selectAdminList();
+    BaseResult selectVolunteerList();
 }

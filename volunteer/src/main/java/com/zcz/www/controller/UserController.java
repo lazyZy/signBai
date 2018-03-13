@@ -11,9 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by ZY on 2018/3/10.
  */
@@ -32,7 +29,7 @@ public class UserController {
 
         modelAndView.setViewName("login");
         modelAndView.addObject("sysUser", "SysUser");
-       userService.equals("");
+
         return modelAndView;
     }
 }

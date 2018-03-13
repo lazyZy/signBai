@@ -60,4 +60,18 @@ public class UserServiceImpl implements UserService {
 
         return BaseResult.create(200,volunteer,"数据获取成功");
     }
+
+    @Override
+    public BaseResult selectAdminList() {
+        adminExample.createCriteria().andIdIsNotNull();
+        List<Admin> admins = adminMapper.selectByExample(adminExample);
+        return null;
+    }
+
+    @Override
+    public BaseResult selectVolunteerList() {
+        volunteerExample.createCriteria().andIdIsNotNull();
+        List<Volunteer> volunteers = volunteerMapper.selectByExample(volunteerExample);
+        return null;
+    }
 }
