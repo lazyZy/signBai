@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,8 +35,7 @@ public class UserServiceImpl implements UserService {
             return BaseResult.createDataNotFound();
         }
         adminExample.createCriteria().andAdminEmailEqualTo(userEmail).andAdminPwdEqualTo(userPwd);
-        List<Admin> admins = new ArrayList<Admin>();
-        admins = adminMapper.selectByExample(adminExample);
+        List<Admin> admins =  adminMapper.selectByExample(adminExample);
         if(admins.size() == 0){
             return BaseResult.createDataNotFound();
         }
@@ -53,14 +51,13 @@ public class UserServiceImpl implements UserService {
             return BaseResult.createDataNotFound();
         }
         volunteerExample.createCriteria().andVolunteerMailEqualTo(userEmail).andVolunteerPwdEqualTo(userPwd);
-        List<Volunteer> volunteers = new ArrayList<Volunteer>();
-        volunteers = volunteerMapper.selectByExample(volunteerExample);
+        List<Volunteer> volunteers =  volunteerMapper.selectByExample(volunteerExample);
         if(volunteers.size() == 0){
             return BaseResult.createDataNotFound();
         }
-        Volunteer admin = volunteers.get(0);
-        admin.setVolunteerPwd("******");
+        Volunteer volunteer = volunteers.get(0);
+        volunteer.setVolunteerPwd("******");
 
-        return BaseResult.create(200,admin,"数据获取成功");
+        return BaseResult.create(200,volunteer,"数据获取成功");
     }
 }
