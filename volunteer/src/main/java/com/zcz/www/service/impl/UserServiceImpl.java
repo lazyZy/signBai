@@ -4,6 +4,8 @@ import com.zcz.www.dao.AdminMapper;
 import com.zcz.www.dao.VolunteerMapper;
 import com.zcz.www.entity.Admin;
 import com.zcz.www.entity.AdminExample;
+import com.zcz.www.entity.Volunteer;
+import com.zcz.www.entity.VolunteerExample;
 import com.zcz.www.pojo.BaseResult;
 import com.zcz.www.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ public class UserServiceImpl implements UserService {
     private VolunteerMapper volunteerMapper;
     @Autowired
     private AdminExample adminExample;
+    @Autowired
+    private VolunteerExample volunteerExample;
 
 
     @Override
@@ -45,6 +49,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public BaseResult selectVolunteerByEmail(String userEmail ,String userPwd) {
-        return null;
+        if(StringUtils.isEmpty(userEmail)){
+            return BaseResult.createDataNotFound();
+        }
+        volunteerExample.createCriteria().andVolunteerMailEqualTo(userEmail).andVolunteerPwdEqualTo(userPwd);
+        List<Volunteer> volunteers = new ArrayList<Volunteer>();
+        volunteers = volunteerMapper.selectByExample(volunteerExample);
+        if(volunteers.size() == 0){
+            return BaseResult.createDataNotFound();
+        }
+        Volunteer admin = volunteers.get(0);
+        admin.setVolunteerPwd("******");
+
+        return BaseResult.create(200,admin,"数据获取成功");
     }
 }
