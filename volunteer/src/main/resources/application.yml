@@ -20,3 +20,15 @@ spring.redis.pool.max-idle : 8
 spring.redis.pool.min-idle : 0
 # 连接超时时间（毫秒）
 spring.redis.timeout : 0
+
+spring.freemarker.suffix : .ftl
+spring.freemarker.template-loader-path : classpath:/templates/
+spring.freemarker.allow-request-override : false
+spring.freemarker.cache : false
+spring.freemarker.check-template-location : true
+spring.freemarker.charset : UTF-8
+spring.freemarker.content-type : text/html
+spring.freemarker.expose-request-attributes : true
+spring.freemarker.request-context-attribute : request
+spring.freemarker.expose-session-attributes : true
+spring.freemarker.expose-spring-macro-helpers : false

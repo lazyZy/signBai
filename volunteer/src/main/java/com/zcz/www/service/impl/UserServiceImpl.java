@@ -1,13 +1,16 @@
 package com.zcz.www.service.impl;
 
-import com.zcz.www.dao.UserMapper;
-import com.zcz.www.entity.User;
-import com.zcz.www.entity.UserExample;
+import com.zcz.www.dao.AdminMapper;
+import com.zcz.www.dao.VolunteerMapper;
+import com.zcz.www.entity.Admin;
+import com.zcz.www.entity.AdminExample;
+import com.zcz.www.pojo.BaseResult;
 import com.zcz.www.service.UserService;
-import com.zcz.www.utils.CollectionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,17 +19,32 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    private UserMapper userMapper;
+    private AdminMapper adminMapper;
+    @Autowired
+    private VolunteerMapper volunteerMapper;
+    @Autowired
+    private AdminExample adminExample;
+
 
     @Override
-    public User selectUserByAccount(String userAccount) {
-        UserExample userExample = new UserExample();
-        userExample.createCriteria().andUserAccountEqualTo(userAccount);
-        List<User> users =userMapper.selectByExample(userExample);
-        if(CollectionUtil.isEmpty(users)){
-            return null;
+    public BaseResult selectAdminByEmail(String userEmail ,String userPwd) {
+        if(StringUtils.isEmpty(userEmail)){
+            return BaseResult.createDataNotFound();
         }
-        User user = users.get(0);
-        return user;
+        adminExample.createCriteria().andAdminEmailEqualTo(userEmail).andAdminPwdEqualTo(userPwd);
+        List<Admin> admins = new ArrayList<Admin>();
+        admins = adminMapper.selectByExample(adminExample);
+        if(admins.size() == 0){
+            return BaseResult.createDataNotFound();
+        }
+        Admin admin = admins.get(0);
+        admin.setAdminPwd("******");
+
+        return BaseResult.create(200,admin,"数据获取成功");
+    }
+
+    @Override
+    public BaseResult selectVolunteerByEmail(String userEmail ,String userPwd) {
+        return null;
     }
 }
