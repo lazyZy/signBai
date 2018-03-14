@@ -6,6 +6,8 @@ import com.zcz.www.dao.VolunteerMapper;
 import com.zcz.www.entity.*;
 import com.zcz.www.pojo.BaseResult;
 import com.zcz.www.service.TeamService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,7 @@ public class TeamServiceImpl implements TeamService{
     @Autowired
     VolunteerMapper volunteerMapper;
 
+    Logger logger = LoggerFactory.getLogger(TeamServiceImpl.class);
 
     @Override
     public BaseResult getAllTeam() {
