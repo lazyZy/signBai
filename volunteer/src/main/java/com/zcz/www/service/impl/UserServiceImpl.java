@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public BaseResult selectAdminByEmail(String userEmail ,String userPwd) {
+    public BaseResult selectAdminByEmailAndPwd(String userEmail ,String userPwd) {
         if(StringUtils.isEmpty(userEmail)){
             logger.info("selectAdminByEmail:{}","Email为空！！！");
             return BaseResult.createDataNotFound();
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public BaseResult selectVolunteerByEmail(String userEmail ,String userPwd) {
+    public BaseResult selectVolunteerByEmailAndPwd(String userEmail ,String userPwd) {
         if(StringUtils.isEmpty(userEmail)){
             logger.info("selectVolunteerByEmail:{}","Email为空！！！");
             return BaseResult.createDataNotFound();
