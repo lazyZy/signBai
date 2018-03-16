@@ -35,14 +35,14 @@ public class TeamServiceImpl implements TeamService{
     Logger logger = LoggerFactory.getLogger(TeamServiceImpl.class);
 
     @Override
-    public BaseResult getAllTeam() {
+    public BaseResult selectAllTeam() {
         teamExample.createCriteria().andIdIsNotNull();
         List<Team> teams = teamMapper.selectByExample(teamExample);
         return BaseResult.create(200,teams,"获取数据成功");
     }
 
     @Override
-    public BaseResult getTeamAndMemberByTeamId(int teamId) {
+    public BaseResult selectTeamAndMemberByTeamId(int teamId) {
         teamMemberExample.createCriteria().andIdEqualTo(teamId).andStatusEqualTo(1);
         List<TeamMember> teamMembers = teamMemberMapper.selectByExample(teamMemberExample);
         List<Integer> teamMemberIds = new ArrayList<>();
