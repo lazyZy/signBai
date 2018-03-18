@@ -53,4 +53,14 @@ public class TeamServiceImpl implements TeamService{
         List<Volunteer> volunteers = volunteerMapper.selectByExample(volunteerExample);
         return BaseResult.create(200,volunteers,"获取信息成功");
     }
+
+    @Override
+    public BaseResult addTeam(Team team) {
+        return null;
+    }
+
+    @Override
+    public BaseResult updateTeam(Integer teamId, Team team) {
+        return null;
+    }
 }

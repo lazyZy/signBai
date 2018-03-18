@@ -44,4 +44,22 @@ public class ActivityServiceImpl implements ActivityService {
         List<Activity> activities = activityMapper.selectByExample(activityExample);
         return null;
     }
+
+    @Override
+    public BaseResult addActivity(Activity activity) {
+        if(activity.getId() != null){
+            return null;
+        }
+        int activityId =activityMapper.insertSelective(activity);
+        return null;
+    }
+
+    @Override
+    public BaseResult updateActivity(Integer activityId, Activity activity) {
+        int updateActivityId = activityMapper.updateByPrimaryKeySelective(activity);
+        if(updateActivityId != activityId){
+            return null;
+        }
+        return null;
+    }
 }

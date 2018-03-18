@@ -1,5 +1,6 @@
 package com.zcz.www.service;
 
+import com.zcz.www.entity.Team;
 import com.zcz.www.pojo.BaseResult;
 
 /**
@@ -10,4 +11,8 @@ public interface TeamService {
     BaseResult selectAllTeam();
     //通过团队ID获取团队详细信息
     BaseResult selectTeamAndMemberByTeamId(int teamId);
+    //添加团队
+    BaseResult addTeam(Team team);
+    //通过ID更新团队
+    BaseResult updateTeam(Integer teamId , Team team);
 }

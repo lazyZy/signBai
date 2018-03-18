@@ -82,4 +82,24 @@ public class UserServiceImpl implements UserService {
         List<Volunteer> volunteers = volunteerMapper.selectByExample(volunteerExample);
         return null;
     }
+
+    @Override
+    public BaseResult addAdmin(Admin admin) {
+        return null;
+    }
+
+    @Override
+    public BaseResult addVollunteer(Volunteer volunteer) {
+        return null;
+    }
+
+    @Override
+    public BaseResult updatAdmin(Integer adminId, Admin admin) {
+        return null;
+    }
+
+    @Override
+    public BaseResult updateVolunteer(Integer volunteerId, Volunteer volunteer) {
+        return null;
+    }
 }
