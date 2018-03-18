@@ -1,5 +1,7 @@
 package com.zcz.www.service;
 
+import com.zcz.www.entity.Admin;
+import com.zcz.www.entity.Volunteer;
 import com.zcz.www.pojo.BaseResult;
 
 /**
@@ -14,4 +16,12 @@ public interface UserService {
     BaseResult selectAdminList();
     //获取所有志愿者信息
     BaseResult selectVolunteerList();
+    //添加管理员
+    BaseResult addAdmin(Admin admin);
+    //添加志愿者
+    BaseResult addVollunteer(Volunteer volunteer);
+    //根据ID更新管理员信息
+    BaseResult updatAdmin(Integer adminId , Admin admin);
+    //根据ID更新志愿者信息
+    BaseResult updateVolunteer(Integer volunteerId , Volunteer volunteer);
 }
