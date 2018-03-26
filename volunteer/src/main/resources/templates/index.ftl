@@ -7,60 +7,116 @@
     <title>“心·青年”志愿活动平台</title>
 
 </head><body>
-<div class="mainhd">
-    <div class="logo">“心·青年”志愿活动平台</div>
-    <div class="uinfo" id="frameuinfo">
-        <p><em>游客,您好!</em><em>请</em><a href="<%=weburl%>?m=member&a=logout" target="_top">登录</a></p>
-    </div>
-    <div class="navbg"></div>
-    <div class="nav">
-        <ul id="topmenu"></ul>
-        <div class="currentloca">
-            <p id="admincpnav"><a href="<%=weburl%>">首页</a>&nbsp;>&nbsp;</p></div>
-        <div class="navbd"></div>
-        <div class="sitemapbtn">
-            <div style="margin: 0px 10px 0pt 0pt; float: left;">
-                <form action="<%=weburl%>?m=index&a=index" method="post" name="cha">找找我感兴趣的活动：
-                    <select name="org" id="org">
-                        <option value="0"<%if zz=0 then%>>不限发起组织</option>
-                    </select><select name="week" id="week">
-                        <option value="0"<%if wd=0 then%>>不限活动日</option>
-                        <option value="1"<%if wd=1 then%>>周一</option>
-                        <option value="2"<%if wd=2 then%>>周二</option>
-                        <option value="3"<%if wd=3 then%>>周三</option>
-                        <option value="4"<%if wd=4 then%>>周四</option>
-                        <option value="5"<%if wd=5 then%>>周五</option>
-                        <option value="6"<%if wd=6 then%>>周六</option>
-                        <option value="7"<%if wd=7 then%>>周日</option>
-                        <option value="8"<%if wd=8 then%>>多日连续活动</option>
-                    </select><select name="oc" id="oc">
-                        <option value="0"<%if xb=0 then%>>所有报名状态</option>
-                        <option value="1"<%if xb=1 then%>>报名进行中的</option>
-                        <option value="2"<%if xb=2 then%>>报名已结束的</option>
-                    </select><input type="hidden" name="vsclass" value="0" />
-                    <input type="submit" name="myselect" value="筛选" /></form>
+
+<div v-show="!showList" class="panel panel-default">
+    <div class="panel-heading" id="vm">{{title}}</div>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-2 control-label">订单ID</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="finTjsRepaymentPlan.orderId" placeholder="订单ID"/>
             </div>
         </div>
-    </div>
-</div>
-<table width="100%" cellpadding="0" cellspacing="0"><tr>
-    <td class="menutd" width="160" valign="top">
-        <div id="leftmenu" class="menu">
-
+        <div class="form-group">
+            <div class="col-sm-2 control-label">产品ID</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="finTjsRepaymentPlan.productId" placeholder="产品ID"/>
+            </div>
         </div>
-    </td>
-    <td class="mask" width="100%" valign="top">
+        <div class="form-group">
+            <div class="col-sm-2 control-label">客户ID</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="finTjsRepaymentPlan.customerId" placeholder="客户ID"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">产品oid</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="finTjsRepaymentPlan.productCode" placeholder="产品oid"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">产品名称</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="finTjsRepaymentPlan.productName" placeholder="产品名称"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">会员账号</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="finTjsRepaymentPlan.userAccount" placeholder="会员账号"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">总期数</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="finTjsRepaymentPlan.totalIssue" placeholder="总期数"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">当前期数</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="finTjsRepaymentPlan.currentIssue" placeholder="当前期数"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">当期本金</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="finTjsRepaymentPlan.currentCapital" placeholder="当期本金,单位分"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">当期利息</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="finTjsRepaymentPlan.currentInterest" placeholder="当期利息,单位分"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">当期还款状态 1：repay 2：unRepay</div>
+            <div class="col-sm-10">
+                <label class="radio-inline">
+                    <input type="radio" name="status" value="1" v-model="finTjsRepaymentPlan.currentRepaymentStatus"/>
+                    repay
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="status" value="2" v-model="finTjsRepaymentPlan.currentRepaymentStatus"/>
+                    unRepay
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">当期还款时间</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="finTjsRepaymentPlan.currentRepaymentTime" placeholder="当期还款时间"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">申请中资产</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="finTjsRepaymentPlan.confirmingInvestment" placeholder="申请中资产（当期本金中不包含这笔资产，会在购买后第二天确认）"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">产品到期日</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="finTjsRepaymentPlan.interestEndDate" placeholder="产品到期日（起息结束日）"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">产品起息日</div>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" v-model="finTjsRepaymentPlan.interestStartDate" placeholder="产品起息日"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-2 control-label"></div>
+            <input type="button" class="btn btn-primary" @click="saveOrUpdate" value="确定"/>
+            &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+        </div>
+    </form>
+</div>
+<script src="lib/vue.min.js"></script>
+<script src="js/index.js"></script>
 
-    </td></tr></table>
-<table width="100%" border="0" align="center" cellpadding="5" cellspacing="1" bgcolor="#CCCCCC">
-    <tr>
-        <td align="center" bgcolor="#F9F9F9">
-            <p align="center">
-            <a href="<%=weburl%>">zcz 版权所有</a></a><br />
-            <a href="<%=weburl%>?app=55"><strong>关于我们</strong></a>
-            </p>
-        </td>
-    </tr>
-</table>
 </body>
 </html>
