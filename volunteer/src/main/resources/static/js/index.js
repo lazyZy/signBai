@@ -2,6 +2,10 @@
 var vm = new Vue({
     el: '#vm',
     data: {
+        login:{
+            email:"",
+            pwd:""
+        },
         showList: true,
         title: "心\"",
         q: {
@@ -34,12 +38,37 @@ var vm = new Vue({
             });
         },
 
-        reload: function (event) {
-            var page = $("#jqGrid").jqGrid('getGridParam', 'page');
-            $("#jqGrid").jqGrid('PageBody', {
-                postData: {
+        reload: function () {
+            $.ajax({
+                type: "POST",
+                url: "../../login/info",
+                contentType: "application/json",
+                data:JSON.stringify(vm.login),
+                success: function (r) {
+                    console.log(r.code);
+                    if (r.code === 200) {
+                        alert('操作成功');
+                    } else {
+                        alert("操作失败");
+                    }
                 }
-            }).trigger("reloadGrid");
+            });
+            // axios({
+            //     method:'post',
+            //     url:'../../login/info',
+            //     data:{
+            //     email:vm.login.email,
+            //     pwd:vm.login.pwd
+            //     }
+            // }).then(function(resp){
+            //     if(resp.code === 200){
+            //         alert("登陆成功");
+            //     }else {
+            //         alert("登录失败")
+            //         console.log(JSON.stringify(vm.login));
+            //         return 'login.ftl';
+            //     }
+            // });
         }
     }
 });

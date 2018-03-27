@@ -3,7 +3,7 @@ package com.zcz.www.pojo;
 /**
  * Created by ZY on 2018/3/12.
  */
-public class loginReq {
+public class LoginReq {
     private String email;
     private String pwd;
 

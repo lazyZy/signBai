@@ -1,15 +1,14 @@
 package com.zcz.www.controller;
 
+import com.zcz.www.pojo.BaseResult;
+import com.zcz.www.pojo.LoginReq;
 import com.zcz.www.service.UserService;
 import com.zcz.www.utils.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
 
 /**
  * Created by ZY on 2018/3/10.
@@ -20,16 +19,15 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping("/info/{account}")
+    @RequestMapping("/info")
     @ResponseBody
-    public ModelAndView getUser(ModelAndView modelAndView , @PathVariable ("account") String account){
-        Jedis jedis = new Jedis();
-        jedis.set("name","zhaoyi");
-        JedisPool jedisPool;
+    public BaseResult getUser(@RequestBody LoginReq loginReq){
 
-        modelAndView.setViewName("login");
-        modelAndView.addObject("sysUser", "SysUser");
+        BaseResult baseResult = userService.selectAdminByEmailAndPwd(loginReq.getEmail(),loginReq.getPwd());
+        if(baseResult.getCode() == 200){
+            return baseResult;
+        }
 
-        return modelAndView;
+        return BaseResult.createFail(400,"失败");
     }
 }
