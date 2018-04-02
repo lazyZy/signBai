@@ -15,15 +15,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping(Const.LOGIN_PREFIX)
-public class UserController {
+public class LoginController {
     @Autowired
     UserService userService;
 
-    @RequestMapping("/info")
+    @RequestMapping("/admin")
+    @ResponseBody
+    public BaseResult getAdmin(@RequestBody LoginReq loginReq){
+
+        BaseResult baseResult = userService.selectAdminByEmailAndPwd(loginReq.getEmail(),loginReq.getPwd());
+        if(baseResult.getCode() == 200){
+            return baseResult;
+        }
+
+        return BaseResult.createFail(400,"失败");
+    }
+
+    @RequestMapping("/volunteer")
     @ResponseBody
     public BaseResult getUser(@RequestBody LoginReq loginReq){
 
-        BaseResult baseResult = userService.selectAdminByEmailAndPwd(loginReq.getEmail(),loginReq.getPwd());
+        BaseResult baseResult = userService.selectVolunteerByEmailAndPwd(loginReq.getEmail(),loginReq.getPwd());
         if(baseResult.getCode() == 200){
             return baseResult;
         }
