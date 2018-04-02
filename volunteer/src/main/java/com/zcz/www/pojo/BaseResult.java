@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 public class BaseResult {
     /**
-     * 400 业务错误，将返回消息提示给用户
+     * 400 错误，将返回消息提示给用户
      */
     private int code;
     private String message;

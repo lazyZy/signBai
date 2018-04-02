@@ -19,7 +19,7 @@ public interface UserService {
     //添加管理员
     BaseResult addAdmin(Admin admin);
     //添加志愿者
-    BaseResult addVollunteer(Volunteer volunteer);
+    BaseResult addVolunteer(Volunteer volunteer);
     //根据ID更新管理员信息
     BaseResult updatAdmin(Integer adminId , Admin admin);
     //根据ID更新志愿者信息
