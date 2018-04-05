@@ -8,4 +8,5 @@ public interface Const {
     String LOGIN_PREFIX = "/login";
     String REGISTER_PREFIX = "/register";
     String PAGE_PREFIX = "/page";
+    String TOKEN_PREFIX = "/token";
 }

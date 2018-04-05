@@ -149,4 +149,14 @@ public class ActivityUser {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
+    @Override
+    public String toString() {
+        return "ActivityUser{" +
+                "activityId=" + activityId +
+                ", userId=" + userId +
+                ", joinStatus=" + joinStatus +
+                ", createTime=" + createTime +
+                '}';
+    }
 }
