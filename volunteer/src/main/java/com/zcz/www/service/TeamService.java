@@ -13,6 +13,8 @@ public interface TeamService {
     BaseResult selectTeamAndMemberByTeamId(int teamId);
     //添加团队
     BaseResult addTeam(Team team);
+    //通过团队ID查找团队信息
+    BaseResult selectOneTeamByTeamId(int teamId);
     //通过ID更新团队
     BaseResult updateTeam(Integer teamId , Team team);
 }

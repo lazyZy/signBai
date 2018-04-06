@@ -80,6 +80,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public BaseResult selectAdminList() {
+        adminExample = new AdminExample();
         adminExample.createCriteria().andIdIsNotNull();
         List<Admin> admins = adminMapper.selectByExample(adminExample);
         return null;
@@ -87,6 +88,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public BaseResult selectVolunteerList() {
+        volunteerExample = new VolunteerExample();
         volunteerExample.createCriteria().andIdIsNotNull();
         List<Volunteer> volunteers = volunteerMapper.selectByExample(volunteerExample);
         return null;

@@ -32,4 +32,34 @@ public class PageController {
         logger.info("进入注册页");
         return htmlConst.registerPage;
     }
+
+    @RequestMapping("/admin_activity")
+    public String toAdminActivity(){
+        logger.info("进入管理员活动页");
+        return htmlConst.adminActivityPage;
+    }
+
+    @RequestMapping("/admin_register")
+    public String toAdminRegister(){
+        logger.info("进入管理员注册页");
+        return htmlConst.adminRegisterPage;
+    }
+
+    @RequestMapping("/admin_volunteer")
+    public String toAdminVolunteer(){
+        logger.info("进入管理员-志愿者页");
+        return htmlConst.adminVolunteerPage;
+    }
+
+    @RequestMapping("/volunteer_team")
+    public String toVolunteerTeam(){
+        logger.info("进入志愿者-团队页");
+        return htmlConst.volunteerTeamPage;
+    }
+
+    @RequestMapping("/volunteer_activity")
+    public String toVolunteerActivity(){
+        logger.info("进入志愿者活动页");
+        return htmlConst.volunteerActivityPage;
+    }
 }
