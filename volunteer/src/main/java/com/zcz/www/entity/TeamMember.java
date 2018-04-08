@@ -219,4 +219,16 @@ public class TeamMember {
     public void setModifyTime(Date modifyTime) {
         this.modifyTime = modifyTime;
     }
+
+    @Override
+    public String toString() {
+        return "TeamMember{" +
+                "id=" + id +
+                ", teamId=" + teamId +
+                ", userId=" + userId +
+                ", status=" + status +
+                ", createTime=" + createTime +
+                ", modifyTime=" + modifyTime +
+                '}';
+    }
 }

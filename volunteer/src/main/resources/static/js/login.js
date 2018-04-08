@@ -40,11 +40,12 @@ var vm1 = new Vue({
                 .then(function (response) {
                     if (response.data.code === 200) {
                         alert("成功");
+                        token = response.data.data;
+                        console.info(token);
                         location.href = "/page/index";
                     }else{
                         alert("用户名或密码错误！");
                     }
-                    console.log(response);
                 })
 
         }

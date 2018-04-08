@@ -322,4 +322,19 @@ public class Volunteer {
     public void setModifyTime(Date modifyTime) {
         this.modifyTime = modifyTime;
     }
+
+    @Override
+    public String toString() {
+        return "Volunteer{" +
+                "id=" + id +
+                ", volunteerName='" + volunteerName + '\'' +
+                ", volunteerSex=" + volunteerSex +
+                ", volunteerPhone='" + volunteerPhone + '\'' +
+                ", volunteerMail='" + volunteerMail + '\'' +
+                ", volunteerPwd='" + volunteerPwd + '\'' +
+                ", volunteerAdrress='" + volunteerAdrress + '\'' +
+                ", createTime=" + createTime +
+                ", modifyTime=" + modifyTime +
+                '}';
+    }
 }

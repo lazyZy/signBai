@@ -394,4 +394,21 @@ public class Activity {
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
+
+    @Override
+    public String toString() {
+        return "Activity{" +
+                "id=" + id +
+                ", teamId=" + teamId +
+                ", leaderId=" + leaderId +
+                ", name='" + name + '\'' +
+                ", region='" + region + '\'' +
+                ", status=" + status +
+                ", introduce='" + introduce + '\'' +
+                ", summary='" + summary + '\'' +
+                ", createTime=" + createTime +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                '}';
+    }
 }

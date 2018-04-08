@@ -16,6 +16,8 @@
             <div class="col-sm-2 control-label"></div>
             <input type="button" class="btn btn-primary" @click="toLogin" value="登录"/>
             &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="toRegister" value="注册"/>
+
+
         </div>
 
         </form>

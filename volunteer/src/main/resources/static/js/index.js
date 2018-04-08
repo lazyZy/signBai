@@ -2,8 +2,7 @@
 var vm = new Vue({
     el: '#vm',
     data: {
-        title: "\"心·青年\"志愿活动平台"
-
+        title: "\"心·青年\"志愿活动平台",
     },
     methods: {
 
