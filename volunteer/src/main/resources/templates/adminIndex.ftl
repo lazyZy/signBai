@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 >
 <head>
+    <#include "common/main.html">
     <link href="/static/favicon.ico" rel="shortcut icon"/>
-<#include "common/main.html">
     <title>“心·青年”志愿活动平台</title>
 
 </head>
@@ -24,7 +24,7 @@
     </div>
 
 </div>
-<script src="${request.contextPath}/js/index.js"></script>
+<script src="${request.contextPath}/js/adminIndex.js"></script>
 
 </body>
 </html>

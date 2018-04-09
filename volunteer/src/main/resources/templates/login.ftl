@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 >
 <head>
-    <title>Hello World!</title>
     <#include "common/main.html">
+    <title>Hello World!</title>
 </head>
 <body>
 <h2 class="mg-b20 text-center"></h2>
