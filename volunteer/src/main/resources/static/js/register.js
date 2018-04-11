@@ -1,7 +1,7 @@
 var vm = new Vue({
     el: '#vm',
     data: {
-        login: {
+        register: {
             email: "",
             pwd: "",
             name:"",
@@ -27,12 +27,12 @@ var vm = new Vue({
 
         confirm:function(){
             axios.post('../../register/volunteer', {
-                volunteerMail: vm.login.email,
-                volunteerPwd: vm.login.pwd,
-                volunteerName:vm.login.name,
-                volunteerSex:vm.login.sex,
-                volunteerPhone:vm.login.phone,
-                volunteerAdrress:vm.login.adrress
+                volunteerMail: vm.register.email,
+                volunteerPwd: vm.register.pwd,
+                volunteerName:vm.register.name,
+                volunteerSex:vm.register.sex,
+                volunteerPhone:vm.register.phone,
+                volunteerAdrress:vm.register.adrress
             })
                 .then(function (response) {
                     if (response.data.code === 200) {

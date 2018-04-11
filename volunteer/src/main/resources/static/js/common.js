@@ -1,5 +1,4 @@
 
-var token = "";
 
 var baseURL = "../../";
 

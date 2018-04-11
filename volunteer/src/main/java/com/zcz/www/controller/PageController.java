@@ -33,6 +33,12 @@ public class PageController {
         return htmlConst.registerPage;
     }
 
+    @RequestMapping("/adminIndex")
+    public String toAdminIndex(){
+        logger.info("进入注册页");
+        return htmlConst.adminIndexPage;
+    }
+
     @RequestMapping("/admin_activity")
     public String toAdminActivity(){
         logger.info("进入管理员活动页");

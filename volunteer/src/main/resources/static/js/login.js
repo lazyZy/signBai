@@ -40,9 +40,10 @@ var vm1 = new Vue({
                 .then(function (response) {
                     if (response.data.code === 200) {
                         alert("成功");
-                        token = response.data.data;
-                        console.info(token);
-                        location.href = "/page/index";
+                        window.token = response.data.data;
+                        console.info(window.token);
+                        localStorage.setItem("token",response.data.data);
+                        location.href = "/page/adminIndex";
                     }else{
                         alert("用户名或密码错误！");
                     }
