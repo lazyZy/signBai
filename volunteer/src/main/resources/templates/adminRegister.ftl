@@ -12,38 +12,38 @@
             <div class="form-group">
                 <div class="col-sm-2 control-label">邮箱</div>
                 <div class="col-sm-10" id="vm">
-                    <input type="text" class="form-control" v-model="login.email" placeholder="邮箱"/>
+                    <input type="text" class="form-control" v-model="admin.email" placeholder="邮箱"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">密码</div>
                 <div class="col-sm-10" id="vm">
-                    <input type="text" class="form-control" v-model="login.pwd" placeholder="密码"/>
+                    <input type="text" class="form-control" v-model="admin.pwd" placeholder="密码"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">姓名</div>
                 <div class="col-sm-10" id="vm">
-                    <input type="text" class="form-control" v-model="login.name" placeholder="姓名"/>
+                    <input type="text" class="form-control" v-model="admin.name" placeholder="姓名"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">性别</div>
                 <div class="col-sm-10" id="vm">
-                    <input v-model="login.sex" type="radio" value=0 />女
-                    <input v-model="login.sex" type="radio" value=1 />男
+                    <input v-model="admin.sex" type="radio" value=0 />女
+                    <input v-model="admin.sex" type="radio" value=1 />男
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">地址</div>
                 <div class="col-sm-10" id="vm">
-                    <input type="text" class="form-control" v-model="login.adrress" placeholder="地址"/>
+                    <input type="text" class="form-control" v-model="admin.adrress" placeholder="地址"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">手机号</div>
                 <div class="col-sm-10" id="vm">
-                    <input type="text" class="form-control" v-model="login.phone" placeholder="手机号"/>
+                    <input type="text" class="form-control" v-model="admin.phone" placeholder="手机号"/>
                 </div>
             </div>
             <div class="form-group" id="vm" >
