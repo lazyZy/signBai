@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml"
+>
 <head>
-    <#include "common/main.html">
-    <link href="/static/favicon.ico" rel="shortcut icon" />
+<#include "common/main.html">
+    <link href="/static/favicon.ico" rel="shortcut icon"/>
     <title>“心·青年”志愿活动平台</title>
 
-</head><body>
+</head>
+<body>
 
 <div v-show="!showList" class="panel panel-default">
     <div class="panel-heading" id="vm">{{title}}
@@ -32,8 +33,8 @@
             <div class="form-group">
                 <div class="col-sm-2 control-label">性别</div>
                 <div class="col-sm-10" id="vm">
-                    <input v-model="register.sex" type="radio" value=0 />女
-                    <input v-model="register.sex" type="radio" value=1 />男
+                    <input v-model="register.sex" type="radio" value=0/>女
+                    <input v-model="register.sex" type="radio" value=1/>男
                 </div>
             </div>
             <div class="form-group">
@@ -48,7 +49,7 @@
                     <input type="text" class="form-control" v-model="register.phone" placeholder="手机号"/>
                 </div>
             </div>
-            <div class="form-group" id="vm" >
+            <div class="form-group" id="vm">
                 <div class="col-sm-2 control-label"></div>
                 <input type="button" class="btn btn-primary" @click="confirm" value="注册"/>
                 &nbsp;&nbsp;<input type="button" class="btn btn-primary" @click="toLogin" value="返回登录"/>

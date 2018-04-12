@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 >
 <head>
-    <#include "common/main.html">
+<#include "common/main.html">
     <link href="/static/favicon.ico" rel="shortcut icon"/>
 </head>
 <body>
@@ -30,8 +30,8 @@
             <div class="form-group">
                 <div class="col-sm-2 control-label">性别</div>
                 <div class="col-sm-10" id="vm">
-                    <input v-model="admin.sex" type="radio" value=0 />女
-                    <input v-model="admin.sex" type="radio" value=1 />男
+                    <input v-model="admin.sex" type="radio" value=0/>女
+                    <input v-model="admin.sex" type="radio" value=1/>男
                 </div>
             </div>
             <div class="form-group">
@@ -46,7 +46,7 @@
                     <input type="text" class="form-control" v-model="admin.phone" placeholder="手机号"/>
                 </div>
             </div>
-            <div class="form-group" id="vm" >
+            <div class="form-group" id="vm">
                 <div class="col-sm-2 control-label"></div>
                 <input type="button" class="btn btn-primary" @click="confirm" value="注册"/>
                 &nbsp;&nbsp;<input type="button" class="btn btn-primary" @click="toLogin" value="返回管理首页"/>

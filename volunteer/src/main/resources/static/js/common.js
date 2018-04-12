@@ -1,5 +1,3 @@
-
-
 var baseURL = "../../";
 
 var postBaseURL = "http://product.doulaibao.com.cn/api/"
@@ -48,15 +46,15 @@ var postBaseURL = "http://product.doulaibao.com.cn/api/"
 function getSelectedRow() {
     var grid = $("#jqGrid");
     var rowKey = grid.getGridParam("selrow");
-    if(!rowKey){
-    	alert("请选择一条记录");
-    	return ;
+    if (!rowKey) {
+        alert("请选择一条记录");
+        return;
     }
 
     var selectedIDs = grid.getGridParam("selarrrow");
-    if(selectedIDs.length > 1){
-    	alert("只能选择一条记录");
-    	return ;
+    if (selectedIDs.length > 1) {
+        alert("只能选择一条记录");
+        return;
     }
 
     return selectedIDs[0];
@@ -66,9 +64,9 @@ function getSelectedRow() {
 function getSelectedRows() {
     var grid = $("#jqGrid");
     var rowKey = grid.getGridParam("selrow");
-    if(!rowKey){
-    	alert("请选择一条记录");
-    	return ;
+    if (!rowKey) {
+        alert("请选择一条记录");
+        return;
     }
 
     return grid.getGridParam("selarrrow");

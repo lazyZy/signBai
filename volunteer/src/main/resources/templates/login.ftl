@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 >
 <head>
-    <#include "common/main.html">
+<#include "common/main.html">
     <title>Hello World!</title>
 </head>
 <body>
@@ -26,15 +26,15 @@
             <div class="form-group">
                 <div class="col-sm-2 control-label">密码</div>
                 <div class="col-sm-10" id="vm1">
-                    <input type="checkbox" v-model="login.isAdmin" value=true checked="checked" />管理员登录？
+                    <input type="checkbox" v-model="login.isAdmin" value=true checked="checked"/>管理员登录？
                 </div>
             </div>
 
-            <div class="form-group" id="vm1" >
+            <div class="form-group" id="vm1">
                 <div class="col-sm-2 control-label"></div>
                 <input type="button" class="btn btn-primary" @click="reload" value="登录"/>
             </div>
-            <div class="form-group" id="vm1" >
+            <div class="form-group" id="vm1">
                 <div class="col-sm-2 control-label"></div>
                 &nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="toRegister" value="去注册"/>
             </div>

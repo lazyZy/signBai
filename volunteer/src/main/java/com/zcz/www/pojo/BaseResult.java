@@ -105,6 +105,7 @@ public class BaseResult {
     public void setData(Object data) {
         this.data = data;
     }
+
     public static BaseResult createDataNotFound() {
         BaseResult result = new BaseResult();
         result.code = 404;

@@ -4,15 +4,14 @@ var vm = new Vue({
         register: {
             email: "",
             pwd: "",
-            name:"",
-            sex:0,
-            phone:"",
-            adrress:""
+            name: "",
+            sex: 0,
+            phone: "",
+            adrress: ""
         },
-        title:  "\"心·青年\"志愿活动平台"
+        title: "\"心·青年\"志愿活动平台"
     },
     methods: {
-
 
 
         toIndex: function () {
@@ -25,14 +24,14 @@ var vm = new Vue({
                 location.href = "/page/login";
         },
 
-        confirm:function(){
+        confirm: function () {
             axios.post('../../register/volunteer', {
                 volunteerMail: vm.register.email,
                 volunteerPwd: vm.register.pwd,
-                volunteerName:vm.register.name,
-                volunteerSex:vm.register.sex,
-                volunteerPhone:vm.register.phone,
-                volunteerAdrress:vm.register.adrress
+                volunteerName: vm.register.name,
+                volunteerSex: vm.register.sex,
+                volunteerPhone: vm.register.phone,
+                volunteerAdrress: vm.register.adrress
             })
                 .then(function (response) {
                     if (response.data.code === 200) {

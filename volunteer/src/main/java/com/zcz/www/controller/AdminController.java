@@ -30,13 +30,13 @@ public class AdminController {
 
     @RequestMapping("/admin")
     @ResponseBody
-    public BaseResult getAllActivity(@RequestBody LoginReq loginReq){
+    public BaseResult getAllActivity(@RequestBody LoginReq loginReq) {
 
-        BaseResult baseResult = userService.selectAdminByEmailAndPwd(loginReq.getEmail(),loginReq.getPwd());
-        if(baseResult.getCode() == 200){
+        BaseResult baseResult = userService.selectAdminByEmailAndPwd(loginReq.getEmail(), loginReq.getPwd());
+        if (baseResult.getCode() == 200) {
             return baseResult;
         }
 
-        return BaseResult.createFail(400,"失败");
+        return BaseResult.createFail(400, "失败");
     }
 }

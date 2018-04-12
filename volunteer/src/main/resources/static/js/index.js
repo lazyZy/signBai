@@ -1,4 +1,3 @@
-
 var vm = new Vue({
     el: '#vm',
     data: {
@@ -8,11 +7,11 @@ var vm = new Vue({
 
 
         toLogin: function () {
-            location.href="/page/login";
+            location.href = "/page/login";
         },
 
-        toRegister: function(){
-            location.href="../page/register";
+        toRegister: function () {
+            location.href = "../page/register";
         },
 
         reload: function () {
@@ -31,17 +30,17 @@ var vm = new Vue({
             //     }
             // });
             axios.post('../../login/info', {
-                    email:vm.login.email,
-                    pwd:vm.login.pwd
+                email: vm.login.email,
+                pwd: vm.login.pwd
             })
-            .then(function (response) {
-                if(response.data.code === 200){
-                    alert("成功");
-                    location.href="/page/login";
-                }
+                .then(function (response) {
+                    if (response.data.code === 200) {
+                        alert("成功");
+                        location.href = "/page/login";
+                    }
 
-                console.log(response);
-            })
+                    console.log(response);
+                })
 
         }
     }
