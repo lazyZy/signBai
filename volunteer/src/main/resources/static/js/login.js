@@ -6,10 +6,9 @@ var vm1 = new Vue({
             pwd: "",
             isAdmin: false,
         },
-        title:  "\"心·青年\"志愿活动平台"
+        title: "\"心·青年\"志愿活动平台"
     },
     methods: {
-
 
 
         toRegister: function () {
@@ -40,10 +39,11 @@ var vm1 = new Vue({
                 .then(function (response) {
                     if (response.data.code === 200) {
                         alert("成功");
-                        token = response.data.data;
-                        console.info(token);
-                        location.href = "/page/index";
-                    }else{
+                        window.token = response.data.data;
+                        console.info(window.token);
+                        localStorage.setItem("token", response.data.data);
+                        location.href = "/page/adminIndex";
+                    } else {
                         alert("用户名或密码错误！");
                     }
                 })

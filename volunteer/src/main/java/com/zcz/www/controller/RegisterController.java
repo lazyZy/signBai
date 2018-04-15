@@ -22,24 +22,24 @@ public class RegisterController {
 
     @RequestMapping("/admin")
     @ResponseBody
-    public BaseResult getAdmin(@RequestBody LoginReq loginReq){
+    public BaseResult getAdmin(@RequestBody LoginReq loginReq) {
 
-        BaseResult baseResult = userService.selectAdminByEmailAndPwd(loginReq.getEmail(),loginReq.getPwd());
-        if(baseResult.getCode() == 200){
+        BaseResult baseResult = userService.selectAdminByEmailAndPwd(loginReq.getEmail(), loginReq.getPwd());
+        if (baseResult.getCode() == 200) {
             return baseResult;
         }
 
-        return BaseResult.createFail(400,"失败");
+        return BaseResult.createFail(400, "失败");
     }
 
     @RequestMapping("/volunteer")
     @ResponseBody
-    public BaseResult getUser(@RequestBody Volunteer volunteer){
+    public BaseResult getUser(@RequestBody Volunteer volunteer) {
 
         BaseResult baseResult = userService.addVolunteer(volunteer);
-        if(baseResult.getCode() == 200){
+        if (baseResult.getCode() == 200) {
             return baseResult;
         }
-        return BaseResult.createFail(400,"失败");
+        return BaseResult.createFail(400, "失败");
     }
 }

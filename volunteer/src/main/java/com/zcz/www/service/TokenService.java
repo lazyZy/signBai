@@ -5,7 +5,10 @@ package com.zcz.www.service;
  */
 public interface TokenService {
     String getToken();
+
     String getInfo(String token);
-    String setInfo(String token,String info);
+
+    String setInfo(String token, String info);
+
     boolean checkToken(String token);
 }

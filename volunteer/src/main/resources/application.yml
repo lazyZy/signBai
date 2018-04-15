@@ -21,9 +21,13 @@ spring.redis.pool.min-idle : 0
 # 连接超时时间（毫秒）
 spring.redis.timeout : 0
 
+#freemarker
+#freemarker后缀
 spring.freemarker.suffix : .ftl
+#freemarker解析路径
 spring.freemarker.template-loader-path : classpath:/templates/
 spring.freemarker.allow-request-override : false
+#freemarker缓存设置
 spring.freemarker.cache : false
 spring.freemarker.check-template-location : true
 spring.freemarker.charset : UTF-8

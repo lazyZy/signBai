@@ -18,14 +18,14 @@ public class TokenServiceImpl implements TokenService {
     @Override
     public String getToken() {
         String token = getUUid();
-        jedisClientPool.set(token,"");
-        jedisClientPool.expire(token,60*60);
+        jedisClientPool.set(token, "");
+        jedisClientPool.expire(token, 60 * 60);
         return token;
     }
 
     @Override
     public String getInfo(String token) {
-        if(checkToken(token)){
+        if (checkToken(token)) {
             return jedisClientPool.get(token);
         }
         return null;
@@ -33,9 +33,9 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public String setInfo(String token, String info) {
-        if(checkToken(token)){
-            jedisClientPool.set(token,info);
-            jedisClientPool.expire(token,60*60);
+        if (checkToken(token)) {
+            jedisClientPool.set(token, info);
+            jedisClientPool.expire(token, 60 * 60);
         }
         return null;
     }
@@ -43,7 +43,7 @@ public class TokenServiceImpl implements TokenService {
     @Override
     public boolean checkToken(String token) {
         boolean flag = false;
-        if(null != token && jedisClientPool.exists(token)){
+        if (null != token && jedisClientPool.exists(token)) {
             flag = true;
         }
         return flag;
