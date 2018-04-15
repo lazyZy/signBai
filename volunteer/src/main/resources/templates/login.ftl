@@ -24,7 +24,6 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-2 control-label">密码</div>
                 <div class="col-sm-10" id="vm1">
                     <input type="checkbox" v-model="login.isAdmin" value=true checked="checked"/>管理员登录？
                 </div>

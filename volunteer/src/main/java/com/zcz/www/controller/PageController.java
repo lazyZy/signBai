@@ -35,8 +35,14 @@ public class PageController {
 
     @RequestMapping("/adminIndex")
     public String toAdminIndex() {
-        logger.info("进入注册页");
+        logger.info("进入管理员首页");
         return htmlConst.adminIndexPage;
+    }
+
+    @RequestMapping("/volunteerIndex")
+    public String toVolunteerIndex() {
+        logger.info("进入管理员首页");
+        return htmlConst.volunteerIndexPage;
     }
 
     @RequestMapping("/admin_activity")
@@ -67,5 +73,11 @@ public class PageController {
     public String toVolunteerActivity() {
         logger.info("进入志愿者活动页");
         return htmlConst.volunteerActivityPage;
+    }
+
+    @RequestMapping("/register_team")
+    public String toRegisterTeam() {
+        logger.info("进入团队注册页");
+        return htmlConst.registerTeamPage;
     }
 }

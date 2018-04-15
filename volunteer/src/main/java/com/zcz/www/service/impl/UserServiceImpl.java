@@ -103,7 +103,7 @@ public class UserServiceImpl implements UserService {
     public BaseResult addVolunteer(Volunteer volunteer) {
         int volunteerId = volunteerMapper.insertSelective(volunteer);
         if (volunteerId != 0) {
-            return BaseResult.create(200, null, "注册成功");
+            return BaseResult.create(200, volunteerId, "注册成功");
         }
         return BaseResult.createFail(400, "注册失败");
     }
