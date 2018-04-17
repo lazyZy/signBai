@@ -31,7 +31,7 @@ public class PageController {
     public String toRegister() {
         logger.info("进入注册页");
         return htmlConst.registerPage;
-    }
+     }
 
     @RequestMapping("/adminIndex")
     public String toAdminIndex() {

@@ -7,8 +7,10 @@ var vm = new Vue({
             adminSex: "",
             adminPhone: "",
             adminEmail: "",
-            adminAdrress: ""
-        }
+            adminAdrress: "",
+            adminAuthority: ""
+        },
+        activities: []
     },
     mounted: function () {
         console.log(localStorage.getItem("token"));
@@ -16,18 +18,54 @@ var vm = new Vue({
         axios.post('../../login/adminLoginInfo?token=' + localStorage.getItem("token"), {})
             .then(function (response) {
                 if (response.data.code === 200) {
-                    alert("成功");
-                    console.log(response.data.data);
-                    console.log(response.data.data.adminName);
                     vm.admin = response.data.data;
                 } else {
                     alert("请登录！");
                     location.href = "/page/login";
                 }
                 console.log(response);
+
+            })
+        axios.post('../../admin/getAllActivity', {})
+            .then(function (response) {
+                if (response.data.code === 200) {
+                    vm.activities = response.data.data;
+                } else {
+                    alert("请登录！");
+                    location.href = "/page/login";
+                }
+
+                console.log(response);
+
             })
 
     },
-    methods: {}
+    methods: {
+        toAdopt: function (id) {
+            alert("修改");
+            console.info(id);
+            axios.post('../../admin/adoptActivity?activityId='+id, {})
+                .then(function (response) {
+                    if (response.data.code === 200) {
+                        location.reload();
+                    }
+                    console.log(response);
+                })
+        },
+        toRefuse: function (id) {
+            alert("修改");
+            console.info(id);
+            axios.post('../../admin/refuseActivity?activityId='+id, {})
+                .then(function (response) {
+                    if (response.data.code === 200) {
+                        location.reload();
+                    }
+                    console.log(response);
+                })
+        },
+        toAdminActivity:function () {
+            location.href="/page/admin_activity";
+        }
+    }
 })
 

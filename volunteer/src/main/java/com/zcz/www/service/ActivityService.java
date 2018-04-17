@@ -19,6 +19,9 @@ public interface ActivityService {
     //添加活动
     BaseResult addActivity(Activity activity);
 
+    //通过ID更新活动状态
+    BaseResult updateActivityStatus(Integer activityId , Integer status);
+
     //通过ID更新活动
-    BaseResult updateActivity(Integer activityId, Activity activity);
+    BaseResult updateActivity(Activity activity);
 }

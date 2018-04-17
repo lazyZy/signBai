@@ -62,11 +62,16 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public BaseResult updateActivity(Integer activityId, Activity activity) {
-        if (null == activity.getId() || activityId != activityId) {
-            logger.info("更新活动信息失败");
-            return BaseResult.createBadRequest();
-        }
+    public BaseResult updateActivityStatus(Integer activityId , Integer status) {
+        Activity activity = activityMapper.selectByPrimaryKey(activityId);
+        activity.setStatus(status);
+        int updateActivityId = activityMapper.updateByPrimaryKeySelective(activity);
+        logger.info("更新信息的活动ID为：{}", updateActivityId);
+        return selectActivityByActivityId(updateActivityId);
+    }
+
+    @Override
+    public BaseResult updateActivity(Activity activity) {
         int updateActivityId = activityMapper.updateByPrimaryKeySelective(activity);
         logger.info("更新信息的活动ID为：{}", updateActivityId);
         return selectActivityByActivityId(updateActivityId);
