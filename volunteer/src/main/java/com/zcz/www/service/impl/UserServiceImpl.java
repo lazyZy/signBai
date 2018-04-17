@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -83,7 +84,7 @@ public class UserServiceImpl implements UserService {
         adminExample = new AdminExample();
         adminExample.createCriteria().andIdIsNotNull();
         List<Admin> admins = adminMapper.selectByExample(adminExample);
-        return null;
+        return BaseResult.create(200,admins,"数据获取成功");
     }
 
     @Override
@@ -91,16 +92,22 @@ public class UserServiceImpl implements UserService {
         volunteerExample = new VolunteerExample();
         volunteerExample.createCriteria().andIdIsNotNull();
         List<Volunteer> volunteers = volunteerMapper.selectByExample(volunteerExample);
-        return null;
+        return BaseResult.create(200,volunteers,"数据获取成功");
     }
 
     @Override
     public BaseResult addAdmin(Admin admin) {
-        return null;
+        admin.setModifyTime(new Date());
+        int adminId = adminMapper.insertSelective(admin);
+        if (adminId != 0) {
+            return BaseResult.create(200, adminId, "注册成功");
+        }
+        return BaseResult.createFail(400, "注册失败");
     }
 
     @Override
     public BaseResult addVolunteer(Volunteer volunteer) {
+        volunteer.setModifyTime(new Date());
         int volunteerId = volunteerMapper.insertSelective(volunteer);
         if (volunteerId != 0) {
             return BaseResult.create(200, volunteerId, "注册成功");

@@ -7,7 +7,16 @@ var vm = new Vue({
             adminSex: "",
             adminPhone: "",
             adminEmail: "",
-            adminAdrress: ""
+            adminAdrress: "",
+            authority:""
+        },
+        register: {
+            name: "",
+            sex: "",
+            phone: "",
+            email: "",
+            adrress: "",
+            authority:""
         }
     },
     mounted: function () {
@@ -45,20 +54,20 @@ var vm = new Vue({
         },
 
         confirm: function () {
-            axios.post('../../register/volunteer', {
-                volunteerMail: vm.register.email,
-                volunteerPwd: vm.register.pwd,
-                volunteerName: vm.register.name,
-                volunteerSex: vm.register.sex,
-                volunteerPhone: vm.register.phone,
-                volunteerAdrress: vm.register.adrress
+            axios.post('../../register/admin', {
+                adminEmail: vm.register.email,
+                adminPwd: vm.register.pwd,
+                adminName: vm.register.name,
+                adminSex: vm.register.sex,
+                adminPhone: vm.register.phone,
+                adminAdrress: vm.register.adrress,
+                adminAuthority:vm.register.authority
             })
                 .then(function (response) {
                     if (response.data.code === 200) {
                         alert("注册成功");
                     }
-                    localStorage.setItem("volunteerId", response.data.data);
-                    location.href = vm.isTeamLeader?"/page/register_team":"/page/index";
+                    location.href = "/page/adminIndex";
                     console.log(response);
                 })
         },

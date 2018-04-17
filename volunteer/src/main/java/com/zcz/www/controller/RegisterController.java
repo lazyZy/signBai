@@ -1,9 +1,9 @@
 package com.zcz.www.controller;
 
+import com.zcz.www.entity.Admin;
 import com.zcz.www.entity.Team;
 import com.zcz.www.entity.Volunteer;
 import com.zcz.www.pojo.BaseResult;
-import com.zcz.www.pojo.LoginReq;
 import com.zcz.www.service.TeamService;
 import com.zcz.www.service.UserService;
 import com.zcz.www.utils.Const;
@@ -26,9 +26,9 @@ public class RegisterController {
 
     @RequestMapping("/admin")
     @ResponseBody
-    public BaseResult getAdmin(@RequestBody LoginReq loginReq) {
+    public BaseResult getAdmin(@RequestBody Admin admin) {
 
-        BaseResult baseResult = userService.selectAdminByEmailAndPwd(loginReq.getEmail(), loginReq.getPwd());
+        BaseResult baseResult = userService.addAdmin(admin);
         if (baseResult.getCode() == 200) {
             return baseResult;
         }
