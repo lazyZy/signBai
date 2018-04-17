@@ -14,4 +14,5 @@ public interface htmlConst {
     String volunteerIndexPage = "volunteerIndex";
     String volunteerTeamPage = "volunteerTeam";
     String volunteerActivityPage = "volunteerActivity";
+    String registerTeamPage = "registerTeam";
 }

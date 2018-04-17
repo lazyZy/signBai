@@ -27,14 +27,14 @@
             <div class="form-group">
                 <div class="col-sm-2 control-label">姓名</div>
                 <div class="col-sm-10" id="vm">
-                    <input type="text" class="form-control" v-model="register.name" placeholder="姓名"/>
+                    <input type="text" class="form-c ontrol" v-model="register.name" placeholder="姓名"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">性别</div>
                 <div class="col-sm-10" id="vm">
-                    <input v-model="register.sex" type="radio" value=0/>女
-                    <input v-model="register.sex" type="radio" value=1/>男
+                    <input v-model="register.sex" type="radio" value="0"/>女
+                    <input v-model="register.sex" type="radio" value="1"/>男
                 </div>
             </div>
             <div class="form-group">
@@ -47,6 +47,11 @@
                 <div class="col-sm-2 control-label">手机号</div>
                 <div class="col-sm-10" id="vm">
                     <input type="text" class="form-control" v-model="register.phone" placeholder="手机号"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10" id="vm1">
+                    <input type="checkbox" v-model="isTeamLeader" value=true checked="checked"/>是否创建团队？
                 </div>
             </div>
             <div class="form-group" id="vm">

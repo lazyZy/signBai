@@ -5,22 +5,23 @@ var vm = new Vue({
             email: "",
             pwd: "",
             name: "",
-            sex: 0,
+            sex: "0",
             phone: "",
             adrress: ""
         },
+        isTeamLeader: false,
         title: "\"心·青年\"志愿活动平台"
     },
     methods: {
 
 
         toIndex: function () {
-            console.log("跳转到注册页面！"),
+            console.log("跳转到首页页面！"),
                 location.href = "/page/index";
         },
 
         toLogin: function () {
-            console.log("跳转到注册页面！"),
+            console.log("跳转到登录页面！"),
                 location.href = "/page/login";
         },
 
@@ -37,7 +38,8 @@ var vm = new Vue({
                     if (response.data.code === 200) {
                         alert("注册成功");
                     }
-                    location.href = "/page/index";
+                    localStorage.setItem("volunteerId", response.data.data);
+                    location.href = vm.isTeamLeader?"/page/register_team":"/page/index";
                     console.log(response);
                 })
         },

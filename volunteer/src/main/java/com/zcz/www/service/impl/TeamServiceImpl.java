@@ -65,6 +65,7 @@ public class TeamServiceImpl implements TeamService {
             logger.info("添加团队信息失败！团队ID非法");
             return BaseResult.createBadRequest();
         }
+        team.setTeamStauts(0);
         int insertTeamId = teamMapper.insertSelective(team);
         logger.info("添加团队信息成功！");
         return selectOneTeamByTeamId(insertTeamId);

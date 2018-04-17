@@ -1,5 +1,7 @@
 package com.zcz.www.entity;
 
+import com.zcz.www.utils.DateUtils;
+
 import java.util.Date;
 
 /**
@@ -335,8 +337,8 @@ public class Activity {
      * @return the value of activity.start_time
      * @mbg.generated
      */
-    public Date getStartTime() {
-        return startTime;
+    public String getStartTime() {
+        return DateUtils.getFormate(startTime);
     }
 
     /**
@@ -357,8 +359,8 @@ public class Activity {
      * @return the value of activity.end_time
      * @mbg.generated
      */
-    public Date getEndTime() {
-        return endTime;
+    public String getEndTime() {
+        return DateUtils.getFormate(endTime);
     }
 
     /**

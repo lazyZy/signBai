@@ -31,6 +31,39 @@ var vm = new Vue({
             })
 
     },
-    methods: {}
+    methods: {
+
+
+        toIndex: function () {
+            console.log("跳转到首页页面！"),
+                location.href = "/page/index";
+        },
+
+        toLogin: function () {
+            console.log("跳转到登录页面！"),
+                location.href = "/page/login";
+        },
+
+        confirm: function () {
+            axios.post('../../register/volunteer', {
+                volunteerMail: vm.register.email,
+                volunteerPwd: vm.register.pwd,
+                volunteerName: vm.register.name,
+                volunteerSex: vm.register.sex,
+                volunteerPhone: vm.register.phone,
+                volunteerAdrress: vm.register.adrress
+            })
+                .then(function (response) {
+                    if (response.data.code === 200) {
+                        alert("注册成功");
+                    }
+                    localStorage.setItem("volunteerId", response.data.data);
+                    location.href = vm.isTeamLeader?"/page/register_team":"/page/index";
+                    console.log(response);
+                })
+        },
+
+
+    }
 })
 
