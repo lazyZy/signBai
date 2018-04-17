@@ -4,19 +4,24 @@
 <head>
 <#include "common/main.html">
     <link href="/static/favicon.ico" rel="shortcut icon"/>
+    <style>
+        li{
+            list-style:none;
+        }
+    </style>
 </head>
 <body>
 
-<div class="panel panel-default">
-    <div class="panel-heading" id="vm">{{title}}
+<div class="panel panel-default" >
+    <div class="panel-heading" id="vm" >{{title}}
 
-        <div class="form-group" id="vm">
-            <p>欢迎{{admin.adminName}}</p>
-
+        <div class="form-group" id="vm"  >
+            <p>欢迎进入</p>
+            <input type="button"  v-on:click="addAdmin" value="添加管理员"/>
 
         </div>
-        <div id="vm">
-            <ol v-for="activity in activities" :key="activity.id">
+        <div id="vm" >
+            <ol v-for="activity in activities" :key="activity.id" >
                 <li >
                     活动名称：{{ activity.name }}
                 </li>

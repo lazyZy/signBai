@@ -65,6 +65,10 @@ var vm = new Vue({
         },
         toAdminActivity:function () {
             location.href="/page/admin_activity";
+        },
+
+        addAdmin:function () {
+            location.href="/page/admin_register"
         }
     }
 })
