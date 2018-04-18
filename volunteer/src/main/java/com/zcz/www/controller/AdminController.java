@@ -39,6 +39,18 @@ public class AdminController {
         return BaseResult.createFail(400, "失败");
     }
 
+    @RequestMapping("/getAllVolunteer")
+    @ResponseBody
+    public BaseResult getAllVolunteer() {
+
+        BaseResult baseResult = userService.selectVolunteerList();
+        if (baseResult.getCode() == 200) {
+            return baseResult;
+        }
+
+        return BaseResult.createFail(400, "失败");
+    }
+
     @RequestMapping("/adoptActivity")
     @ResponseBody
     public BaseResult adoptActivity(@RequestParam Integer activityId) {
