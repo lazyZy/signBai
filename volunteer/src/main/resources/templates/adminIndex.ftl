@@ -23,6 +23,7 @@
         </div>
         <div id="vm" v-show="admin.adminAuthority > 1">
             <input type="button"  v-on:click="toAdminActivity" value="更改已审批活动状态"/>
+            <input type="button"  v-on:click="addAdmin" value="添加管理员"/>
         </div>
         <div id="vm">
             <ol v-for="activity in activities" :key="activity.id">

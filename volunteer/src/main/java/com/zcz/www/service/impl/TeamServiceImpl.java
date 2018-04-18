@@ -60,6 +60,14 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
+    public BaseResult selectTeamByLeaderId(int teamLeaderId) {
+        teamExample = new TeamExample();
+        teamExample.createCriteria().andLeaderIdEqualTo(teamLeaderId);
+        Team team = teamMapper.selectByExample(teamExample).get(0);
+        return BaseResult.create(200,team,"获取成功");
+    }
+
+    @Override
     public BaseResult addTeam(Team team) {
         if (null != team.getId()) {
             logger.info("添加团队信息失败！团队ID非法");
