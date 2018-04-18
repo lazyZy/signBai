@@ -4,6 +4,11 @@
 <head>
 <#include "common/main.html">
     <link href="/static/favicon.ico" rel="shortcut icon"/>
+    <style>
+        li{
+            list-style:none;
+        }
+    </style>
 </head>
 <body>
 <div id="vm" v-show="isShow" class="panel panel-default">

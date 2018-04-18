@@ -28,7 +28,6 @@ var vm = new Vue({
         axios.post('../../login/volunteerLoginInfo?token=' + localStorage.getItem("token"), {})
             .then(function (response) {
                 if (response.data.code === 200) {
-                    alert("成功");
                     console.log(response.data.data);
                     console.log(response.data.data.volunteerName);
                     vm.volunteer = response.data.data;
@@ -36,7 +35,6 @@ var vm = new Vue({
                     axios.post('../../volunteer/getActivity?volunteerId=' + vm.volunteer.id, {})
                         .then(function (response) {
                             if (response.data.code === 200) {
-                                alert("成功");
                                 console.log(response.data.data);
                                 vm.dataR = response.data.data;
                                 vm.teamInfo = vm.dataR.team;
