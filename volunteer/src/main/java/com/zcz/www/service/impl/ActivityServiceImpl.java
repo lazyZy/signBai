@@ -42,6 +42,14 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
+    public BaseResult selectActivityByTeamId(Integer teamId) {
+        activityExample = new ActivityExample();
+        activityExample.createCriteria().andTeamIdEqualTo(teamId);
+        List<Activity> activities = activityMapper.selectByExample(activityExample);
+        return BaseResult.create(200, activities,"获取活动信息成功");
+    }
+
+    @Override
     public BaseResult selectActivityByActivityStatus(Integer activityStatus) {
         activityExample = new ActivityExample();
         activityExample.createCriteria().andStatusEqualTo(activityStatus);

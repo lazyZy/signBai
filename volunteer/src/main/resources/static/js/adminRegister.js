@@ -44,8 +44,8 @@ var vm = new Vue({
 
 
         toIndex: function () {
-            console.log("跳转到首页页面！"),
-                location.href = "/page/index";
+            console.log("跳转到管理员首页页面！"),
+                location.href = "/page/adminIndex";
         },
 
         toLogin: function () {

@@ -13,6 +13,9 @@ public interface ActivityService {
     //通过活动ID获取活动信息
     BaseResult selectActivityByActivityId(Integer activityId);
 
+    //通过活动团队ID获取活动信息
+    BaseResult selectActivityByTeamId(Integer teamId);
+
     //通过活动状态获取活动信息
     BaseResult selectActivityByActivityStatus(Integer activityStatus);
 

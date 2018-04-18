@@ -13,6 +13,9 @@ public interface TeamService {
     //通过团队ID获取团队详细信息
     BaseResult selectTeamAndMemberByTeamId(int teamId);
 
+    //通过队长ID获取团队详细信息
+    BaseResult selectTeamByLeaderId(int teamLeaderId);
+
     //添加团队
     BaseResult addTeam(Team team);
 

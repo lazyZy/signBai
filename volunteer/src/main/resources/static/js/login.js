@@ -1,10 +1,10 @@
 var vm1 = new Vue({
-    el: '#vm1',
+    el: '#vm',
     data: {
         login: {
             email: "",
             pwd: "",
-            isAdmin: false,
+            isAdmin:false,
         },
         title: "\"心·青年\"志愿活动平台"
     },
@@ -42,7 +42,7 @@ var vm1 = new Vue({
                         window.token = response.data.data;
                         console.info(window.token);
                         localStorage.setItem("token", response.data.data);
-                        location.href = "/page/adminIndex";
+                        location.href = vm1.login.isAdmin ?"/page/adminIndex":"/page/volunteerIndex";
                     } else {
                         alert("用户名或密码错误！");
                     }

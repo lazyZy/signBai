@@ -8,8 +8,8 @@
 <body>
 <h2 class="mg-b20 text-center"></h2>
 
-<div v-show="!showList" class="panel panel-default">
-    <div class="panel-heading" id="vm1">{{title}}
+<di<class="panel panel-default">
+    <div class="panel-heading" id="vm">{{title}}
 
 
         <form class="form-horizontal">
@@ -24,12 +24,12 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-10" id="vm1">
+                <div class="col-sm-10" id="vm">
                     <input type="checkbox" v-model="login.isAdmin" value=true checked="checked"/>管理员登录？
                 </div>
             </div>
 
-            <div class="form-group" id="vm1">
+            <div class="form-group" id="vm">
                 <div class="col-sm-2 control-label"></div>
                 <input type="button" class="btn btn-primary" @click="reload" value="登录"/>
             </div>
