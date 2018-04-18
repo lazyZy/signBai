@@ -30,8 +30,8 @@
             <div class="form-group">
                 <div class="col-sm-2 control-label">性别</div>
                 <div class="col-sm-10" id="vm">
-                    <input v-model="register.sex" type="radio" value=0/>女
-                    <input v-model="register.sex" type="radio" value=1/>男
+                    <input v-model="register.sex" type="radio" value="0"/>女
+                    <input v-model="register.sex" type="radio" value="1"/>男
                 </div>
             </div>
             <div class="form-group">
@@ -49,8 +49,8 @@
             <div class="form-group">
                 <div class="col-sm-2 control-label">权限</div>
                 <div class="col-sm-10" id="vm">
-                    <input v-model="register.authority" type="radio" value=1/>只可审核活动
-                    <input v-model="register.authority" type="radio" value=2/>最高权限
+                    <input v-model="register.authority" type="radio" value="1"/>只可审核活动
+                    <input v-model="register.authority" type="radio" value="2"/>最高权限
                 </div>
             </div>
             <div class="form-group" id="vm">

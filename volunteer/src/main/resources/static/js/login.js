@@ -1,5 +1,5 @@
-var vm1 = new Vue({
-    el: '#vm1',
+var vm = new Vue({
+    el: '#vm',
     data: {
         login: {
             email: "",
@@ -31,10 +31,10 @@ var vm1 = new Vue({
             //         }
             //     }
             // });
-            var url = vm1.login.isAdmin ? '../../login/admin' : '../../login/volunteer';
+            var url = vm.login.isAdmin ? '../../login/admin' : '../../login/volunteer';
             axios.post(url, {
-                email: vm1.login.email,
-                pwd: vm1.login.pwd
+                email: vm.login.email,
+                pwd: vm.login.pwd
             })
                 .then(function (response) {
                     if (response.data.code === 200) {
