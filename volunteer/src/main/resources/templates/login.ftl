@@ -22,6 +22,7 @@
                 <div class="col-sm-10" id="vm1">
                     <input type="text" class="form-control" v-model="login.pwd" placeholder="密码"/>
                 </div>
+                <a class="btn" href="${request.contextPath}/page/login">SIGN IN / SIGN UP</a>
             </div>
             <div class="form-group">
                 <div class="col-sm-10" id="vm">
