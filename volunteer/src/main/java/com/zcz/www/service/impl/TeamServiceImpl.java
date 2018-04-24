@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -74,6 +75,7 @@ public class TeamServiceImpl implements TeamService {
             return BaseResult.createBadRequest();
         }
         team.setTeamStauts(0);
+        team.setModifyTime(new Date());
         int insertTeamId = teamMapper.insertSelective(team);
         logger.info("添加团队信息成功！");
         return selectOneTeamByTeamId(insertTeamId);
@@ -96,6 +98,7 @@ public class TeamServiceImpl implements TeamService {
             logger.info("更新的团队ID为非法");
             return BaseResult.createBadRequest();
         }
+        team.setModifyTime(new Date());
         int resultTeamId = teamMapper.updateByPrimaryKey(team);
         logger.info("更新团队信息成功，更新的团队ID为：{}", resultTeamId);
         return selectOneTeamByTeamId(resultTeamId);

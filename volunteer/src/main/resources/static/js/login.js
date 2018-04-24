@@ -45,6 +45,7 @@ var vm1 = new Vue({
                         location.href = vm1.login.isAdmin ?"/page/adminIndex":"/page/volunteerIndex";
                     } else {
                         alert("用户名或密码错误！");
+                        location.href ="/page/login";
                     }
                 })
 

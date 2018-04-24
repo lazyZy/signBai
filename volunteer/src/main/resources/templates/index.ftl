@@ -16,10 +16,10 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right">
-                <li class="active"><a href="${request.contextPath}/page/index">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a class="btn" href="${request.contextPath}/page/login">SIGN IN / SIGN UP</a></li>
+                <li><a href="/page/index">Home</a></li>
+                <li><a href="/page/index">About</a></li>
+                <li><a href="/page/index">Contact</a></li>
+                <li class="active"><a class="btn" href="/page/login">SIGN IN / SIGN UP</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
