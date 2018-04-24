@@ -3,7 +3,6 @@
 >
 <head>
 <#include "common/main.html">
-    <link href="/static/favicon.ico" rel="shortcut icon"/>
 </head>
 <body>
 
@@ -53,4 +52,5 @@
 </div>
 <script src="${request.contextPath}/js/adminVolunteer.js"></script>
 </body>
+<#include "common/footer.html">
 </html>

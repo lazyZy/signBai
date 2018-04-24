@@ -3,8 +3,6 @@
 >
 <head>
 <#include "common/main.html">
-    <link href="/static/favicon.ico" rel="shortcut icon"/>
-    <title>“心·青年”志愿活动平台</title>
     <style>
         li{
         list-style:none;
@@ -61,4 +59,5 @@
 <script src="${request.contextPath}/js/adminIndex.js"></script>
 
 </body>
+<#include "common/footer.html">
 </html>

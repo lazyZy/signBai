@@ -3,17 +3,6 @@
 >
 <head>
 <#include "common/main.html">
-    <title>Hello World!</title>
-    <link rel="shortcut icon" href="${request.contextPath}/img/gt_favicon.png">
-
-    <link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-    <link rel="stylesheet" href="${request.contextPath}/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${request.contextPath}/css/font-awesome.min.css">
-
-    <!-- Custom styles for our template -->
-    <link rel="stylesheet" href="${request.contextPath}/css/bootstrap-theme.css" media="screen">
-    <link rel="stylesheet" href="${request.contextPath}/css/main.css">
-
 </head>
 <body>
 <!-- Fixed navbar -->
@@ -27,10 +16,10 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li class="active"><a class="btn" href="signin.html">SIGN IN / SIGN UP</a></li>
+                <li><a href="/page/index">Home</a></li>
+                <li><a href="/page/index">About</a></li>
+                <li><a href="/page/index">Contact</a></li>
+                <li class="active"><a class="btn" href="/page/login">SIGN IN / SIGN UP</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -59,7 +48,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h3 class="thin text-center">Sign in to your account</h3>
-                        <p class="text-center text-muted">Lorem ipsum dolor sit amet, <a href="signup.html">Register</a>
+                        <p class="text-center text-muted">Lorem ipsum dolor sit amet, <a href="/page/register">Register</a>
                             adipisicing elit. Quo nulla quibusdam cum doloremque incidunt nemo sunt a tenetur omnis
                             odio. </p>
                         <hr>
@@ -98,67 +87,5 @@
 
 <script src="${request.contextPath}/js/login.js"></script>
 </body>
-<footer id="footer" class="top-space">
-
-    <div class="footer1">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-3 widget">
-                    <h3 class="widget-title">Contact</h3>
-                    <div class="widget-body">
-                        <p>+234 23 9873237<br>
-                            <a href="mailto:#">some.email@somewhere.com</a><br>
-                            <br>
-                            234 Hidden Pond Road, Ashland City, TN 37015
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-md-3 widget">
-                    <h3 class="widget-title">Follow me</h3>
-                    <div class="widget-body">
-                        <p class="follow-me-icons">
-                            <a href=""><i class="fa fa-twitter fa-2"></i></a>
-                            <a href=""><i class="fa fa-dribbble fa-2"></i></a>
-                            <a href=""><i class="fa fa-github fa-2"></i></a>
-                            <a href=""><i class="fa fa-facebook fa-2"></i></a>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-md-6 widget">
-                    <h3 class="widget-title">Text widget</h3>
-                    <div class="widget-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, dolores, quibusdam
-                            architecto voluptatem amet fugiat nesciunt placeat provident cumque accusamus itaque
-                            voluptate modi quidem dolore optio velit hic iusto vero praesentium repellat commodi ad id
-                            expedita cupiditate repellendus possimus unde?</p>
-                        <p>Eius consequatur nihil quibusdam! Laborum, rerum, quis, inventore ipsa autem repellat
-                            provident assumenda labore soluta minima alias temporibus facere distinctio quas adipisci
-                            nam sunt explicabo officia tenetur at ea quos doloribus dolorum voluptate reprehenderit
-                            architecto sint libero illo et hic.</p>
-                    </div>
-                </div>
-
-            </div> <!-- /row of widgets -->
-        </div>
-    </div>
-
-    <div class="footer2">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-6 widget">
-                    <div class="widget-body">
-                        <p class="text-right">
-                            Copyright &copy; 2018,czc.</p>
-                    </div>
-                </div>
-
-            </div> <!-- /row of widgets -->
-        </div>
-    </div>
-
-</footer>
+<#include "common/footer.html">
 </html>
