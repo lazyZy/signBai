@@ -16,7 +16,7 @@ var vm1 = new Vue({
                 location.href = "/page/register";
         },
 
-        doLogin: function () {
+        confirm: function () {
             // $.ajax({
             //     type: "POST",
             //     url: "../../login/info",

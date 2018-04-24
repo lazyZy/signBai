@@ -1,6 +1,5 @@
 package com.zcz.www.controller;
 
-import java.util.List;
 import com.zcz.www.entity.Activity;
 import com.zcz.www.entity.Team;
 import com.zcz.www.pojo.BaseResult;
@@ -16,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * Created by ZY on 2018/4/6.
@@ -37,7 +38,7 @@ public class VolunteerController {
         VolunteerIndexPojo volunteerIndexPojo = new VolunteerIndexPojo();
         volunteerIndexPojo.setTeam((Team)teamService.selectTeamByLeaderId(volunteerId).getData());
         volunteerIndexPojo.setActivities((List<Activity>)activityService.selectActivityByTeamId(volunteerIndexPojo.getTeam().getId()).getData());
-        if(volunteerIndexPojo.getTeam() != null){
+        if(volunteerIndexPojo.getTeam().getLeaderId() == volunteerId){
             volunteerIndexPojo.setLeader(true);
         }
         return BaseResult.create(200,volunteerIndexPojo,"获取成功！");

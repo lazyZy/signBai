@@ -20,7 +20,7 @@ var vm = new Vue({
         teamMemberList:[],
         activities: [],
         isShow:false,
-        dataR:""
+        dataR:{}
     },
     mounted: function () {
         console.log(localStorage.getItem("token"));
@@ -38,8 +38,8 @@ var vm = new Vue({
                                 console.log(response.data.data);
                                 vm.dataR = response.data.data;
                                 vm.teamInfo = vm.dataR.team;
-                                vm.isTeamLeader = true;
-                                vm.isShow = true
+                                vm.isTeamLeader = vm.dataR.leader;
+                                vm.isShow = true;
                                 vm.activities = vm.dataR.activities;
                             } else {
                                 alert("请登录！");
