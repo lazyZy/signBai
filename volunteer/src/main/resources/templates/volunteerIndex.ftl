@@ -3,7 +3,6 @@
 >
 <head>
 <#include "common/main.html">
-    <link href="/static/favicon.ico" rel="shortcut icon"/>
     <style>
         li{
             list-style:none;
@@ -53,4 +52,5 @@
 
 <script src="${request.contextPath}/js/volunteerIndex.js"></script>
 </body>
+<#include "common/footer.html">
 </html>

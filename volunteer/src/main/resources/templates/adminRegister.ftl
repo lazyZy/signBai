@@ -3,7 +3,6 @@
 >
 <head>
 <#include "common/main.html">
-    <link href="/static/favicon.ico" rel="shortcut icon"/>
 </head>
 <body>
 <div class="panel panel-default">
@@ -68,4 +67,5 @@
 
 <script src="${request.contextPath}/js/adminRegister.js"></script>
 </body>
+<#include "common/footer.html">
 </html>

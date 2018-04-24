@@ -3,7 +3,6 @@
 >
 <head>
 <#include "common/main.html">
-    <link href="/static/favicon.ico" rel="shortcut icon"/>
     <style>
         li{
             list-style:none;
@@ -62,4 +61,5 @@
 
 <script src="${request.contextPath}/js/adminActivity.js"></script>
 </body>
+<#include "common/footer.html">
 </html>

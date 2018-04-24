@@ -3,9 +3,6 @@
 >
 <head>
 <#include "common/main.html">
-    <link href="/static/favicon.ico" rel="shortcut icon"/>
-    <title>“心·青年”志愿活动平台</title>
-
 </head>
 <body>
 
@@ -36,4 +33,5 @@
 <script src="${request.contextPath}/js/teamRegister.js"></script>
 
 </body>
+<#include "common/footer.html">
 </html>
