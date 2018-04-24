@@ -1,5 +1,5 @@
 var vm1 = new Vue({
-    el: '#vm',
+    el: '#vm1',
     data: {
         login: {
             email: "",
@@ -16,7 +16,7 @@ var vm1 = new Vue({
                 location.href = "/page/register";
         },
 
-        reload: function () {
+        doLogin: function () {
             // $.ajax({
             //     type: "POST",
             //     url: "../../login/info",
