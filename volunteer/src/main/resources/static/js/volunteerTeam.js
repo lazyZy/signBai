@@ -16,7 +16,6 @@ var vm = new Vue({
         axios.post('../../login/volunteerLoginInfo?token=' + localStorage.getItem("token"), {})
             .then(function (response) {
                 if (response.data.code === 200) {
-                    alert("成功");
                     console.log(response.data.data);
                     console.log(response.data.data.volunteerName);
                     vm.volunteer = response.data.data;

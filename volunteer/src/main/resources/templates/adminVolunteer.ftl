@@ -18,10 +18,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
-                    <li><a href="/page/adminIndex">Home</a></li>
-                    <li><a href="/page/adminIndex">About</a></li>
-                    <li><a href="/page/adminIndex">Contact</a></li>
-                    <li class="active"><a class="btn" href="/page/login">SIGN IN / SIGN UP</a></li>
+                    <li><a href="/page/adminIndex">管理员首页</a></li>
+                    <li v-if="admin.adminAuthority > 1"><a href="/page/admin_register">注册管理员账号</a></li>
+                    <li v-if="admin.adminAuthority > 1"><a href="/page/adminVolunteer">团队管理</a></li>
+                    <li class="active"><a class="btn" href="/page/login">重新登录</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -69,7 +69,6 @@
                 </ol>
             </div>
         </div>
-
     </div>
 </div>
 <script src="${request.contextPath}/js/adminVolunteer.js"></script>

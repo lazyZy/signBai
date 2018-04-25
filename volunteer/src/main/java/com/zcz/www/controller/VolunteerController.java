@@ -44,4 +44,23 @@ public class VolunteerController {
         return BaseResult.create(200,volunteerIndexPojo,"获取成功！");
     }
 
+    @RequestMapping("/getActivityByStatus")
+    @ResponseBody
+    public BaseResult getActivityByStatus(@RequestParam Integer volunteerId,@RequestParam Integer activityStatus) {
+        VolunteerIndexPojo volunteerIndexPojo = new VolunteerIndexPojo();
+        volunteerIndexPojo.setTeam((Team)teamService.selectTeamByLeaderId(volunteerId).getData());
+        volunteerIndexPojo.setActivities((List<Activity>)activityService.selectActivityByActivityStatusAndTeamId(volunteerIndexPojo.getTeam().getId(),activityStatus).getData());
+        if(volunteerIndexPojo.getTeam().getLeaderId() == volunteerId){
+            volunteerIndexPojo.setLeader(true);
+        }
+        return BaseResult.create(200,volunteerIndexPojo,"获取成功！");
+    }
+
+    @RequestMapping("/getActivityEnrolment")
+    @ResponseBody
+    public BaseResult getActivityEnrolment(@RequestParam Integer volunteerId) {
+
+        return BaseResult.create(200,null,"获取成功！");
+    }
+
 }

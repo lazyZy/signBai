@@ -50,12 +50,17 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public BaseResult selectActivityByActivityStatus(Integer activityStatus) {
+    public BaseResult selectActivityByActivityStatusAndTeamId(Integer activityStatus, Integer teamId) {
         activityExample = new ActivityExample();
-        activityExample.createCriteria().andStatusEqualTo(activityStatus);
+        activityExample.createCriteria().andStatusEqualTo(activityStatus).andTeamIdEqualTo(teamId);
         List<Activity> activities = activityMapper.selectByExample(activityExample);
         logger.info("获取当前状态为：" + activityStatus + "的活动信息成功！");
         return BaseResult.create(200, activities, "获取当前状态为：" + activityStatus + "的活动信息成功！");
+    }
+
+    @Override
+    public BaseResult selectActivityEnrolment(Integer volunteerId) {
+        return null;
     }
 
     @Override

@@ -10,12 +10,6 @@ var vm1 = new Vue({
     },
     methods: {
 
-
-        toRegister: function () {
-            console.log("跳转到注册页面！"),
-                location.href = "/page/register";
-        },
-
         confirm: function () {
             // $.ajax({
             //     type: "POST",
@@ -38,7 +32,6 @@ var vm1 = new Vue({
             })
                 .then(function (response) {
                     if (response.data.code === 200) {
-                        alert("成功");
                         window.token = response.data.data;
                         console.info(window.token);
                         localStorage.setItem("token", response.data.data);

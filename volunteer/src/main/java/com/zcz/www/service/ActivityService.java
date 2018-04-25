@@ -17,7 +17,10 @@ public interface ActivityService {
     BaseResult selectActivityByTeamId(Integer teamId);
 
     //通过活动状态获取活动信息
-    BaseResult selectActivityByActivityStatus(Integer activityStatus);
+    BaseResult selectActivityByActivityStatusAndTeamId(Integer activityStatus,Integer teamId);
+
+    //获取成员可报名活动
+    BaseResult selectActivityEnrolment(Integer volunteerId);
 
     //添加活动
     BaseResult addActivity(Activity activity);

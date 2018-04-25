@@ -35,7 +35,6 @@ var vm = new Vue({
             })
                 .then(function (response) {
                     if (response.data.code === 200) {
-                        alert("成功");
                         location.href = "/page/login";
                     }
 

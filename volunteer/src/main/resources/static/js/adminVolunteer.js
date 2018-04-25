@@ -42,7 +42,6 @@ var vm = new Vue({
     },
     methods: {
         toAdopt: function (id) {
-            alert("修改");
             console.info(id);
             axios.post('../../admin/adoptActivity?activityId='+id, {})
                 .then(function (response) {
@@ -53,7 +52,6 @@ var vm = new Vue({
                 })
         },
         toRefuse: function (id) {
-            alert("修改");
             console.info(id);
             axios.post('../../admin/refuseActivity?activityId='+id, {})
                 .then(function (response) {

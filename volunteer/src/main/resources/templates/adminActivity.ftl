@@ -10,38 +10,47 @@
     </style>
 </head>
 <body>
-<!-- Fixed navbar -->
-<div class="navbar navbar-inverse navbar-fixed-top headroom">
-    <div class="container">
-        <div class="navbar-header">
-            <!-- Button for smallest screens -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span
-                    class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
-            <a class="navbar-brand" href="index.html"><img src="${request.contextPath}/img/heart.png" height="60"></a>
-            <h4 align="center" style="color: #bce8f1">"心·青年"志愿活动平台</h4>
+<div id="vm">
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top headroom">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Button for smallest screens -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span
+                        class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+                <a class="navbar-brand" href="index.html"><img src="${request.contextPath}/img/heart.png" height="60"></a>
+                <h4 align="center" style="color: #bce8f1">"心·青年"志愿活动平台</h4>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav pull-right">
+                    <li><a href="/page/adminIndex">管理员首页</a></li>
+                    <li v-if="admin.adminAuthority > 1"><a href="/page/admin_register">注册管理员账号</a></li>
+                    <li v-if="admin.adminAuthority > 1"><a href="/page/adminVolunteer">团队管理</a></li>
+                    <li class="active"><a class="btn" href="/page/login">重新登录</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
         </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav pull-right">
-                <li><a href="/page/index">Home</a></li>
-                <li><a href="/page/index">About</a></li>
-                <li><a href="/page/index">Contact</a></li>
-                <li class="active"><a class="btn" href="/page/login">SIGN IN / SIGN UP</a></li>
-            </ul>
-        </div><!--/.nav-collapse -->
     </div>
-</div>
-<!-- /.navbar -->
+    <!-- /.navbar -->
 
-<div class="panel panel-default" >
-    <div class="panel-heading" id="vm" >{{title}}
-
-        <div class="form-group" id="vm"  >
-            <p>欢迎进入</p>
-            <input type="button"  v-on:click="addAdmin" value="添加管理员"/>
-
+    <!-- Header -->
+    <header id="head">
+        <div class="container">
+            <div class="row">
+                <h1 class="lead">{{title}}</h1>
+                <h3>欢迎{{admin.adminName}}</h3>
+            </div>
         </div>
-        <div id="vm" >
-            <ol v-for="activity in activities" :key="activity.id" >
+    </header>
+    <!-- /Header -->
+
+    <!-- container -->
+    <div class="container">
+
+        <h2 class="text-center top-space">更改活动状态</h2>
+        <br>
+        <div class="row">
+            <ol class="col-sm-4" v-for="activity in activities" :key="activity.id">
                 <li >
                     活动名称：{{ activity.name }}
                 </li>
@@ -75,8 +84,9 @@
                 </li>
             </ol>
         </div>
+        <!-- /row -->
 
-    </div>
+    </div>    <!-- /container -->
 
 </div>
 

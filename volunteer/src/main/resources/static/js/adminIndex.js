@@ -10,7 +10,8 @@ var vm = new Vue({
             adminAdrress: "",
             adminAuthority: ""
         },
-        activities: []
+        activities: [],
+        teams:[]
     },
     mounted: function () {
         console.log(localStorage.getItem("token"));
@@ -38,11 +39,22 @@ var vm = new Vue({
                 console.log(response);
 
             })
+        axios.post('../../admin/getAllTeam', {})
+            .then(function (response) {
+                if (response.data.code === 200) {
+                    vm.activities = response.data.data;
+                } else {
+                    alert("请登录！");
+                    location.href = "/page/login";
+                }
+
+                console.log(response);
+
+            })
 
     },
     methods: {
         toAdopt: function (id) {
-            alert("修改");
             console.info(id);
             axios.post('../../admin/adoptActivity?activityId='+id, {})
                 .then(function (response) {
@@ -53,7 +65,6 @@ var vm = new Vue({
                 })
         },
         toRefuse: function (id) {
-            alert("修改");
             console.info(id);
             axios.post('../../admin/refuseActivity?activityId='+id, {})
                 .then(function (response) {

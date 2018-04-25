@@ -39,6 +39,7 @@ var vm = new Vue({
                                 vm.dataR = response.data.data;
                                 vm.teamInfo = vm.dataR.team;
                                 vm.isTeamLeader = vm.dataR.leader;
+                                localStorage.setItem("isLeader",vm.dataR.leader);
                                 vm.isShow = true;
                                 vm.activities = vm.dataR.activities;
                             } else {

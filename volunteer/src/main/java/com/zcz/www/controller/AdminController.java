@@ -72,4 +72,16 @@ public class AdminController {
         }
         return BaseResult.createFail(400, "失败");
     }
+
+    @RequestMapping("/getAllTeam")
+    @ResponseBody
+    public BaseResult getAllTeam() {
+
+        BaseResult baseResult = teamService.selectAllTeam();
+        if (baseResult.getCode() == 200) {
+            return baseResult;
+        }
+
+        return BaseResult.createFail(400, "失败");
+    }
 }
