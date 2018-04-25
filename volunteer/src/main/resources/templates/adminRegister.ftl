@@ -13,7 +13,8 @@
                 <!-- Button for smallest screens -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span
                         class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
-                <a class="navbar-brand" href="/page/adminIndex"><img src="${request.contextPath}/img/heart.png" height="60"></a>
+                <a class="navbar-brand" href="/page/adminIndex"><img src="${request.contextPath}/img/heart.png"
+                                                                     height="60"></a>
                 <h4 align="center" style="color: #bce8f1">"心·青年"志愿活动平台</h4>
             </div>
             <div class="navbar-collapse collapse">
@@ -54,19 +55,22 @@
                                 <div class="form-group">
                                     <div class="col-sm-2 control-label">邮箱</div>
                                     <div class="col-sm-10" id="vm">
-                                        <input type="text" class="form-control" v-model="register.email" placeholder="邮箱"/>
+                                        <input type="text" class="form-control" v-model="register.email"
+                                               placeholder="邮箱"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-2 control-label">密码</div>
                                     <div class="col-sm-10" id="vm">
-                                        <input type="text" class="form-control" v-model="register.pwd" placeholder="密码"/>
+                                        <input type="text" class="form-control" v-model="register.pwd"
+                                               placeholder="密码"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-2 control-label">姓名</div>
                                     <div class="col-sm-10" id="vm">
-                                        <input type="text" class="form-control" v-model="register.name" placeholder="姓名"/>
+                                        <input type="text" class="form-control" v-model="register.name"
+                                               placeholder="姓名"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -79,13 +83,15 @@
                                 <div class="form-group">
                                     <div class="col-sm-2 control-label">地址</div>
                                     <div class="col-sm-10" id="vm">
-                                        <input type="text" class="form-control" v-model="register.adrress" placeholder="地址"/>
+                                        <input type="text" class="form-control" v-model="register.adrress"
+                                               placeholder="地址"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-2 control-label">手机号</div>
                                     <div class="col-sm-10" id="vm">
-                                        <input type="text" class="form-control" v-model="register.phone" placeholder="手机号"/>
+                                        <input type="text" class="form-control" v-model="register.phone"
+                                               placeholder="手机号"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -110,7 +116,7 @@
             <!-- /Article -->
 
         </div>
-    </div>	<!-- /container -->
+    </div>    <!-- /container -->
 
 </div>
 <script src="${request.contextPath}/js/adminRegister.js"></script>

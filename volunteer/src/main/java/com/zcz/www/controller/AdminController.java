@@ -55,7 +55,7 @@ public class AdminController {
     @ResponseBody
     public BaseResult adoptActivity(@RequestParam Integer activityId) {
         logger.info("进入/adoptActivity");
-        BaseResult baseResult = activityService.updateActivityStatus(activityId,2);
+        BaseResult baseResult = activityService.updateActivityStatus(activityId, 2);
         if (baseResult.getCode() == 200) {
             return baseResult;
         }
@@ -66,7 +66,7 @@ public class AdminController {
     @ResponseBody
     public BaseResult refuseActivity(@RequestParam Integer activityId) {
         logger.info("进入/refuseActivity");
-        BaseResult baseResult = activityService.updateActivityStatus(activityId,0);
+        BaseResult baseResult = activityService.updateActivityStatus(activityId, 0);
         if (baseResult.getCode() == 200) {
             return baseResult;
         }

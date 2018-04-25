@@ -2,9 +2,9 @@ var vm = new Vue({
     el: '#vm',
     data: {
         registerTeam: {
-            leaderId:localStorage.getItem("volunteerId"),
-            teamName:"",
-            teamRegion:""
+            leaderId: localStorage.getItem("volunteerId"),
+            teamName: "",
+            teamRegion: ""
         },
         title: "\"心·青年\"志愿活动平台"
     },
@@ -23,9 +23,9 @@ var vm = new Vue({
 
         confirm: function () {
             axios.post('../../register/team', {
-                leaderId:vm.registerTeam.leaderId,
-                teamName:vm.registerTeam.teamName,
-                teamRegion:vm.registerTeam.teamRegion
+                leaderId: vm.registerTeam.leaderId,
+                teamName: vm.registerTeam.teamName,
+                teamRegion: vm.registerTeam.teamRegion
             })
                 .then(function (response) {
                     if (response.data.code === 200) {

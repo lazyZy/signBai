@@ -11,7 +11,7 @@ var vm = new Vue({
             adminAuthority: ""
         },
         activities: [],
-        teams:[]
+        teams: []
     },
     mounted: function () {
         console.log(localStorage.getItem("token"));
@@ -56,7 +56,7 @@ var vm = new Vue({
     methods: {
         toAdopt: function (id) {
             console.info(id);
-            axios.post('../../admin/adoptActivity?activityId='+id, {})
+            axios.post('../../admin/adoptActivity?activityId=' + id, {})
                 .then(function (response) {
                     if (response.data.code === 200) {
                         location.reload();
@@ -66,7 +66,7 @@ var vm = new Vue({
         },
         toRefuse: function (id) {
             console.info(id);
-            axios.post('../../admin/refuseActivity?activityId='+id, {})
+            axios.post('../../admin/refuseActivity?activityId=' + id, {})
                 .then(function (response) {
                     if (response.data.code === 200) {
                         location.reload();
@@ -74,11 +74,11 @@ var vm = new Vue({
                     console.log(response);
                 })
         },
-        toAdminActivity:function () {
-            location.href="/page/admin_activity";
+        toAdminActivity: function () {
+            location.href = "/page/admin_activity";
         },
-        addAdmin:function () {
-            location.href="/page/admin_register"
+        addAdmin: function () {
+            location.href = "/page/admin_register"
         }
     }
 })

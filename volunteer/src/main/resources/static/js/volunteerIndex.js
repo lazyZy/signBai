@@ -3,24 +3,24 @@ var vm = new Vue({
     data: {
         title: "志愿者首页",
         volunteer: {
-            id:"",
+            id: "",
             volunteerName: "",
             volunteerSex: "",
             volunteerPhone: "",
             volunteerEmail: "",
             volunteerAdrress: ""
         },
-        isTeamLeader:false,
-        teamInfo:{
-            id:"",
-            teamName:"",
-            memberNum:"",
-            teamRegion:""
+        isTeamLeader: false,
+        teamInfo: {
+            id: "",
+            teamName: "",
+            memberNum: "",
+            teamRegion: ""
         },
-        teamMemberList:[],
+        teamMemberList: [],
         activities: [],
-        isShow:false,
-        dataR:{}
+        isShow: false,
+        dataR: {}
     },
     mounted: function () {
         console.log(localStorage.getItem("token"));
@@ -35,13 +35,6 @@ var vm = new Vue({
                     axios.post('../../volunteer/getActivity?volunteerId=' + vm.volunteer.id, {})
                         .then(function (response) {
                             if (response.data.code === 200) {
-                                console.log(response.data.data);
-                                vm.dataR = response.data.data;
-                                vm.teamInfo = vm.dataR.team;
-                                vm.isTeamLeader = vm.dataR.leader;
-                                localStorage.setItem("isLeader",vm.dataR.leader);
-                                vm.isShow = true;
-                                vm.activities = vm.dataR.activities;
                             } else {
                                 alert("请登录！");
                                 location.href = "/page/login";

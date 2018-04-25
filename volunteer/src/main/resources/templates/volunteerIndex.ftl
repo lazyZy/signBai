@@ -4,8 +4,8 @@
 <head>
 <#include "common/main.html">
     <style>
-        li{
-            list-style:none;
+        li {
+            list-style: none;
         }
     </style>
 </head>
@@ -18,7 +18,8 @@
                 <!-- Button for smallest screens -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span
                         class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
-                <a class="navbar-brand" href="/page/volunteerIndex"><img src="${request.contextPath}/img/heart.png" height="60"></a>
+                <a class="navbar-brand" href="/page/volunteerIndex"><img src="${request.contextPath}/img/heart.png"
+                                                                         height="60"></a>
                 <h4 align="center" style="color: #bce8f1">"心·青年"志愿活动平台</h4>
             </div>
             <div class="navbar-collapse collapse">
@@ -52,7 +53,7 @@
             <div class="row">
                 <ol v-for="activity in activities" :key="activity.id">
                     <div class="col-sm-4" v-if="activity.status != 0 && activity.status !=3">
-                        <li >
+                        <li>
                             活动名称：{{ activity.name }}
                         </li>
                         <li v-if="activity.status == 1">
@@ -64,13 +65,13 @@
                         <li v-if="activity.status == 0">
                             活动状态：已驳回
                         </li>
-                        <li >
+                        <li>
                             活动描述：{{ activity.introduce }}
                         </li>
-                        <li >
+                        <li>
                             开始时间：{{ activity.startTime }}
                         </li>
-                        <li >
+                        <li>
                             结束时间：{{ activity.endTime }}
                         </li>
                     </div>
@@ -80,7 +81,7 @@
 
         </div>    <!-- /container -->
 
-</div>
+    </div>
 </div>
 
 <script src="${request.contextPath}/js/volunteerIndex.js"></script>

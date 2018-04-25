@@ -8,7 +8,7 @@ var vm = new Vue({
             adminPhone: "",
             adminEmail: "",
             adminAdrress: "",
-            authority:""
+            authority: ""
         },
         register: {
             name: "",
@@ -16,7 +16,7 @@ var vm = new Vue({
             phone: "",
             email: "",
             adrress: "",
-            authority:""
+            authority: ""
         }
     },
     mounted: function () {
@@ -60,7 +60,7 @@ var vm = new Vue({
                 adminSex: vm.register.sex,
                 adminPhone: vm.register.phone,
                 adminAdrress: vm.register.adrress,
-                adminAuthority:vm.register.authority
+                adminAuthority: vm.register.authority
             })
                 .then(function (response) {
                     if (response.data.code === 200) {
