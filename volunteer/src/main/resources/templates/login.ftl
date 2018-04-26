@@ -76,7 +76,6 @@
                                         <button class="btn btn-action" type="submit" v-on:click="confirm">登录</button>
                                     </div>
                                 </div>
-                                3
                             </form>
                         </div>
                     </div>
