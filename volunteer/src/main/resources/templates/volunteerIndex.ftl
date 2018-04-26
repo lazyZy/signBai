@@ -24,10 +24,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
-                    <li><a href="/page/volunteerIndex">Home</a></li>
+                    <li><a href="/page/volunteerIndex">志愿者首页</a></li>
                     <li><a href="/page/volunteerIndex">About</a></li>
                     <li><a href="/page/volunteerIndex">Contact</a></li>
-                    <li class="active"><a class="btn" href="/page/login">SIGN IN / SIGN UP</a></li>
+                    <li class="active"><a class="btn" href="/page/login">登录/注册</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
