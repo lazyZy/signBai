@@ -40,7 +40,15 @@
                 <div class="row">
                     <h1 class="lead">{{title}}</h1>
                     <h3>欢迎{{volunteer.volunteerName}}</h3>
-                    <p>所属团队：{{teamInfo.teamName}}</p>
+                    <p v-if="teamInfo!=null">所属团队：
+                        <span v-if="teamInfo.teamStauts==2">{{teamInfo.teamName}}</span>
+                        <span v-if="teamInfo.teamStauts==1">团队暂未审核</span>
+                    </p>
+                    <p v-if="teamInfo==null">
+                        <a href="/page/volunteerTeam">
+                            点此加入团队
+                        </a>
+                    </p>
                 </div>
             </div>
         </header>

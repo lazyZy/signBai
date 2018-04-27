@@ -24,4 +24,7 @@ public interface TeamService {
 
     //通过ID更新团队
     BaseResult updateTeam(Integer teamId, Team team);
+
+    //更新团队状态
+    BaseResult updateTeamStatus(Integer teamId, Integer teamStatus);
 }

@@ -1,5 +1,7 @@
 package com.zcz.www.entity;
 
+import com.zcz.www.utils.DateUtils;
+
 import java.util.Date;
 
 /**
@@ -126,8 +128,8 @@ public class ActivityUser {
      * @return the value of activity_user.create_time
      * @mbg.generated
      */
-    public Date getCreateTime() {
-        return createTime;
+    public String getCreateTime() {
+        return DateUtils.getFormate(createTime);
     }
 
     /**

@@ -42,7 +42,8 @@ var vm = new Vue({
         axios.post('../../admin/getAllTeam', {})
             .then(function (response) {
                 if (response.data.code === 200) {
-                    vm.activities = response.data.data;
+                    vm.teams = response.data.data;
+                    console.log(response.data.data);
                 } else {
                     alert("请登录！");
                     location.href = "/page/login";
@@ -74,6 +75,27 @@ var vm = new Vue({
                     console.log(response);
                 })
         },
+        toAdoptTeam:function(id){
+            console.info(id);
+            axios.post('../../admin/adoptTeam?teamId=' + id, {})
+                .then(function (response) {
+                    if (response.data.code === 200) {
+                        location.reload();
+                    }
+                    console.log(response);
+                })
+        },
+        toRefuseTeam:function(id){
+            console.info(id);
+            axios.post('../../admin/refuseTeam?teamId=' + id, {})
+                .then(function (response) {
+                    if (response.data.code === 200) {
+                        location.reload();
+                    }
+                    console.log(response);
+                })
+        },
+
         toAdminActivity: function () {
             location.href = "/page/admin_activity";
         },

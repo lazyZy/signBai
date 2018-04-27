@@ -5,6 +5,7 @@ import com.zcz.www.dao.TeamMemberMapper;
 import com.zcz.www.dao.VolunteerMapper;
 import com.zcz.www.entity.*;
 import com.zcz.www.pojo.BaseResult;
+import com.zcz.www.pojo.TeamAndLeaderInfo;
 import com.zcz.www.service.TeamService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,8 +41,18 @@ public class TeamServiceImpl implements TeamService {
         teamExample = new TeamExample();
         teamExample.createCriteria().andIdIsNotNull();
         List<Team> teams = teamMapper.selectByExample(teamExample);
+        List<TeamAndLeaderInfo> teamAndLeaderInfos = new ArrayList<TeamAndLeaderInfo>();
+        for(Team team: teams){
+            TeamAndLeaderInfo teamAndLeaderInfo = new TeamAndLeaderInfo();
+            Integer leaderId = team.getLeaderId();
+            Volunteer teamLeader = volunteerMapper.selectByPrimaryKey(leaderId);
+            teamLeader.setVolunteerPwd("*******");
+            teamAndLeaderInfo.setTeam(team);
+            teamAndLeaderInfo.setVolunteer(teamLeader);
+            teamAndLeaderInfos.add(teamAndLeaderInfo);
+        }
         logger.info("选择所有团队信息成功！");
-        return BaseResult.create(200, teams, "获取数据成功");
+        return BaseResult.create(200, teamAndLeaderInfos, "获取数据成功");
     }
 
     @Override
@@ -102,5 +113,15 @@ public class TeamServiceImpl implements TeamService {
         int resultTeamId = teamMapper.updateByPrimaryKey(team);
         logger.info("更新团队信息成功，更新的团队ID为：{}", resultTeamId);
         return selectOneTeamByTeamId(resultTeamId);
+    }
+
+    @Override
+    public BaseResult updateTeamStatus(Integer teamId, Integer teamStatus) {
+        Team team = teamMapper.selectByPrimaryKey(teamId);
+        team.setTeamStauts(teamStatus);
+        int updateTeam = teamMapper.updateByPrimaryKeySelective(team);
+        logger.info("更新信息的活动ID为：{}", updateTeam);
+        return selectOneTeamByTeamId(updateTeam);
+
     }
 }

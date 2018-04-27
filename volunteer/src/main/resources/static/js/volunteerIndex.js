@@ -14,6 +14,7 @@ var vm = new Vue({
         teamInfo: {
             id: "",
             teamName: "",
+            teamStauts: "",
             memberNum: "",
             teamRegion: ""
         },
@@ -35,6 +36,8 @@ var vm = new Vue({
                     axios.post('../../volunteer/getActivity?volunteerId=' + vm.volunteer.id, {})
                         .then(function (response) {
                             if (response.data.code === 200) {
+                                vm.teamInfo = response.data.data.team;
+                                vm.activities = response.data.data.activities
                             } else {
                                 alert("请登录！");
                                 location.href = "/page/login";

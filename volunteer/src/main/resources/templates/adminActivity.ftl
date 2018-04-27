@@ -18,7 +18,7 @@
                 <!-- Button for smallest screens -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span
                         class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
-                <a class="navbar-brand" href="index.html"><img src="${request.contextPath}/img/heart.png"
+                <a class="navbar-brand" href="/page/adminIndex"><img src="${request.contextPath}/img/heart.png"
                                                                height="60"></a>
                 <h4 align="center" style="color: #bce8f1">"心·青年"志愿活动平台</h4>
             </div>
@@ -63,6 +63,9 @@
                 </li>
                 <li v-if="activity.status == 0">
                     活动状态：已驳回
+                </li>
+                <li v-if="activity.status == 3">
+                    活动状态：已完成
                 </li>
                 <li>
                     活动描述：{{ activity.introduce }}

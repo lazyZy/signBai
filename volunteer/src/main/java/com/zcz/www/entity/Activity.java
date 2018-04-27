@@ -315,8 +315,8 @@ public class Activity {
      * @return the value of activity.create_time
      * @mbg.generated
      */
-    public Date getCreateTime() {
-        return createTime;
+    public String getCreateTime() {
+        return DateUtils.getFormate(createTime);
     }
 
     /**

@@ -1,5 +1,7 @@
 package com.zcz.www.entity;
 
+import com.zcz.www.utils.DateUtils;
+
 import java.util.Date;
 
 /**
@@ -266,8 +268,8 @@ public class Volunteer {
      * @return the value of volunteer.create_time
      * @mbg.generated
      */
-    public Date getCreateTime() {
-        return createTime;
+    public String getCreateTime() {
+        return DateUtils.getFormate(createTime);
     }
 
     /**
@@ -288,8 +290,8 @@ public class Volunteer {
      * @return the value of volunteer.modify_time
      * @mbg.generated
      */
-    public Date getModifyTime() {
-        return modifyTime;
+    public String getModifyTime() {
+        return DateUtils.getFormate(modifyTime);
     }
 
     /**

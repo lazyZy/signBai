@@ -27,7 +27,7 @@
                     <li><a href="/page/adminIndex">管理员首页</a></li>
                     <li v-if="admin.adminAuthority > 1"><a href="/page/admin_register">注册管理员账号</a></li>
                     <li v-if="admin.adminAuthority > 1"><a href="/page/adminVolunteer">团队管理</a></li>
-                    <li class="active"><a class="btn" href="/page/login">退出/登录</a></li>
+                    <li class="active"><a class="btn" href="/page/login">重新登录</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -85,35 +85,35 @@
             <h2 class="text-center top-space">待审核团队</h2>
             <br>
             <div class="row">
-                <ol class="col-sm-4" v-for="activity in activities" :key="activity.id">
-                    <li>
-                        活动名称：{{ activity.name }}
-                    </li>
-                    <li v-if="activity.status == 1">
-                        活动状态：待审核
-                    </li>
-                    <li v-if="activity.status == 2">
-                        活动状态：已批准
-                    </li>
-                    <li v-if="activity.status == 0">
-                        活动状态：已驳回
-                    </li>
-                    <li>
-                        活动描述：{{ activity.introduce }}
-                    </li>
-                    <li>
-                        开始时间：{{ activity.startTime }}
-                    </li>
-                    <li>
-                        结束时间：{{ activity.endTime }}
-                    </li>
-                    <li v-if="activity.status == 1">
-                        <input type="button" v-on:click="toAdopt(activity.id)" value="通过"/>
-                        &nbsp;&nbsp;<input type="button" v-on:click="toRefuse(activity.id)" value="驳回"/>
-                    </li>
+                <ol class="col-sm-4" v-for="team in teams" >
+                    <div v-if="team.team.teamStauts == 1">
+                        <li>
+                            团队名称：{{ team.team.teamName }}
+                        </li>
+                        <li>
+                            团队状态：待审核
+                        </li>
+                        <li>
+                            团队队长：{{ team.volunteer.volunteerName }}
+                        </li>
+                        <li>
+                            团长手机：{{ team.volunteer.volunteerPhone }}
+                        </li>
+                        <li>
+                            团长活动区域：{{ team.team.teamRegion }}
+                        </li>
+                        <li>
+                            创建时间：{{ team.team.createTime }}
+                        </li>
+                        <li v-if="team.team.teamStauts == 1">
+                            <input type="button" v-on:click="toAdoptTeam(team.team.id)" value="通过"/>
+                            &nbsp;&nbsp;<input type="button" v-on:click="toRefuseTeam(team.team.id)" value="驳回"/>
+                        </li>
+                    </div>
                 </ol>
             </div>
             <!-- /row -->
+
 
         </div>    <!-- /container -->
     </div>

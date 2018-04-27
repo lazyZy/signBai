@@ -1,5 +1,7 @@
 package com.zcz.www.entity;
 
+import com.zcz.www.utils.DateUtils;
+
 import java.util.Date;
 
 /**
@@ -302,8 +304,8 @@ public class Admin {
      * @return the value of admin.create_time
      * @mbg.generated
      */
-    public Date getCreateTime() {
-        return createTime;
+    public String getCreateTime() {
+        return DateUtils.getFormate(createTime);
     }
 
     /**
@@ -324,8 +326,8 @@ public class Admin {
      * @return the value of admin.modify_time
      * @mbg.generated
      */
-    public Date getModifyTime() {
-        return modifyTime;
+    public String getModifyTime() {
+        return DateUtils.getFormate(modifyTime);
     }
 
     /**
