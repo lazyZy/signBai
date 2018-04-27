@@ -55,7 +55,7 @@ public class AdminController {
     @ResponseBody
     public BaseResult adoptActivity(@RequestParam Integer activityId) {
         logger.info("进入/adoptActivity");
-        BaseResult baseResult = activityService.updateActivityStatus(activityId,2);
+        BaseResult baseResult = activityService.updateActivityStatus(activityId, 2);
         if (baseResult.getCode() == 200) {
             return baseResult;
         }
@@ -66,10 +66,44 @@ public class AdminController {
     @ResponseBody
     public BaseResult refuseActivity(@RequestParam Integer activityId) {
         logger.info("进入/refuseActivity");
-        BaseResult baseResult = activityService.updateActivityStatus(activityId,0);
+        BaseResult baseResult = activityService.updateActivityStatus(activityId, 0);
         if (baseResult.getCode() == 200) {
             return baseResult;
         }
+        return BaseResult.createFail(400, "失败");
+    }
+
+    @RequestMapping("/adoptTeam")
+    @ResponseBody
+    public BaseResult adoptTeam(@RequestParam Integer teamId) {
+        logger.info("进入/adoptActivity");
+        BaseResult baseResult = teamService.updateTeamStatus(teamId, 2);
+        if (baseResult.getCode() == 200) {
+            return baseResult;
+        }
+        return BaseResult.createFail(400, "失败");
+    }
+
+    @RequestMapping("/refuseTeam")
+    @ResponseBody
+    public BaseResult refuseTeam(@RequestParam Integer activityId) {
+        logger.info("进入/refuseActivity");
+        BaseResult baseResult = teamService.updateTeamStatus(activityId, 0);
+        if (baseResult.getCode() == 200) {
+            return baseResult;
+        }
+        return BaseResult.createFail(400, "失败");
+    }
+
+    @RequestMapping("/getAllTeam")
+    @ResponseBody
+    public BaseResult getAllTeam() {
+
+        BaseResult baseResult = teamService.selectAllTeam();
+        if (baseResult.getCode() == 200) {
+            return baseResult;
+        }
+
         return BaseResult.createFail(400, "失败");
     }
 }

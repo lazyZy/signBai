@@ -10,7 +10,8 @@ var vm = new Vue({
             adminAdrress: "",
             adminAuthority: ""
         },
-        activities: []
+        activities: [],
+        teams: []
     },
     mounted: function () {
         console.log(localStorage.getItem("token"));
@@ -38,13 +39,25 @@ var vm = new Vue({
                 console.log(response);
 
             })
+        axios.post('../../admin/getAllTeam', {})
+            .then(function (response) {
+                if (response.data.code === 200) {
+                    vm.teams = response.data.data;
+                    console.log(response.data.data);
+                } else {
+                    alert("请登录！");
+                    location.href = "/page/login";
+                }
+
+                console.log(response);
+
+            })
 
     },
     methods: {
         toAdopt: function (id) {
-            alert("修改");
             console.info(id);
-            axios.post('../../admin/adoptActivity?activityId='+id, {})
+            axios.post('../../admin/adoptActivity?activityId=' + id, {})
                 .then(function (response) {
                     if (response.data.code === 200) {
                         location.reload();
@@ -53,9 +66,8 @@ var vm = new Vue({
                 })
         },
         toRefuse: function (id) {
-            alert("修改");
             console.info(id);
-            axios.post('../../admin/refuseActivity?activityId='+id, {})
+            axios.post('../../admin/refuseActivity?activityId=' + id, {})
                 .then(function (response) {
                     if (response.data.code === 200) {
                         location.reload();
@@ -63,11 +75,32 @@ var vm = new Vue({
                     console.log(response);
                 })
         },
-        toAdminActivity:function () {
-            location.href="/page/admin_activity";
+        toAdoptTeam:function(id){
+            console.info(id);
+            axios.post('../../admin/adoptTeam?teamId=' + id, {})
+                .then(function (response) {
+                    if (response.data.code === 200) {
+                        location.reload();
+                    }
+                    console.log(response);
+                })
         },
-        addAdmin:function () {
-            location.href="/page/admin_register"
+        toRefuseTeam:function(id){
+            console.info(id);
+            axios.post('../../admin/refuseTeam?teamId=' + id, {})
+                .then(function (response) {
+                    if (response.data.code === 200) {
+                        location.reload();
+                    }
+                    console.log(response);
+                })
+        },
+
+        toAdminActivity: function () {
+            location.href = "/page/admin_activity";
+        },
+        addAdmin: function () {
+            location.href = "/page/admin_register"
         }
     }
 })

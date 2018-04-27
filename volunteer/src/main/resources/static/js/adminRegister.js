@@ -8,7 +8,7 @@ var vm = new Vue({
             adminPhone: "",
             adminEmail: "",
             adminAdrress: "",
-            authority:""
+            authority: ""
         },
         register: {
             name: "",
@@ -16,7 +16,7 @@ var vm = new Vue({
             phone: "",
             email: "",
             adrress: "",
-            authority:""
+            authority: ""
         }
     },
     mounted: function () {
@@ -25,7 +25,6 @@ var vm = new Vue({
         axios.post('../../login/adminLoginInfo?token=' + localStorage.getItem("token"), {})
             .then(function (response) {
                 if (response.data.code === 200) {
-                    alert("成功");
                     console.log(response.data.data);
                     console.log(response.data.data.adminName);
                     vm.admin = response.data.data;
@@ -61,13 +60,13 @@ var vm = new Vue({
                 adminSex: vm.register.sex,
                 adminPhone: vm.register.phone,
                 adminAdrress: vm.register.adrress,
-                adminAuthority:vm.register.authority
+                adminAuthority: vm.register.authority
             })
                 .then(function (response) {
                     if (response.data.code === 200) {
                         alert("注册成功");
+                        location.href = "/page/adminIndex";
                     }
-                    location.href = "/page/adminIndex";
                     console.log(response);
                 })
         },

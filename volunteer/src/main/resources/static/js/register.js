@@ -39,7 +39,7 @@ var vm = new Vue({
                         alert("注册成功");
                     }
                     localStorage.setItem("volunteerId", response.data.data);
-                    location.href = vm.isTeamLeader?"/page/register_team":"/page/index";
+                    location.href = vm.isTeamLeader ? "/page/register_team" : "/page/index";
                     console.log(response);
                 })
         },
