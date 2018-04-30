@@ -108,6 +108,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public BaseResult addVolunteer(Volunteer volunteer) {
         volunteer.setModifyTime(new Date());
+        logger.info("********************{}",JSONObject.toJSONString(volunteer));
         int volunteerId = volunteerMapper.insertSelective(volunteer);
         if (volunteerId != 0) {
             return BaseResult.create(200, volunteerId, "注册成功");

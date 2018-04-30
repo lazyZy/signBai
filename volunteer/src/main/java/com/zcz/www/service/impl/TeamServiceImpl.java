@@ -75,6 +75,10 @@ public class TeamServiceImpl implements TeamService {
     public BaseResult selectTeamByLeaderId(int teamLeaderId) {
         teamExample = new TeamExample();
         teamExample.createCriteria().andLeaderIdEqualTo(teamLeaderId);
+        if(teamMapper.selectByExample(teamExample).size() == 0){
+            Team team = new Team();
+            return BaseResult.create(200,team,"尚未加入团队");
+        }
         Team team = teamMapper.selectByExample(teamExample).get(0);
         return BaseResult.create(200,team,"获取成功");
     }
