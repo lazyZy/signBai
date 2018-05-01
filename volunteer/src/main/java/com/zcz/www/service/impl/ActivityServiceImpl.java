@@ -3,11 +3,10 @@ package com.zcz.www.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.zcz.www.dao.ActivityMapper;
 import com.zcz.www.dao.ActivityUserMapper;
-import com.zcz.www.entity.Activity;
-import com.zcz.www.entity.ActivityExample;
-import com.zcz.www.entity.ActivityUser;
-import com.zcz.www.entity.ActivityUserExample;
+import com.zcz.www.dao.VolunteerMapper;
+import com.zcz.www.entity.*;
 import com.zcz.www.pojo.BaseResult;
+import com.zcz.www.pojo.MemberAndActivity;
 import com.zcz.www.service.ActivityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +32,8 @@ public class ActivityServiceImpl implements ActivityService {
     ActivityUserExample activityUserExample;
     @Autowired
     ActivityUserMapper activityUserMapper;
+    @Autowired
+    VolunteerMapper volunteerMapper;
 
 
 
@@ -60,6 +61,18 @@ public class ActivityServiceImpl implements ActivityService {
             return BaseResult.create(200, activities,"尚未加入团队");
         }
         activityExample.createCriteria().andTeamIdEqualTo(teamId).andStartTimeGreaterThan(new Date());
+        List<Activity> activities = activityMapper.selectByExample(activityExample);
+        return BaseResult.create(200, activities,"获取活动信息成功");
+    }
+
+    @Override
+    public BaseResult selectActivityByTeamId2(Integer teamId){
+        activityExample = new ActivityExample();
+        if(teamId == null){
+            List<Activity> activities = new ArrayList<Activity>();
+            return BaseResult.create(200, activities,"尚未加入团队");
+        }
+        activityExample.createCriteria().andTeamIdEqualTo(teamId);
         List<Activity> activities = activityMapper.selectByExample(activityExample);
         return BaseResult.create(200, activities,"获取活动信息成功");
     }
@@ -137,10 +150,10 @@ public class ActivityServiceImpl implements ActivityService {
         ActivityUser activityUser = new ActivityUser();
         activityUser.setActivityId(activityId);
         activityUser.setUserId(volunteerId);
-        activityUser.setJoinStatus(1);
+        activityUser.setJoinStatus(2);
         activityUser.setCreateTime(new Date());
         activityUserMapper.insertSelective(activityUser);
-        return BaseResult.createOk("报名成功！");
+        return BaseResult.createOk("报名成功！等待队长审核......");
     }
 
     @Override
@@ -153,5 +166,42 @@ public class ActivityServiceImpl implements ActivityService {
         List<Activity> activities = activityMapper.selectByExample(activityExample);
         logger.info("请求数据{}",JSONObject.toJSONString(activities));
         return BaseResult.create(200,activities,"获取成功");
+    }
+
+    @Override
+    public BaseResult getActivityJoin(Integer teamId) {
+        activityExample = new ActivityExample();
+        activityExample.createCriteria().andStartTimeGreaterThan(new Date()).andTeamIdEqualTo(teamId).andStatusEqualTo(2);
+        List<Activity> activities = activityMapper.selectByExample(activityExample);
+        List<MemberAndActivity> memberAndActivities = new ArrayList<>();
+        for(Activity activity:activities){
+            MemberAndActivity memberAndActivity = new MemberAndActivity();
+            memberAndActivity.setActivityName(activity.getName());
+            memberAndActivity.setActivityRegion(activity.getRegion());
+            memberAndActivity.setActivityId(activity.getId());
+            memberAndActivity.setStatus(2);
+            activityUserExample = new ActivityUserExample();
+            activityUserExample.createCriteria().andActivityIdEqualTo(activity.getId()).andJoinStatusEqualTo(2);
+            List<ActivityUser> activityUsers = activityUserMapper.selectByExample(activityUserExample);
+            for(ActivityUser activityUser:activityUsers){
+                Volunteer volunteer = volunteerMapper.selectByPrimaryKey(activityUser.getUserId());
+                memberAndActivity.setVolunteerMail(volunteer.getVolunteerMail());
+                memberAndActivity.setVolunteerName(volunteer.getVolunteerName());
+                memberAndActivity.setVolunteerPhone(volunteer.getVolunteerPhone());
+                memberAndActivity.setVolunteerId(volunteer.getId());
+                memberAndActivities.add(memberAndActivity);
+            }
+        }
+        return BaseResult.create(200,memberAndActivities,"获取数据成功");
+    }
+
+    @Override
+    public BaseResult toAllowJoin(Integer volunteerId, Integer activityId) {
+        activityUserExample = new ActivityUserExample();
+        activityUserExample.createCriteria().andActivityIdEqualTo(activityId).andUserIdEqualTo(volunteerId).andJoinStatusEqualTo(2);
+        ActivityUser activityUser = activityUserMapper.selectByExample(activityUserExample).get(0);
+        activityUser.setJoinStatus(3);
+        activityUserMapper.updateByExampleSelective(activityUser,activityUserExample);
+        return BaseResult.createOk("更新成功");
     }
 }

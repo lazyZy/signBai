@@ -2,7 +2,7 @@ var vm = new Vue({
     el: '#vm',
     data: {
         registerTeam: {
-            leaderId: localStorage.getItem("volunteerId"),
+            leaderId: "",
             teamName: "",
             teamRegion: ""
         },
@@ -23,15 +23,19 @@ var vm = new Vue({
 
         confirm: function () {
             axios.post('../../register/team', {
-                leaderId: vm.registerTeam.leaderId,
+                leaderId: localStorage.getItem("volunteerId"),
                 teamName: vm.registerTeam.teamName,
                 teamRegion: vm.registerTeam.teamRegion
             })
                 .then(function (response) {
+                    if (response.data.code === 400) {
+                        alert(response.data.message);
+                        location.reload();
+                    }
                     if (response.data.code === 200) {
                         alert("注册成功");
+                        location.href = "/page/volunteerIndex";
                     }
-                    location.href = "/page/volunteerIndex";
                     console.log(response);
                 })
         },

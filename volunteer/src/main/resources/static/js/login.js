@@ -25,20 +25,20 @@ var vm1 = new Vue({
             //         }
             //     }
             // });
-            var url = vm1.login.isAdmin ? '../../login/admin' : '../../login/volunteer';
-            axios.post(url, {
+            var url = vm1.login.isAdmin?'../../login/admin':'../../login/volunteer';
+            axios.post(url+"", {
                 email: vm1.login.email,
                 pwd: vm1.login.pwd
             })
                 .then(function (response) {
-                    if (response.data.code === 200) {
-                        window.token = response.data.data;
-                        console.info(window.token);
+                    if (200 === response.data.code ) {
                         localStorage.setItem("token", response.data.data);
-                        location.href = vm1.login.isAdmin ? "/page/adminIndex" : "/page/volunteerIndex";
+                        console.log("code:200");
+                        location.href = vm1.login.isAdmin?"/page/adminIndex":"/page/volunteerIndex";
                     } else {
+                        console.log("code:!200");
                         alert("用户名或密码错误！");
-                        location.href = "/page/login";
+                        location.href = "/page/index";
                     }
                 })
 

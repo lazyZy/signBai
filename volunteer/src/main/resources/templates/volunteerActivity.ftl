@@ -75,7 +75,7 @@
                                     <div class="col-lg-8">
                                     </div>
                                     <div class="col-lg-4 text-right">
-                                        <button class="btn btn-action" type="submit" v-on:click="confirm">申请</button>
+                                        <span class="btn btn-action" type="submit" v-on:click="confirm">申请</span>
                                     </div>
                                 </div>
                             </form>

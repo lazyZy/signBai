@@ -86,9 +86,9 @@ public class AdminController {
 
     @RequestMapping("/refuseTeam")
     @ResponseBody
-    public BaseResult refuseTeam(@RequestParam Integer activityId) {
+    public BaseResult refuseTeam(@RequestParam Integer teamId) {
         logger.info("进入/refuseActivity");
-        BaseResult baseResult = teamService.updateTeamStatus(activityId, 0);
+        BaseResult baseResult = teamService.updateTeamStatus(teamId, 0);
         if (baseResult.getCode() == 200) {
             return baseResult;
         }

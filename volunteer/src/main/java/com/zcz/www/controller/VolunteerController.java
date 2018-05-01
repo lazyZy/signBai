@@ -1,7 +1,10 @@
 package com.zcz.www.controller;
 
+import com.zcz.www.dao.TeamMemberMapper;
 import com.zcz.www.entity.Activity;
 import com.zcz.www.entity.Team;
+import com.zcz.www.entity.TeamMember;
+import com.zcz.www.entity.TeamMemberExample;
 import com.zcz.www.pojo.BaseResult;
 import com.zcz.www.pojo.IsJoin;
 import com.zcz.www.pojo.SummaryActivity;
@@ -38,13 +41,25 @@ public class VolunteerController {
     ActivityService activityService;
     @Autowired
     UserService userService;
+    @Autowired
+    TeamMemberExample teamMemberExample;
+    @Autowired
+    TeamMemberMapper teamMemberMapper;
 
     @RequestMapping("/getActivity")
     @ResponseBody
     public BaseResult getActivity(@RequestParam Integer volunteerId) {
         VolunteerIndexPojo volunteerIndexPojo = new VolunteerIndexPojo();
-        volunteerIndexPojo.setTeam((Team)teamService.selectTeamByLeaderId(volunteerId).getData());
+        teamMemberExample = new TeamMemberExample();
+        teamMemberExample.createCriteria().andUserIdEqualTo(volunteerId);
+        if(teamMemberMapper.selectByExample(teamMemberExample).size() == 0){
+            volunteerIndexPojo.setTeam(null);
+        }else{
+            TeamMember teamMember = teamMemberMapper.selectByExample(teamMemberExample).get(0);
+            volunteerIndexPojo.setTeam((Team)teamService.selectOneTeamByTeamId(teamMember.getTeamId()).getData());
+        }
         volunteerIndexPojo.setActivities((List<Activity>)activityService.selectActivityByTeamId(volunteerIndexPojo.getTeam().getId()).getData());
+        volunteerIndexPojo.setActivities2((List<Activity>)activityService.selectActivityByTeamId2(volunteerIndexPojo.getTeam().getId()).getData());
         List<Integer> joinStatus = volunteerIndexPojo.getActivities().stream().map(activity -> activityService.isJoin(activity.getId(), volunteerId)).collect(Collectors.toList());
         volunteerIndexPojo.setIsJoin(joinStatus);
         if(volunteerIndexPojo.getTeam().getLeaderId() == volunteerId){
@@ -132,6 +147,16 @@ public class VolunteerController {
         return activityService.addActivity(activity);
     }
 
+    @RequestMapping("/getActivityJoin")
+    @ResponseBody
+    public BaseResult getActivityJoin(@RequestParam Integer teamId) {
+        return activityService.getActivityJoin(teamId);
+    }
 
+    @RequestMapping("/toAllowJoin")
+    @ResponseBody
+    public BaseResult toAllowJoin(@RequestParam Integer volunteerId, @RequestParam Integer activityId) {
+        return activityService.toAllowJoin(volunteerId,activityId);
+    }
 
 }

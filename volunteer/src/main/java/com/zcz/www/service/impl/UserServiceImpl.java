@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService {
         String key = tokenService.getToken();
         tokenService.setInfo(key, JSONObject.toJSONString(volunteer));
         logger.info(key);
-        return BaseResult.create(200, key, "数据获取成功");
+        return BaseResult.createOk(key,"数据获取成功");
     }
 
     @Override
@@ -97,7 +97,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public BaseResult addAdmin(Admin admin) {
+        adminExample = new AdminExample();
+        adminExample.createCriteria().andAdminEmailEqualTo(admin.getAdminEmail());
+        if(adminMapper.selectByExample(adminExample).size() != 0){
+            return BaseResult.createFail(400, "您的邮箱已被注册!");
+        }
         admin.setModifyTime(new Date());
+        admin.setCreateTime(new Date());
         int adminId = adminMapper.insertSelective(admin);
         if (adminId != 0) {
             return BaseResult.create(200, adminId, "注册成功");
@@ -107,9 +113,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public BaseResult addVolunteer(Volunteer volunteer) {
+        volunteerExample = new VolunteerExample();
+        volunteerExample.createCriteria().andVolunteerMailEqualTo(volunteer.getVolunteerMail());
+        if(volunteerMapper.selectByExample(volunteerExample).size() != 0){
+            return BaseResult.createFail(400, "您的邮箱已被注册!");
+        }
         volunteer.setModifyTime(new Date());
-        logger.info("********************{}",JSONObject.toJSONString(volunteer));
-        int volunteerId = volunteerMapper.insertSelective(volunteer);
+        volunteer.setCreateTime(new Date());
+        volunteerMapper.insertSelective(volunteer);
+        volunteer = volunteerMapper.selectByExample(volunteerExample).get(0);
+        int volunteerId = volunteer.getId();
         if (volunteerId != 0) {
             return BaseResult.create(200, volunteerId, "注册成功");
         }

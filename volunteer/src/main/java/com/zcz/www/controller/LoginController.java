@@ -53,13 +53,7 @@ public class LoginController {
     @RequestMapping("/volunteer")
     @ResponseBody
     public BaseResult getVolunteer(@RequestBody LoginReq loginReq) {
-
-        BaseResult baseResult = userService.selectVolunteerByEmailAndPwd(loginReq.getEmail(), loginReq.getPwd());
-        if (baseResult.getCode() == 200) {
-            return baseResult;
-        }
-
-        return BaseResult.createFail(400, "失败");
+        return userService.selectVolunteerByEmailAndPwd(loginReq.getEmail(), loginReq.getPwd());
     }
 
     @RequestMapping("/volunteerLoginInfo")

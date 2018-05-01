@@ -90,10 +90,17 @@ public class TeamServiceImpl implements TeamService {
             logger.info("添加团队信息失败！团队ID非法");
             return BaseResult.createBadRequest();
         }
-        team.setTeamStauts(0);
+        teamExample = new TeamExample();
+        teamExample.createCriteria().andTeamNameEqualTo(team.getTeamName());
+        if(teamMapper.selectByExample(teamExample).size() != 0){
+            return BaseResult.createFail(400,"该团队名称已注册!");
+        }
+        team.setTeamStauts(1);
         team.setModifyTime(new Date());
         team.setCreateTime(new Date());
-        int insertTeamId = teamMapper.insertSelective(team);
+        teamMapper.insertSelective(team);
+        team = teamMapper.selectByExample(teamExample).get(0);
+        int insertTeamId = team.getId();
         TeamMember teamMember = new TeamMember();
         teamMember.setCreateTime(new Date());
         teamMember.setModifyTime(new Date());
@@ -151,14 +158,15 @@ public class TeamServiceImpl implements TeamService {
             team.setMemberNum(team.getMemberNum()+1);
             teamMapper.updateByPrimaryKeySelective(team);
         }
+        teamMemberMapper.updateByPrimaryKeySelective(teamMember);
         return BaseResult.createOk("修改成功!");
     }
 
     @Override
     public BaseResult getAllTeamInfo(Integer volunteerId) {
         AllTeamInfo allTeamInfo = new AllTeamInfo();
-        Team team = (Team) selectTeamByLeaderId(volunteerId).getData();
-        if(team == null){
+        Team team = new Team();
+        if(selectTeamByLeaderId(volunteerId).getMessage().endsWith("尚未加入团队")){
             allTeamInfo.setIsLeader(false);
         }else{
             allTeamInfo.setIsLeader(true);
@@ -166,7 +174,7 @@ public class TeamServiceImpl implements TeamService {
         teamMemberExample = new TeamMemberExample();
         teamMemberExample.createCriteria().andUserIdEqualTo(volunteerId);
         allTeamInfo.setJoinTeam(true);
-        if(null ==teamMemberMapper.selectByExample(teamMemberExample)){
+        if(0 == teamMemberMapper.selectByExample(teamMemberExample).size()){
             allTeamInfo.setJoinTeam(false);
             teamExample = new TeamExample();
             teamExample.createCriteria().andIdIsNotNull();
