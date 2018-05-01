@@ -28,10 +28,14 @@ var vm = new Vue({
                 teamRegion: vm.registerTeam.teamRegion
             })
                 .then(function (response) {
+                    if (response.data.code === 400) {
+                        alert(response.data.message);
+                        location.reload();
+                    }
                     if (response.data.code === 200) {
                         alert("注册成功");
+                        location.href = "/page/volunteerIndex";
                     }
-                    location.href = "/page/volunteerIndex";
                     console.log(response);
                 })
         },

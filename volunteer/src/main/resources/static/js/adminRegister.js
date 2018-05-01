@@ -63,6 +63,10 @@ var vm = new Vue({
                 adminAuthority: vm.register.authority
             })
                 .then(function (response) {
+                    if (response.data.code === 400) {
+                        alert(response.data.message);
+                        location.reload();
+                    }
                     if (response.data.code === 200) {
                         alert("注册成功");
                         location.href = "/page/adminIndex";

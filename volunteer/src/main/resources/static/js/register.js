@@ -35,11 +35,15 @@ var vm = new Vue({
                 volunteerAdrress: vm.register.adrress
             })
                 .then(function (response) {
+                    if (response.data.code === 400) {
+                        alert(response.data.message);
+                        location.reload();
+                    }
                     if (response.data.code === 200) {
                         alert("注册成功");
+                        localStorage.setItem("volunteerId", response.data.data);
+                        location.href = vm.isTeamLeader ? "/page/register_team" : "/page/index";
                     }
-                    localStorage.setItem("volunteerId", response.data.data);
-                    location.href = vm.isTeamLeader ? "/page/register_team" : "/page/index";
                     console.log(response);
                 });
         }

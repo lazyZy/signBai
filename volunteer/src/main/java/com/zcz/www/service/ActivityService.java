@@ -16,6 +16,9 @@ public interface ActivityService {
     //通过活动团队ID获取活动信息
     BaseResult selectActivityByTeamId(Integer teamId);
 
+    //通过活动团队ID获取活动信息
+    BaseResult selectActivityByTeamId2(Integer teamId);
+
     //通过活动团队ID获取活动信息(不考虑时间)
     BaseResult selectActivityByTeamIdTime(Integer teamId);
 
@@ -42,4 +45,10 @@ public interface ActivityService {
 
     //获取正在进行或者已完成的活动
     BaseResult getDoOrFinishActivity();
+
+    //获取对应活动的成员申请状态
+    BaseResult getActivityJoin(Integer teamId);
+
+    //队长核实成员可参加活动
+    BaseResult toAllowJoin(Integer volunteerId, Integer activityId);
 }

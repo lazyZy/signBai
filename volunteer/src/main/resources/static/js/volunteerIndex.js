@@ -21,9 +21,11 @@ var vm = new Vue({
         },
         teamMemberList: [],
         activities: [],
+        activities2:[],
         isShow: false,
         dataR: {},
-        joinStatus:[]
+        joinStatus:[],
+        activityJoins:[]
     },
     mounted: function () {
         console.log(localStorage.getItem("token"));
@@ -40,12 +42,22 @@ var vm = new Vue({
                             if (response.data.code === 200) {
                                 vm.teamInfo = response.data.data.team;
                                 vm.activities = response.data.data.activities;
+                                vm.activities2 = response.data.data.activities2;
                                 vm.joinStatus = response.data.data.isJoin;
                                 for(var i = 0; i< vm.activities.length;i++){
                                     vm.activities[i].teamId = vm.joinStatus[i];
                                 }
                                 if(vm.teamInfo.leaderId == vm.volunteer.id){
                                     vm.isTeamLeader = true;
+                                    if(vm.isTeamLeader){
+                                        axios.post('../../volunteer/getActivityJoin?teamId=' + vm.teamInfo.id, {})
+                                            .then(function (response) {
+                                                if (response.data.code === 200) {
+                                                    vm.activityJoins = response.data.data;
+                                                }
+                                                console.log(response);
+                                            });
+                                    }
                                 }
                             } else {
                                 alert("请登录！");
@@ -62,7 +74,7 @@ var vm = new Vue({
 
                 console.log(response);
 
-            })
+            });
 
     },
     methods: {
@@ -89,6 +101,16 @@ var vm = new Vue({
                 .then(function (response) {
                     if (response.data.code === 200) {
                         alert("活动完成");
+                        location.reload();
+                    }
+                    console.log(response);
+                })
+        },
+        toAllow:function(volunteerId,activityId){
+            axios.post('../../volunteer/toAllowJoin?volunteerId='+volunteerId+'&activityId='+activityId, {})
+                .then(function (response) {
+                    if (response.data.code === 200) {
+                        alert("已审核");
                         location.reload();
                     }
                     console.log(response);

@@ -97,7 +97,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public BaseResult addAdmin(Admin admin) {
+        adminExample = new AdminExample();
+        adminExample.createCriteria().andAdminEmailEqualTo(admin.getAdminEmail());
+        if(adminMapper.selectByExample(adminExample).size() != 0){
+            return BaseResult.createFail(400, "您的邮箱已被注册!");
+        }
         admin.setModifyTime(new Date());
+        admin.setCreateTime(new Date());
         int adminId = adminMapper.insertSelective(admin);
         if (adminId != 0) {
             return BaseResult.create(200, adminId, "注册成功");
@@ -107,10 +113,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public BaseResult addVolunteer(Volunteer volunteer) {
+        volunteerExample = new VolunteerExample();
+        volunteerExample.createCriteria().andVolunteerMailEqualTo(volunteer.getVolunteerMail());
+        if(volunteerMapper.selectByExample(volunteerExample).size() != 0){
+            return BaseResult.createFail(400, "您的邮箱已被注册!");
+        }
         volunteer.setModifyTime(new Date());
         volunteer.setCreateTime(new Date());
-        int volunteerId = volunteerMapper.insertSelective(volunteer);
-        logger.info("*********************loginfo:volunteerId{}",volunteerId);
+        volunteerMapper.insertSelective(volunteer);
+        volunteer = volunteerMapper.selectByExample(volunteerExample).get(0);
+        int volunteerId = volunteer.getId();
         if (volunteerId != 0) {
             return BaseResult.create(200, volunteerId, "注册成功");
         }

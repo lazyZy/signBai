@@ -95,7 +95,7 @@
             <!-- /row -->
             <div v-show="isTeamLeader" class="row">
 
-                <ol v-for="activity in activities" :key="activity.id" >
+                <ol v-for="activity in activities2" :key="activity.id" >
                     <div class="col-sm-4" v-if="activity.status == 2 && activity.status !=3">
                         <li>
                             活动名称：{{ activity.name }}
@@ -131,6 +131,39 @@
             <!-- /row -->
         </div>    <!-- /container -->
 
+        <div v-show="isTeamLeader" class="container">
+
+            <h2 class="text-center top-space">成员活动申请</h2>
+            <br>
+            <div class="row">
+
+                <ol v-for="activityJoin in activityJoins" >
+                    <div class="col-sm-4" >
+                        <li>
+                            成员名称：{{ activityJoin.volunteerName }}
+                        </li>
+                        <li>
+                            成员手机：{{ activityJoin.volunteerPhone }}
+                        </li>
+                        <li>
+                            成员邮箱：{{ activityJoin.volunteerMail }}
+                        </li>
+                        <li>
+                            活动名称：{{ activityJoin.ActivityName }}
+                        </li>
+                        <li>
+                            活动地点：{{ activityJoin.ActivityRegion }}
+                        </li>
+                        <li>
+                            该申请状态：待审核
+                        </li>
+                        <li >
+                            <input type="button" v-on:click="toAllow(activityJoin.volunteerId,activityJoin.activityId)" value="完成审核"/>
+                        </li>
+                    </div>
+                </ol>
+            </div>
+        </div>    <!-- /container -->
     </div>
 </div>
 
