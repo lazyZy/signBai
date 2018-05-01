@@ -27,10 +27,12 @@
             </div><!--/.nav-collapse -->
         </div>
     </div>
+
+    <header id="head" class="secondary"></header>
     <!-- /.navbar -->
-    <div v-show="!showList" class="panel panel-default">
+    <div  class="panel panel-default">
         <div class="panel-heading" id="vm">{{title}}
-            <form class="form-horizontal">
+            <form class="form-horizontal" style="height: 215px">
                 <div class="form-group">
                     <div class="col-sm-2 control-label">团队名称</div>
                     <div class="col-sm-10" id="vm">

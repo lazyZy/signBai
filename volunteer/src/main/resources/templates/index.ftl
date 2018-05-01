@@ -30,9 +30,7 @@
     <div class="container">
         <div class="row">
             <h1 id="vm" class="lead">{{title}}</h1>
-            <p class="tagline">PROGRESSUS: free business bootstrap template by <a
-                    href="http://www.gettemplate.com/?utm_source=progressus&amp;utm_medium=template&amp;utm_campaign=progressus">GetTemplate</a>
-            </p>
+            <p class="tagline">以心化力，投身公益。</p>
         </div>
     </div>
 </header>
@@ -53,39 +51,34 @@
 <div class="jumbotron top-space">
     <div class="container">
 
-        <h3 class="text-center thin">Reasons to use this template</h3>
+        <h3 class="text-center thin">使用我们平台的理由</h3>
 
         <div class="row">
             <div class="col-md-3 col-sm-6 highlight">
-                <div class="h-caption"><h4><i class="fa fa-cogs fa-5"></i>Bootstrap-powered</h4></div>
+                <div class="h-caption"><h4><i class="fa fa-cogs fa-5"></i>提供更好的服务 </h4></div>
                 <div class="h-body text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur.
-                        Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam
-                        iusto assumenda hic reprehenderit?</p>
+                    <p> &nbsp;“心·青年”志愿活动平台系统可以迅速、有效地收集各种信息，加强内部的信息沟通。各种用户可以直接从系统中获得自己所需的各种信息，并根据相关的信息做出决策和相应和行动方案。
+                    </p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 highlight">
-                <div class="h-caption"><h4><i class="fa fa-flash fa-5"></i>Fat-free</h4></div>
+                <div class="h-caption"><h4><i class="fa fa-flash fa-5"></i>降低成本</h4></div>
                 <div class="h-body text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, commodi, sequi quis ad
-                        fugit omnis cumque a libero error nesciunt molestiae repellat quos perferendis numquam quibusdam
-                        rerum repellendus laboriosam reprehenderit! </p>
+                    <p> &nbsp;“心·青年”志愿活动平台系统通过减少志愿团队管理工作的操作成本，降低志愿者流动率、减少通讯费用等达到降低志愿者团队成本的目的。
+                    </p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 highlight">
-                <div class="h-caption"><h4><i class="fa fa-heart fa-5"></i>Creative Commons</h4></div>
+                <div class="h-caption"><h4><i class="fa fa-heart fa-5"></i>革新管理理念</h4></div>
                 <div class="h-body text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, vitae, perferendis,
-                        perspiciatis nobis voluptate quod illum soluta minima ipsam ratione quia numquam eveniet eum
-                        reprehenderit dolorem dicta nesciunt corporis?</p>
+                    <p> &nbsp;“心·青年”志愿活动平台系统的最终目的是革新管理理念而不仅仅是改进管理方式、优化志愿者资源管理。先进技术应用于志愿活动平台不仅仅是为了将现有的资源工作做的更好，更重要的是，做些对于公益团队来讲有效率的事情，成为管理层的决策支持者，为志愿服务提供信息和解决方案。</p>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 highlight">
-                <div class="h-caption"><h4><i class="fa fa-smile-o fa-5"></i>Author's support</h4></div>
+                <div class="h-caption"><h4><i class="fa fa-smile-o fa-5"></i>完善的奖励机制</h4></div>
                 <div class="h-body text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, excepturi, maiores, dolorem
-                        quasi reprehenderit illo accusamus nulla minima repudiandae quas ducimus reiciendis odio sequi
-                        atque temporibus facere corporis eos expedita? </p>
+                    <p> &nbsp;在传统的志愿平台中，管理人员的很大一部分精力将耗费在繁琐的日常事务处理上，随着时间的推移和活动的进行，很多志愿者奉献的热情会慢慢消退，那么我们需要建立完善的奖励机制来鼓励这些为社会公益事业付出的人们。而相比于使用传统工具记录出勤与活动次数，“心·青年”会用更善于使用数据来对志愿者们进行奖励。
+                    </p>
                 </div>
             </div>
         </div> <!-- /row  -->
