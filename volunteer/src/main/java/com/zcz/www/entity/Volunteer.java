@@ -269,6 +269,9 @@ public class Volunteer {
      * @mbg.generated
      */
     public String getCreateTime() {
+        if(createTime == null){
+            return DateUtils.getFormate(new Date());
+        }
         return DateUtils.getFormate(createTime);
     }
 
@@ -291,6 +294,9 @@ public class Volunteer {
      * @mbg.generated
      */
     public String getModifyTime() {
+        if(modifyTime == null){
+            return DateUtils.getFormate(new Date());
+        }
         return DateUtils.getFormate(modifyTime);
     }
 

@@ -21,7 +21,8 @@ var vm = new Vue({
         teamMemberList: [],
         activities: [],
         isShow: false,
-        dataR: {}
+        dataR: {},
+        joinStatus:[]
     },
     mounted: function () {
         console.log(localStorage.getItem("token"));
@@ -37,7 +38,11 @@ var vm = new Vue({
                         .then(function (response) {
                             if (response.data.code === 200) {
                                 vm.teamInfo = response.data.data.team;
-                                vm.activities = response.data.data.activities
+                                vm.activities = response.data.data.activities;
+                                vm.joinStatus = response.data.data.isJoin;
+                                for(var i = 0; i< vm.activities.length;i++){
+                                    vm.activities[i].teamId = vm.joinStatus[i];
+                                }
                             } else {
                                 alert("请登录！");
                                 location.href = "/page/login";
@@ -45,8 +50,7 @@ var vm = new Vue({
 
                             console.log(response);
 
-                        })
-
+                        });
                 } else {
                     alert("请登录！");
                     location.href = "/page/login";
@@ -57,6 +61,22 @@ var vm = new Vue({
             })
 
     },
-    methods: {}
+    methods: {
+        toJoinActivity:function(activityId){
+            console.info(activityId);
+            axios.post('../../volunteer/toJoinActivity', {
+                activityId: activityId,
+                volunteerId: vm.volunteer.id
+            })
+                .then(function (response) {
+                    if (response.data.code === 200) {
+                        alert(response.data.data);
+                        location.reload();
+                    }
+                    console.log(response);
+                })
+
+        }
+    }
 })
 

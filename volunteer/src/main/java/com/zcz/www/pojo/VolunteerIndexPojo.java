@@ -13,6 +13,7 @@ public class VolunteerIndexPojo {
     private Team team;
     private List<TeamMember> teamMemberList;
     private List<Activity> activities;
+    private List<Integer> isJoin;
     private boolean isLeader;
 
     public Team getTeam() {
@@ -45,5 +46,13 @@ public class VolunteerIndexPojo {
 
     public void setLeader(boolean leader) {
         isLeader = leader;
+    }
+
+    public List<Integer> getIsJoin() {
+        return isJoin;
+    }
+
+    public void setIsJoin(List<Integer> isJoin) {
+        this.isJoin = isJoin;
     }
 }

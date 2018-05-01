@@ -25,7 +25,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
                     <li><a href="/page/volunteerIndex">志愿者首页</a></li>
-                    <li><a href="/page/volunteerIndex">About</a></li>
+                    <li><a href="/page/volunteer_team">我的团队</a></li>
                     <li><a href="/page/volunteerIndex">Contact</a></li>
                     <li class="active"><a class="btn" href="/page/login">登录/注册</a></li>
                 </ul>
@@ -45,7 +45,7 @@
                         <span v-if="teamInfo.teamStauts==1">团队暂未审核</span>
                     </p>
                     <p v-if="teamInfo==null">
-                        <a href="/page/volunteerTeam">
+                        <a href="/page/volunteer_team">
                             点此加入团队
                         </a>
                     </p>
@@ -59,19 +59,23 @@
             <h2 class="text-center top-space">活动一览</h2>
             <br>
             <div class="row">
-                <ol v-for="activity in activities" :key="activity.id">
+
+                <ol v-for="activity in activities" :key="activity.id" >
                     <div class="col-sm-4" v-if="activity.status != 0 && activity.status !=3">
                         <li>
                             活动名称：{{ activity.name }}
                         </li>
-                        <li v-if="activity.status == 1">
-                            活动状态：待审核
+                        <li v-show="2==activity.teamId">
+                            活动状态：已参加(未审核)
                         </li>
-                        <li v-if="activity.status == 2">
-                            活动状态：已批准
+                        <li v-show="0==activity.teamId">
+                            活动状态：已参加(审核未通过)
                         </li>
-                        <li v-if="activity.status == 0">
-                            活动状态：已驳回
+                        <li v-show="3==activity.teamId">
+                            活动状态：已参加(已审核)
+                        </li>
+                        <li v-show="1==activity.teamId">
+                            活动状态：可参加
                         </li>
                         <li>
                             活动描述：{{ activity.introduce }}
@@ -81,6 +85,9 @@
                         </li>
                         <li>
                             结束时间：{{ activity.endTime }}
+                        </li>
+                        <li v-show="1==activity.teamId">
+                            <input type="button" v-on:click="toJoinActivity(activity.id)" value="参加"/>
                         </li>
                     </div>
                 </ol>
