@@ -49,10 +49,7 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <h3 class="thin text-center">登录你的账号</h3>
-                            <p class="text-center text-muted">Lorem ipsum dolor sit amet, <a
-                                    href="/page/register">注册</a>
-                                adipisicing elit. Quo nulla quibusdam cum doloremque incidunt nemo sunt a tenetur omnis
-                                odio. </p>
+                            <p class="text-center text-muted">尚未拥有自己的账号？请先注册 <a href="/page/register">注册</a></p>
                             <hr>
 
                             <form>

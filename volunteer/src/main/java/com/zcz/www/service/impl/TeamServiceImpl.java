@@ -92,6 +92,7 @@ public class TeamServiceImpl implements TeamService {
         }
         team.setTeamStauts(0);
         team.setModifyTime(new Date());
+        team.setCreateTime(new Date());
         int insertTeamId = teamMapper.insertSelective(team);
         TeamMember teamMember = new TeamMember();
         teamMember.setCreateTime(new Date());
