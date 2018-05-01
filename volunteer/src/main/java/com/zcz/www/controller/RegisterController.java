@@ -1,7 +1,9 @@
 package com.zcz.www.controller;
 
+import com.zcz.www.dao.TeamMemberMapper;
 import com.zcz.www.entity.Admin;
 import com.zcz.www.entity.Team;
+import com.zcz.www.entity.TeamMember;
 import com.zcz.www.entity.Volunteer;
 import com.zcz.www.pojo.BaseResult;
 import com.zcz.www.service.TeamService;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
+
 /**
  * Created by ZY on 2018/4/2.
  */
@@ -23,6 +27,8 @@ public class RegisterController {
     UserService userService;
     @Autowired
     TeamService teamService;
+    @Autowired
+    TeamMemberMapper teamMemberMapper;
 
     @RequestMapping("/admin")
     @ResponseBody
@@ -52,6 +58,7 @@ public class RegisterController {
     public BaseResult getUser(@RequestBody Team team) {
 
         BaseResult baseResult = teamService.addTeam(team);
+
         if (baseResult.getCode() == 200) {
             return baseResult;
         }

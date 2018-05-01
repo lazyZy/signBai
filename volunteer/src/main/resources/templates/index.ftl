@@ -37,18 +37,54 @@
 </header>
 <!-- /Header -->
 
-<!-- Intro -->
-<div class="container text-center">
-    <br> <br>
-    <h2 class="thin">The best place to tell people why they are here</h2>
-    <p class="text-muted">
-        The difference between involvement and commitment is like an eggs-and-ham breakfast:<br>
-        the chicken was involved; the pig was committed.
-    </p>
-</div>
-<!-- /Intro-->
+    <div class="container myCarousel">
+        <div id="carousel-example-generic" class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1" ></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2" ></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3" ></li>
+            </ol>
+            <div class="carousel-inner" >
+                <div class="item active">
+                    <p style="text-align: center"><img src="../img/志愿者活动照片.jpg" style="height: 440px;"width="912px" ></p>
+                    <div class="carousel-caption">
+                        <h3>天工大爱心团</h3>
+                        <p>鹤童养老院之行</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <p style="text-align: center"><img src="../img/志愿者活动2.jpg" style="height: 440px;"width="912px" ></p>
+                    <div class="carousel-caption">
+                        <h3>天大志愿者协会</h3>
+                        <p>义工活动</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <p style="text-align: center"><img src="../img/志愿者活动3.jpg" style="height: 440px;"width="912px" ></p>
+                    <div class="carousel-caption">
+                        <h3>天津财经大学志愿者协会</h3>
+                        <p>李楼养老院之行</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <p style="text-align: center"><img src="../img/志愿者活动4.jpg" style="height: 440px;"width="912px" ></p>
+                    <div class="carousel-caption">
+                        <h3>天津商业大学志愿者协会</h3>
+                        <p>老年运动会象棋比赛</p>
+                    </div>
+                </div>
+            </div>
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="&glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="&glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </div>
 
-<!-- Highlights - jumbotron -->
+    <!-- Highlights - jumbotron -->
 <div class="jumbotron top-space">
     <div class="container">
 

@@ -2,7 +2,7 @@ var vm = new Vue({
     el: '#vm',
     data: {
         registerTeam: {
-            leaderId: localStorage.getItem("volunteerId"),
+            leaderId: "",
             teamName: "",
             teamRegion: ""
         },
@@ -23,7 +23,7 @@ var vm = new Vue({
 
         confirm: function () {
             axios.post('../../register/team', {
-                leaderId: vm.registerTeam.leaderId,
+                leaderId: localStorage.getItem("volunteerId"),
                 teamName: vm.registerTeam.teamName,
                 teamRegion: vm.registerTeam.teamRegion
             })

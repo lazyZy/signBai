@@ -41,8 +41,8 @@ var vm = new Vue({
                     localStorage.setItem("volunteerId", response.data.data);
                     location.href = vm.isTeamLeader ? "/page/register_team" : "/page/index";
                     console.log(response);
-                })
-        },
+                });
+        }
 
 
     }
