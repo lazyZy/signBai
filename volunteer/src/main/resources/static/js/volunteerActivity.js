@@ -63,14 +63,14 @@ var vm = new Vue({
     },
     methods: {
         confirm:function(){
-            axios.post('../../', {
+            axios.post('../../volunteer/applyActivity', {
                 teamId: vm.activity.teamId,
                 leaderId: vm.activity.leaderId,
                 name:vm.activity.name,
                 region:vm.activity.region,
                 introduce:vm.activity.introduce,
-                startTime:vm.activity.startTime,
-                endTime:vm.activity.endTime
+                startTime:Date.parse(vm.activity.startTime),
+                endTime:Date.parse(vm.activity.endTime)
             })
                 .then(function (response) {
                     if (response.data.code === 200) {
