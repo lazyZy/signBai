@@ -2,6 +2,18 @@ var vm = new Vue({
     el: '#vm',
     data: {
         title: "\"心·青年\"志愿活动平台",
+        activities:[]
+    },
+    mounted: function () {
+        axios.post('/admin/getDoOrFinishActivity', {})
+            .then(function (response) {
+                if (response.data.code === 200) {
+                    vm.activities = response.data.data;
+                }
+                console.log(response);
+
+            })
+
     },
     methods: {
 

@@ -5,6 +5,7 @@
 <#include "common/main.html">
 </head>
 <body>
+<div id="vm">
 <!-- Fixed navbar -->
 <div class="navbar navbar-inverse navbar-fixed-top headroom">
     <div class="container">
@@ -125,12 +126,45 @@
         </div>
     </div> <!-- /row -->
 
-    <div class="jumbotron top-space">
-        <h4>Dicta, nostrum nemo soluta sapiente sit dolor quae voluptas quidem doloribus recusandae facere magni ullam
-            suscipit sunt atque rerum eaque iusto facilis esse nam veniam incidunt officia perspiciatis at voluptatibus.
-            Libero, aliquid illum possimus numquam fuga.</h4>
-        <p class="text-right"><a class="btn btn-primary btn-large">Learn more »</a></p>
-    </div>
+    <!-- container -->
+    <div id="vm" class="container">
+
+        <h2 class="text-center top-space">活动一览</h2>
+        <br>
+        <div class="row">
+            <ol class="col-sm-4" v-for="activity in activities" :key="activity.id">
+                <div >
+                    <li>
+                        活动名称：{{ activity.name }}
+                    </li>
+                    <li v-if="2 == activity.status">
+                        活动进行中
+                    </li>
+                    <li v-if="3 == activity.status">
+                        活动已完成
+                    </li>
+                    <li>
+                        活动描述：{{ activity.introduce }}
+                    </li>
+                    <li v-if="3 == activity.status">
+                        活动总结：{{activity.summary}}
+                    </li>
+                    <li>
+                        开始时间：{{ activity.startTime }}
+                    </li>
+                    <li>
+                        结束时间：{{ activity.endTime }}
+                    </li>
+                    <li v-if="activity.status == 1">
+                        <input type="button" v-on:click="toAdopt(activity.id)" value="通过"/>
+                        &nbsp;&nbsp;<input type="button" v-on:click="toRefuse(activity.id)" value="驳回"/>
+                    </li>
+                </div>
+            </ol>
+        </div>
+        <!-- /row -->
+
+    </div>    <!-- /container -->
 
 </div>    <!-- /container -->
 
@@ -150,6 +184,7 @@
     </div>
 </section>
 </div>
+
 <script src="${request.contextPath}/js/index.js"></script>
 
 </body>

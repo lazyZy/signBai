@@ -1,5 +1,6 @@
 package com.zcz.www.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.zcz.www.dao.ActivityMapper;
 import com.zcz.www.dao.ActivityUserMapper;
 import com.zcz.www.entity.Activity;
@@ -140,5 +141,17 @@ public class ActivityServiceImpl implements ActivityService {
         activityUser.setCreateTime(new Date());
         activityUserMapper.insertSelective(activityUser);
         return BaseResult.createOk("报名成功！");
+    }
+
+    @Override
+    public BaseResult getDoOrFinishActivity() {
+        activityExample = new ActivityExample();
+        List<Integer> list = new ArrayList<>();
+        list.add(2);
+        list.add(3);
+        activityExample.createCriteria().andStartTimeLessThan(new Date()).andStatusIn(list);
+        List<Activity> activities = activityMapper.selectByExample(activityExample);
+        logger.info("请求数据{}",JSONObject.toJSONString(activities));
+        return BaseResult.create(200,activities,"获取成功");
     }
 }

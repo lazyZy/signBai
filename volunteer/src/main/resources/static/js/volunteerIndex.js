@@ -14,6 +14,7 @@ var vm = new Vue({
         teamInfo: {
             id: "",
             teamName: "",
+            leaderId:"",
             teamStauts: "",
             memberNum: "",
             teamRegion: ""
@@ -42,6 +43,9 @@ var vm = new Vue({
                                 vm.joinStatus = response.data.data.isJoin;
                                 for(var i = 0; i< vm.activities.length;i++){
                                     vm.activities[i].teamId = vm.joinStatus[i];
+                                }
+                                if(vm.teamInfo.leaderId == vm.volunteer.id){
+                                    vm.isTeamLeader = true;
                                 }
                             } else {
                                 alert("请登录！");
@@ -76,6 +80,19 @@ var vm = new Vue({
                     console.log(response);
                 })
 
+        },
+        toFinishActivity:function(id,summary){
+            axios.post('../../volunteer/toFinishActivity', {
+                activityId: id,
+                activitySummary: summary
+            })
+                .then(function (response) {
+                    if (response.data.code === 200) {
+                        alert("活动完成");
+                        location.reload();
+                    }
+                    console.log(response);
+                })
         }
     }
 })

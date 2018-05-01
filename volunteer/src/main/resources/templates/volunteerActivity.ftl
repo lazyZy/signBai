@@ -22,13 +22,73 @@
                     <li><a href="/page/volunteerIndex">志愿者首页</a></li>
                     <li><a href="/page/volunteer_team">我的团队</a></li>
                     <li v-if="isTeamLeader"><a href="/page/volunteer_activity">申请活动</a></li>
-                    <li class="active"><a class="btn" href="/page/login">登录/注册</a></li>
+                    <li class="active"><a class="btn" href="/page/login">退出/登录</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
     </div>
-    <!-- /.navbar -->
 
+    <header id="head" class="secondary"></header>
+    <!-- /.navbar -->
+    <div class="container">
+
+        <ol class="breadcrumb">
+            <li><a href="/page/volunteerIndex">志愿者主页</a></li>
+            <li class="active">申请活动</li>
+        </ol>
+
+        <div class="row">
+
+            <!-- Article main content -->
+            <article class="col-xs-12 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title">申请活动</h1>
+                </header>
+
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <form id="vm">
+                                <div class="top-margin">
+                                    <label>活动名称： <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" v-model="activity.name">
+                                </div>
+                                <div class="top-margin">
+                                    <label>活动地点 <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" v-model="activity.region">
+                                </div>
+                                <div class="top-margin">
+                                    <label>活动介绍： <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" v-model="activity.introduce" />
+                                </div>
+                                <div class="top-margin">
+                                    <label>开始时间： <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" v-model="activity.startTime" placeholder="2018-01-01 01:01:01"/>
+                                </div>
+                                <div class="top-margin">
+                                    <label>结束时间 <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" v-model="activity.endTime" placeholder="2018-01-01 01:01:01"/>
+                                </div>
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                    </div>
+                                    <div class="col-lg-4 text-right">
+                                        <button class="btn btn-action" type="submit" v-on:click="confirm">申请</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </article>
+            <!-- /Article -->
+
+        </div>
+    </div>    <!-- /container -->
 </div>
 
 <script src="${request.contextPath}/js/volunteerActivity.js"></script>
