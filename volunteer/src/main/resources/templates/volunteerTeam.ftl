@@ -3,6 +3,11 @@
 >
 <head>
 <#include "common/main.html">
+    <style>
+        li {
+            list-style: none;
+        }
+    </style>
 </head>
 <body>
 <div id="vm">
@@ -126,8 +131,8 @@
             <br>
             <div class="row">
 
-                <ol v-for="teamInfo in teamInfos"  >
-                    <div class="col-sm-4" v-if="2 == teamInfo.team.teamStatus">
+                <ol v-for="teamInfo in teamInfos" :key="teamInfo.team.id" >
+                    <div class="col-sm-4" v-if="2 == teamInfo.team.teamStauts">
                         <li>
                             成员名称：{{ teamInfo.team.teamName }}
                         </li>

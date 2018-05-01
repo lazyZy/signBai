@@ -157,8 +157,8 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public BaseResult getAllTeamInfo(Integer volunteerId) {
         AllTeamInfo allTeamInfo = new AllTeamInfo();
-        Team team = (Team) selectTeamByLeaderId(volunteerId).getData();
-        if(team == null){
+        Team team = new Team();
+        if(selectTeamByLeaderId(volunteerId).getMessage().endsWith("尚未加入团队")){
             allTeamInfo.setIsLeader(false);
         }else{
             allTeamInfo.setIsLeader(true);
@@ -166,7 +166,7 @@ public class TeamServiceImpl implements TeamService {
         teamMemberExample = new TeamMemberExample();
         teamMemberExample.createCriteria().andUserIdEqualTo(volunteerId);
         allTeamInfo.setJoinTeam(true);
-        if(null ==teamMemberMapper.selectByExample(teamMemberExample)){
+        if(0 == teamMemberMapper.selectByExample(teamMemberExample).size()){
             allTeamInfo.setJoinTeam(false);
             teamExample = new TeamExample();
             teamExample.createCriteria().andIdIsNotNull();
