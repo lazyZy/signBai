@@ -15,9 +15,9 @@
     <div class="navbar navbar-inverse navbar-fixed-top headroom">
         <div class="container">
             <div class="navbar-header">
-                <!-- Button for smallest screens -->
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span
-                        class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+                <!-- span for smallest screens -->
+                <span type="span" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span
+                        class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></span>
                 <a class="navbar-brand" href="/page/adminIndex"><img src="${request.contextPath}/img/heart.png"
                                                                height="60"></a>
                 <h4 align="center" style="color: #bce8f1">"心·青年"志愿活动平台</h4>
@@ -77,14 +77,14 @@
                     结束时间：{{ activity.endTime }}
                 </li>
                 <li v-if="activity.status == 1">
-                    <input type="button" v-on:click="toAdopt(activity.id)" value="通过"/>
-                    &nbsp;&nbsp;<input type="button" v-on:click="toRefuse(activity.id)" value="驳回"/>
+                    <input type="span" v-on:click="toAdopt(activity.id)" value="通过"/>
+                    &nbsp;&nbsp;<input type="span" v-on:click="toRefuse(activity.id)" value="驳回"/>
                 </li>
                 <li v-if="activity.status == 2">
-                    <input type="button" v-on:click="toRefuse(activity.id)" value="驳回"/>
+                    <input type="span" v-on:click="toRefuse(activity.id)" value="驳回"/>
                 </li>
                 <li v-if="activity.status == 0">
-                    <input type="button" v-on:click="toAdopt(activity.id)" value="通过"/>
+                    <input type="span" v-on:click="toAdopt(activity.id)" value="通过"/>
                 </li>
             </ol>
         </div>

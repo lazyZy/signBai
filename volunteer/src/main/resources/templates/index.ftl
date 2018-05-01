@@ -36,7 +36,8 @@
     </div>
 </header>
 <!-- /Header -->
-
+    </br>
+    </br>
     <div class="container myCarousel">
         <div id="carousel-example-generic" class="carousel slide">
             <ol class="carousel-indicators">
@@ -165,11 +166,14 @@
     <!-- container -->
     <div id="vm" class="container">
 
-        <h2 class="text-center top-space">活动一览</h2>
+        <h2 class="text-center top-space">活动信息展示</h2>
         <br>
         <div class="row">
-            <ol class="col-sm-4" v-for="activity in activities" :key="activity.id">
-                <div >
+            <div class="col-sm-12" v-if="activities.length == 0">
+                <p align="middle">暂无可展示活动</p>
+            </div>
+            <ol v-for="activity in activities" :key="activity.id">
+                <div class="col-sm-4" >
                     <li>
                         活动名称：{{ activity.name }}
                     </li>
@@ -190,10 +194,6 @@
                     </li>
                     <li>
                         结束时间：{{ activity.endTime }}
-                    </li>
-                    <li v-if="activity.status == 1">
-                        <input type="button" v-on:click="toAdopt(activity.id)" value="通过"/>
-                        &nbsp;&nbsp;<input type="button" v-on:click="toRefuse(activity.id)" value="驳回"/>
                     </li>
                 </div>
             </ol>

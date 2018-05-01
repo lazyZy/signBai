@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService {
         String key = tokenService.getToken();
         tokenService.setInfo(key, JSONObject.toJSONString(volunteer));
         logger.info(key);
-        return BaseResult.create(200, key, "数据获取成功");
+        return BaseResult.createOk(key,"数据获取成功");
     }
 
     @Override
