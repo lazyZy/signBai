@@ -23,9 +23,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
-                    <li><a href="/page/adminIndex">志愿者首页</a></li>
-                    <li><a href="/page/adminIndex">About</a></li>
-                    <li><a href="/page/adminIndex">Contact</a></li>
+                    <li><a href="/page/volunteerIndex">志愿者首页</a></li>
+                    <li><a href="/page/volunteer_team">我的团队</a></li>
+                    <li v-if="isLeader"><a href="/page/volunteer_activity">申请活动</a></li>
                     <li class="active"><a class="btn" href="/page/login">登录/注册</a></li>
                 </ul>
             </div><!--/.nav-collapse -->

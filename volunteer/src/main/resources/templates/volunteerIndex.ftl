@@ -26,7 +26,7 @@
                 <ul class="nav navbar-nav pull-right">
                     <li><a href="/page/volunteerIndex">志愿者首页</a></li>
                     <li><a href="/page/volunteer_team">我的团队</a></li>
-                    <li><a href="/page/volunteerIndex">Contact</a></li>
+                    <li v-if="isTeamLeader"><a href="/page/volunteer_activity">申请活动</a></li>
                     <li class="active"><a class="btn" href="/page/login">登录/注册</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
@@ -65,6 +65,7 @@
                         <li>
                             活动名称：{{ activity.name }}
                         </li>
+                        <div v-if="!isTeamLeader">
                         <li v-show="2==activity.teamId">
                             活动状态：已参加(未审核)
                         </li>
@@ -77,6 +78,7 @@
                         <li v-show="1==activity.teamId">
                             活动状态：可参加
                         </li>
+                        </div>
                         <li>
                             活动描述：{{ activity.introduce }}
                         </li>
@@ -86,7 +88,7 @@
                         <li>
                             结束时间：{{ activity.endTime }}
                         </li>
-                        <li v-show="1==activity.teamId">
+                        <li v-show="1==activity.teamId&&isTeamLeader">
                             <input type="button" v-on:click="toJoinActivity(activity.id)" value="参加"/>
                         </li>
                     </div>
