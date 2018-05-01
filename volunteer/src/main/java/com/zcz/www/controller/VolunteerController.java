@@ -100,6 +100,14 @@ public class VolunteerController {
     @ResponseBody
     public BaseResult toFinishActivity(@RequestBody SummaryActivity summaryActivity) {
         Activity activity = (Activity) activityService.selectActivityByActivityId(summaryActivity.getActivityId()).getData();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date endDate = sdf.parse(activity.getEndTime());
+            if(endDate.before(new Date())){
+                BaseResult.createFail(400,"未到活动结束时间");
+            }
+        } catch (ParseException e) {
+        }
         activity.setSummary(summaryActivity.getActivitySummary());
         activity.setStatus(3);
         return activityService.updateActivity(activity);

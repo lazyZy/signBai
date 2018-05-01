@@ -88,7 +88,7 @@ var vm = new Vue({
             })
                 .then(function (response) {
                     if (response.data.code === 200) {
-                        alert(response.data.data);
+                        alert("活动完成");
                         location.reload();
                     }
                     console.log(response);

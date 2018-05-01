@@ -106,4 +106,12 @@ public class AdminController {
 
         return BaseResult.createFail(400, "失败");
     }
+
+    @RequestMapping("/getDoOrFinishActivity")
+    @ResponseBody
+    public BaseResult getDoOrFinishActivity() {
+
+        return activityService.getDoOrFinishActivity();
+    }
+
 }

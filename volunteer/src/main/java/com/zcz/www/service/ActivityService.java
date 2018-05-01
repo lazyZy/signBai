@@ -39,4 +39,7 @@ public interface ActivityService {
 
     //成员参加活动
     BaseResult toJoinActivity(Integer activityId,Integer volunteerId);
+
+    //获取正在进行或者已完成的活动
+    BaseResult getDoOrFinishActivity();
 }
