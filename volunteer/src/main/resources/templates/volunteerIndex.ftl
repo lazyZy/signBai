@@ -27,7 +27,7 @@
                     <li><a href="/page/volunteerIndex">志愿者首页</a></li>
                     <li><a href="/page/volunteer_team">我的团队</a></li>
                     <li v-if="isTeamLeader"><a href="/page/volunteer_activity">申请活动</a></li>
-                    <li class="active"><a class="btn" href="/page/login">登录/注册</a></li>
+                    <li class="active"><a class="btn" href="/page/login">退出/登录</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -58,14 +58,13 @@
 
             <h2 class="text-center top-space">活动一览</h2>
             <br>
-            <div class="row">
+            <div v-show="!isTeamLeader" class="row">
 
                 <ol v-for="activity in activities" :key="activity.id" >
                     <div class="col-sm-4" v-if="activity.status != 0 && activity.status !=3">
                         <li>
                             活动名称：{{ activity.name }}
                         </li>
-                        <div v-if="!isTeamLeader">
                         <li v-show="2==activity.teamId">
                             活动状态：已参加(未审核)
                         </li>
@@ -78,7 +77,6 @@
                         <li v-show="1==activity.teamId">
                             活动状态：可参加
                         </li>
-                        </div>
                         <li>
                             活动描述：{{ activity.introduce }}
                         </li>
@@ -88,14 +86,49 @@
                         <li>
                             结束时间：{{ activity.endTime }}
                         </li>
-                        <li v-show="1==activity.teamId&&isTeamLeader">
+                        <li v-show="1==activity.teamId&& !isTeamLeader">
                             <input type="button" v-on:click="toJoinActivity(activity.id)" value="参加"/>
                         </li>
                     </div>
                 </ol>
             </div>
             <!-- /row -->
+            <div v-show="isTeamLeader" class="row">
 
+                <ol v-for="activity in activities" :key="activity.id" >
+                    <div class="col-sm-4" v-if="activity.status == 2 && activity.status !=3">
+                        <li>
+                            活动名称：{{ activity.name }}
+                        </li>
+                        <li v-show="2==activity.status">
+                            活动状态：进行中
+                        </li>
+                        <li v-show="3==activity.status">
+                            活动状态：已完成
+                        </li>
+                        <li>
+                            活动描述：{{ activity.introduce }}
+                        </li>
+                        <li>
+                            开始时间：{{ activity.startTime }}
+                        </li>
+                        <li>
+                            结束时间：{{ activity.endTime }}
+                        </li>
+                        <li v-show="2==activity.status" >
+                            <label>活动总结 <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" v-model="activity.summary">
+                        </li>
+                        <li v-show="3==activity.status" >
+                            活动总结：{{activity.summary}}
+                        </li>
+                        <li v-show="2==activity.status&& isTeamLeader">
+                            <input type="button" v-on:click="toFinishActivity(activity.id,activity.summary)" value="完成"/>
+                        </li>
+                    </div>
+                </ol>
+            </div>
+            <!-- /row -->
         </div>    <!-- /container -->
 
     </div>

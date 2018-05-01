@@ -4,6 +4,7 @@ import com.zcz.www.entity.Activity;
 import com.zcz.www.entity.Team;
 import com.zcz.www.pojo.BaseResult;
 import com.zcz.www.pojo.IsJoin;
+import com.zcz.www.pojo.SummaryActivity;
 import com.zcz.www.pojo.VolunteerIndexPojo;
 import com.zcz.www.service.ActivityService;
 import com.zcz.www.service.TeamService;
@@ -18,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -90,6 +94,34 @@ public class VolunteerController {
     @ResponseBody
     public BaseResult joinTeam(@RequestParam Integer volunteerId,@RequestParam Integer teamId) {
         return teamService.addTeamMember(volunteerId,teamId);
+    }
+
+    @RequestMapping("/toFinishActivity")
+    @ResponseBody
+    public BaseResult toFinishActivity(@RequestBody SummaryActivity summaryActivity) {
+        Activity activity = (Activity) activityService.selectActivityByActivityId(summaryActivity.getActivityId()).getData();
+        activity.setSummary(summaryActivity.getActivitySummary());
+        activity.setStatus(3);
+        return activityService.updateActivity(activity);
+    }
+
+
+    @RequestMapping("/applyActivity")
+    @ResponseBody
+    public BaseResult applyActivity(@RequestBody Activity activity) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date startDate = sdf.parse(activity.getStartTime());
+            Date endDate = sdf.parse(activity.getEndTime());
+            if(startDate.after(endDate) || startDate.before(new Date())){
+                BaseResult.createFail(300,"时间输入错误，请按正常逻辑输入！");
+            }
+        } catch (ParseException e) {
+            return BaseResult.createFail(400,"请按正确格式输入日期！");
+        }
+        activity.setStatus(1);
+        activity.setCreateTime(new Date());
+        return activityService.addActivity(activity);
     }
 
 
