@@ -27,4 +27,13 @@ public interface TeamService {
 
     //更新团队状态
     BaseResult updateTeamStatus(Integer teamId, Integer teamStatus);
+
+    //更新团队成员状态
+    BaseResult updateTeamMemberStatus(Integer volunteerId, Integer status);
+
+    //获取所有团队信息
+    BaseResult getAllTeamInfo(Integer volunteerId);
+
+    //添加队员
+    BaseResult addTeamMember(Integer volunteerId, Integer teamId);
 }

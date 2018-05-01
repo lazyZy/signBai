@@ -58,8 +58,7 @@ public class ActivityServiceImpl implements ActivityService {
             List<Activity> activities = new ArrayList<Activity>();
             return BaseResult.create(200, activities,"尚未加入团队");
         }
-
-        activityExample.createCriteria().andTeamIdEqualTo(teamId).andStartTimeLessThan(new Date());
+        activityExample.createCriteria().andTeamIdEqualTo(teamId).andStartTimeGreaterThan(new Date());
         List<Activity> activities = activityMapper.selectByExample(activityExample);
         return BaseResult.create(200, activities,"获取活动信息成功");
     }

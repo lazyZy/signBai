@@ -4,6 +4,7 @@ import com.zcz.www.dao.TeamMapper;
 import com.zcz.www.dao.TeamMemberMapper;
 import com.zcz.www.dao.VolunteerMapper;
 import com.zcz.www.entity.*;
+import com.zcz.www.pojo.AllTeamInfo;
 import com.zcz.www.pojo.BaseResult;
 import com.zcz.www.pojo.TeamAndLeaderInfo;
 import com.zcz.www.service.TeamService;
@@ -92,6 +93,13 @@ public class TeamServiceImpl implements TeamService {
         team.setTeamStauts(0);
         team.setModifyTime(new Date());
         int insertTeamId = teamMapper.insertSelective(team);
+        TeamMember teamMember = new TeamMember();
+        teamMember.setCreateTime(new Date());
+        teamMember.setModifyTime(new Date());
+        teamMember.setStatus(3);
+        teamMember.setTeamId(insertTeamId);
+        teamMember.setUserId(team.getLeaderId());
+        teamMemberMapper.insert(teamMember);
         logger.info("添加团队信息成功！");
         return selectOneTeamByTeamId(insertTeamId);
     }
@@ -123,9 +131,91 @@ public class TeamServiceImpl implements TeamService {
     public BaseResult updateTeamStatus(Integer teamId, Integer teamStatus) {
         Team team = teamMapper.selectByPrimaryKey(teamId);
         team.setTeamStauts(teamStatus);
+        team.setModifyTime(new Date());
         int updateTeam = teamMapper.updateByPrimaryKeySelective(team);
         logger.info("更新信息的活动ID为：{}", updateTeam);
         return selectOneTeamByTeamId(updateTeam);
 
+    }
+
+    @Override
+    public BaseResult updateTeamMemberStatus(Integer volunteerId, Integer status) {
+        teamMemberExample = new TeamMemberExample();
+        teamMemberExample.createCriteria().andUserIdEqualTo(volunteerId);
+        TeamMember teamMember = teamMemberMapper.selectByExample(teamMemberExample).get(0);
+        teamMember.setStatus(status);
+        teamMember.setModifyTime(new Date());
+        if(3 == status){
+            Team team = teamMapper.selectByPrimaryKey(teamMember.getTeamId());
+            team.setMemberNum(team.getMemberNum()+1);
+            teamMapper.updateByPrimaryKeySelective(team);
+        }
+        return BaseResult.createOk("修改成功!");
+    }
+
+    @Override
+    public BaseResult getAllTeamInfo(Integer volunteerId) {
+        AllTeamInfo allTeamInfo = new AllTeamInfo();
+        Team team = (Team) selectTeamByLeaderId(volunteerId).getData();
+        if(team == null){
+            allTeamInfo.setIsLeader(false);
+        }else{
+            allTeamInfo.setIsLeader(true);
+        }
+        teamMemberExample = new TeamMemberExample();
+        teamMemberExample.createCriteria().andUserIdEqualTo(volunteerId);
+        allTeamInfo.setJoinTeam(true);
+        if(null ==teamMemberMapper.selectByExample(teamMemberExample)){
+            allTeamInfo.setJoinTeam(false);
+            teamExample = new TeamExample();
+            teamExample.createCriteria().andIdIsNotNull();
+            List<Team> teams = teamMapper.selectByExample(teamExample);
+            List<TeamAndLeaderInfo> list = new ArrayList<>();
+            for(Team team1:teams){
+                TeamAndLeaderInfo teamAndLeaderInfo = new TeamAndLeaderInfo();
+                volunteerExample = new VolunteerExample();
+                Volunteer leader1 = volunteerMapper.selectByPrimaryKey(team1.getLeaderId());
+                teamAndLeaderInfo.setTeam(team1);
+                teamAndLeaderInfo.setVolunteer(leader1);
+                list.add(teamAndLeaderInfo);
+            }
+            allTeamInfo.setTeamAndLeaderInfos(list);
+        }else{
+            TeamMember teamMember = teamMemberMapper.selectByExample(teamMemberExample).get(0);
+            int teamId = teamMember.getTeamId();
+            team = (Team)selectOneTeamByTeamId(teamId).getData();
+            volunteerExample = new VolunteerExample();
+            Volunteer leader = volunteerMapper.selectByPrimaryKey(team.getLeaderId());
+            TeamAndLeaderInfo teamAndLeaderInfo = new TeamAndLeaderInfo();
+            teamAndLeaderInfo.setVolunteer(leader);
+            teamAndLeaderInfo.setTeam(team);
+            List<TeamAndLeaderInfo> list = new ArrayList<>();
+            list.add(teamAndLeaderInfo);
+            allTeamInfo.setTeamAndLeaderInfos(list);
+            teamMemberExample = new TeamMemberExample();
+            teamMemberExample.createCriteria().andTeamIdEqualTo(team.getId());
+            List<TeamMember> teamMembers = teamMemberMapper.selectByExample(teamMemberExample);
+            List<Volunteer> volunteers = new ArrayList<>();
+            for(TeamMember teamMember1: teamMembers){
+                Volunteer volunteer = volunteerMapper.selectByPrimaryKey(teamMember1.getUserId());
+                volunteer.setVolunteerPwd(teamMember1.getStatus().toString());
+                volunteers.add(volunteer);
+            }
+            allTeamInfo.setVolunteers(volunteers);
+        }
+
+        return BaseResult.create(200,allTeamInfo,"获取成功");
+    }
+
+    @Override
+    public BaseResult addTeamMember(Integer volunteerId, Integer teamId) {
+        TeamMember teamMember = new TeamMember();
+        teamMember.setStatus(1);
+        teamMember.setUserId(volunteerId);
+        teamMember.setTeamId(teamId);
+        teamMember.setCreateTime(new Date());
+        teamMember.setModifyTime(new Date());
+        teamMemberMapper.insert(teamMember);
+        return BaseResult.createOk("入队成功");
     }
 }

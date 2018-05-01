@@ -74,6 +74,24 @@ public class VolunteerController {
         return  activityService.toJoinActivity(isJoin.getActivityId(),isJoin.getVolunteerId());
     }
 
+    @RequestMapping("/getTeamMember")
+    @ResponseBody
+    public BaseResult getTeamMember(@RequestParam Integer volunteerId) {
+        return  teamService.getAllTeamInfo(volunteerId);
+    }
+
+    @RequestMapping("/joinTeamCheck")
+    @ResponseBody
+    public BaseResult joinTeamCheck(@RequestParam Integer volunteerId,@RequestParam Integer status) {
+        return teamService.updateTeamMemberStatus(volunteerId,status);
+    }
+
+    @RequestMapping("/joinTeam")
+    @ResponseBody
+    public BaseResult joinTeam(@RequestParam Integer volunteerId,@RequestParam Integer teamId) {
+        return teamService.addTeamMember(volunteerId,teamId);
+    }
+
 
 
 }

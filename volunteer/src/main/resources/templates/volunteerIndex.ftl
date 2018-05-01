@@ -25,7 +25,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
                     <li><a href="/page/volunteerIndex">志愿者首页</a></li>
-                    <li><a href="/page/volunteerIndex">About</a></li>
+                    <li><a href="/page/volunteer_team">我的团队</a></li>
                     <li><a href="/page/volunteerIndex">Contact</a></li>
                     <li class="active"><a class="btn" href="/page/login">登录/注册</a></li>
                 </ul>
@@ -45,7 +45,7 @@
                         <span v-if="teamInfo.teamStauts==1">团队暂未审核</span>
                     </p>
                     <p v-if="teamInfo==null">
-                        <a href="/page/volunteerTeam">
+                        <a href="/page/volunteer_team">
                             点此加入团队
                         </a>
                     </p>
