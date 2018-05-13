@@ -3,6 +3,11 @@
 >
 <head>
 <#include "common/main.html">
+    <style>
+        li {
+            list-style: none;
+        }
+    </style>
 </head>
 <body>
 <!-- Fixed navbar -->
