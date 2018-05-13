@@ -8,6 +8,7 @@ import com.zcz.www.entity.AdminExample;
 import com.zcz.www.entity.Volunteer;
 import com.zcz.www.entity.VolunteerExample;
 import com.zcz.www.pojo.BaseResult;
+import com.zcz.www.pojo.LoginReq;
 import com.zcz.www.service.TokenService;
 import com.zcz.www.service.UserService;
 import org.slf4j.Logger;
@@ -135,7 +136,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public BaseResult updateVolunteer(Integer volunteerId, Volunteer volunteer) {
-        return null;
+    public BaseResult updateVolunteer(LoginReq loginReq, Volunteer volunteer) {
+        volunteerExample = new VolunteerExample();
+        volunteerExample.createCriteria().andVolunteerMailEqualTo(loginReq.getEmail()).andVolunteerPwdEqualTo(loginReq.getPwd());
+        if(volunteerMapper.selectByExample(volunteerExample).size() == 0){
+            return BaseResult.createFail(400, "用户名密码不正确");
+        }
+        Volunteer volunteer1Old = volunteerMapper.selectByExample(volunteerExample).get(0);
+        volunteer.setId(volunteer1Old.getId());
+        volunteer.setModifyTime(new Date());
+        volunteer.setCreateTime(volunteer1Old.getCreateTimeDate());
+        return BaseResult.create(200,volunteer, "更改成功");
+
     }
 }

@@ -21,7 +21,7 @@
                 <ul class="nav navbar-nav pull-right">
                     <li><a href="/page/adminIndex">管理员首页</a></li>
                     <li v-if="admin.adminAuthority > 1"><a href="/page/admin_register">注册管理员账号</a></li>
-                    <li v-if="admin.adminAuthority > 1"><a href="/page/adminVolunteer">团队管理</a></li>
+                    <li v-if="admin.adminAuthority > 1"><a href="/page/admin_volunteer">团队管理</a></li>
                     <li class="active"><a class="btn" href="/page/login">退出/登录</a></li>
                 </ul>
             </div><!--/.nav-collapse -->

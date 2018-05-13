@@ -26,6 +26,7 @@
                 <ul class="nav navbar-nav pull-right">
                     <li><a href="/page/volunteerIndex">志愿者首页</a></li>
                     <li><a href="/page/volunteer_team">我的团队</a></li>
+                    <li><a href="/page/volunteer_info">修改我的信息</a></li>
                     <li v-if="isTeamLeader"><a href="/page/volunteer_activity">申请活动</a></li>
                     <li class="active"><a class="btn" href="/page/login">退出/登录</a></li>
                 </ul>
