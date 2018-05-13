@@ -159,4 +159,10 @@ public class VolunteerController {
         return activityService.toAllowJoin(volunteerId,activityId);
     }
 
+    @RequestMapping("/vote")
+    @ResponseBody
+    public BaseResult toVote(@RequestParam Integer volunteerId) {
+        return userService.updateVote(volunteerId);
+    }
+
 }

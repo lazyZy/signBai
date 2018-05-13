@@ -32,4 +32,7 @@ public interface UserService {
 
     //根据ID更新志愿者信息
     BaseResult updateVolunteer(LoginReq loginReq, Volunteer volunteer);
+
+    //根据ID给志愿者投票
+    BaseResult updateVote(Integer volunteerId);
 }

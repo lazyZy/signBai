@@ -149,4 +149,15 @@ public class UserServiceImpl implements UserService {
         return BaseResult.create(200,volunteer, "更改成功");
 
     }
+
+    @Override
+    public BaseResult updateVote(Integer volunteerId) {
+        volunteerExample = new VolunteerExample();
+        Volunteer volunteer = volunteerMapper.selectByPrimaryKey(volunteerId);
+        volunteer.setStar(volunteer.getStar()+1);
+        if(1==volunteerMapper.updateByPrimaryKey(volunteer)){
+            return BaseResult.createOk("投票成功");
+        }
+        return BaseResult.createFail(400,"投票失败");
+    }
 }
