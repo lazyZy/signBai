@@ -116,6 +116,45 @@
 
 
         </div>    <!-- /container -->
+
+        <!-- container -->
+        <div v-show="admin.adminAuthority==3" class="container">
+
+            <h2 class="text-center top-space">已审批活动</h2>
+            <br>
+            <div class="row">
+                <ol class="col-sm-4" v-for="activity in activities" :key="activity.id">
+                    <div v-if="activity.status == 0 || activity.status == 2">
+                        <li>
+                            活动名称：{{ activity.name }}
+                        </li>
+                        <li v-if="activity.status == 2">
+                            活动状态：已审核
+                        </li>
+                        <li v-if="activity.status == 0">
+                            活动状态：已驳回
+                        </li>
+                        <li>
+                            活动描述：{{ activity.introduce }}
+                        </li>
+                        <li>
+                            开始时间：{{ activity.startTime }}
+                        </li>
+                        <li>
+                            结束时间：{{ activity.endTime }}
+                        </li>
+                        <li v-if="activity.status == 0">
+                            <input type="button" v-on:click="toAdopt(activity.id)" value="通过"/>
+                        </li>
+                        <li v-if="activity.status == 2">
+                            <input type="button" v-on:click="toRefuse(activity.id)" value="驳回"/>
+                        </li>
+                    </div>
+                </ol>
+            </div>
+            <!-- /row -->
+
+        </div>    <!-- /container -->
     </div>
 </div>
 <script src="${request.contextPath}/js/adminIndex.js"></script>

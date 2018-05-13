@@ -3,6 +3,7 @@ package com.zcz.www.service;
 import com.zcz.www.entity.Admin;
 import com.zcz.www.entity.Volunteer;
 import com.zcz.www.pojo.BaseResult;
+import com.zcz.www.pojo.LoginReq;
 
 /**
  * Created by ZY on 2018/3/10.
@@ -30,5 +31,8 @@ public interface UserService {
     BaseResult updatAdmin(Integer adminId, Admin admin);
 
     //根据ID更新志愿者信息
-    BaseResult updateVolunteer(Integer volunteerId, Volunteer volunteer);
+    BaseResult updateVolunteer(LoginReq loginReq, Volunteer volunteer);
+
+    //根据ID给志愿者投票
+    BaseResult updateVote(Integer volunteerId);
 }

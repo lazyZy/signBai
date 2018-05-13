@@ -2,7 +2,9 @@ var vm = new Vue({
     el: '#vm',
     data: {
         title: "\"心·青年\"志愿活动平台",
-        activities:[]
+        activities:[],
+        volunteers:[],
+        stars:""
     },
     mounted: function () {
         axios.post('/admin/getDoOrFinishActivity', {})
@@ -12,11 +14,32 @@ var vm = new Vue({
                 }
                 console.log(response);
 
+            });
+        axios.post('/admin/getAllVolunteer', {})
+            .then(function (response) {
+                if (response.data.code === 200) {
+                    vm.volunteers = response.data.data;
+                    if(null == localStorage.getItem("stars")){
+                        localStorage.setItem("stars","");
+                    }
+                    vm.stars = localStorage.getItem("stars");
+                }
+                console.log(response);
+
             })
 
     },
     methods: {
 
+        toApproval:function(id){
+            axios.post('/volunteer/vote?volunteerId='+id, {})
+                .then(function (response) {
+                    if (response.data.code === 200) {
+                        localStorage.setItem("stars",vm.stars+1);
+                        location.reload();
+                    }
+                })
+        },
 
         toLogin: function () {
             location.href = "/page/login";

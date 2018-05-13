@@ -80,4 +80,10 @@ public class PageController {
         logger.info("进入团队注册页");
         return htmlConst.registerTeamPage;
     }
+
+    @RequestMapping("/volunteer_info")
+    public String toVolunteerInfo() {
+        logger.info("进入团队注册页");
+        return htmlConst.volunteerInfoPage;
+    }
 }

@@ -5,6 +5,8 @@ import com.zcz.www.entity.Admin;
 import com.zcz.www.entity.Team;
 import com.zcz.www.entity.Volunteer;
 import com.zcz.www.pojo.BaseResult;
+import com.zcz.www.pojo.LoginReq;
+import com.zcz.www.pojo.UpVolunteerPojo;
 import com.zcz.www.service.TeamService;
 import com.zcz.www.service.UserService;
 import com.zcz.www.utils.Const;
@@ -45,4 +47,13 @@ public class RegisterController {
     public BaseResult getUser(@RequestBody Team team) {
         return teamService.addTeam(team);
     }
+
+    @RequestMapping("/upVolunteer")
+    @ResponseBody
+    public BaseResult upVolunteer(@RequestBody UpVolunteerPojo upVolunteerPojo) {
+        Volunteer volunteer = upVolunteerPojo.getVolunteer();
+        LoginReq loginReq = upVolunteerPojo.getLoginReq();
+        return userService.updateVolunteer(loginReq,volunteer);
+    }
+
 }

@@ -22,7 +22,7 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right">
-                <li><a href="/page/index">主页</a></li>
+                <li><a href="/page/volunteerIndex">志愿者首页</a></li>
                 <li class="active"><a class="btn" href="/page/login">登录/注册</a></li>
             </ul>
         </div><!--/.nav-collapse -->
@@ -32,12 +32,13 @@
 
 <header id="head" class="secondary"></header>
 
+<div id="vm">
 <!-- container -->
 <div class="container">
 
     <ol class="breadcrumb">
         <li><a href="/page/index">主页</a></li>
-        <li class="active">注册</li>
+        <li class="active">个人信息修改</li>
     </ol>
 
     <div class="row">
@@ -45,45 +46,49 @@
         <!-- Article main content -->
         <article class="col-xs-12 maincontent">
             <header class="page-header">
-                <h1 class="page-title">注册</h1>
+                <h1 class="page-title">个人信息修改</h1>
             </header>
 
             <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <h3 class="thin text-center">注册你的账号</h3>
-                        <p class="text-center text-muted">已注册自己的账号？请 <a href="/page/login">登录</a> </p>
+                        <h3 class="thin text-center">修改你的账号</h3>
                         <hr>
 
                         <form id="vm">
                             <div class="top-margin">
-                                <label>邮箱 <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" v-model="register.email">
+                                <label>旧邮箱 <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" v-model="loginReq.email">
                             </div>
                             <div class="top-margin">
-                                <label>密码 <span class="text-danger">*</span></label>
-                                <input type="password" class="form-control" v-model="register.pwd">
+                                <label>旧密码 <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control" v-model="loginReq.pwd">
+                            </div>
+                            <div class="top-margin">
+                                <label>新邮箱 <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" v-model="volunteer.volunteerMail">
+                            </div>
+                            <div class="top-margin">
+                                <label>新密码 <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control" v-model="volunteer.volunteerPwd">
                             </div>
                             <div class="top-margin">
                                 <label>姓名 <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" v-model="register.name" placeholder="姓名"/>
+                                <input type="text" class="form-control" v-model="volunteer.volunteerName" placeholder="姓名"/>
                             </div>
                             <div class="top-margin">
                                 <label>性别 <span class="text-danger">*</span></label>
                                 <br/>
-                                <input v-model="register.sex" type="radio" value="0"/>女
-                                <input v-model="register.sex" type="radio" value="1"/>男
+                                <input v-model="volunteer.volunteerSex" type="radio" value="0"/>女
+                                <input v-model="volunteer.volunteerSex" type="radio" value="1"/>男
                             </div>
                             <div class="top-margin">
                                 <label>地址 <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" v-model="register.adrress" placeholder="地址"/>
+                                <input type="text" class="form-control" v-model="volunteer.volunteerAdrress" placeholder="地址"/>
                             </div>
                             <div class="top-margin">
                                 <label>手机号 <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" v-model="register.phone" placeholder="手机号"/>
-                            </div>
-                            <div class="top-margin">
-                                <input type="checkbox" v-model="isTeamLeader" value=true checked="checked"/>是否创建团队？
+                                <input type="text" class="form-control" v-model="volunteer.volunteerPhone" placeholder="手机号"/>
                             </div>
 
                             <hr>
@@ -92,7 +97,7 @@
                                 <div class="col-lg-8">
                                 </div>
                                 <div class="col-lg-4 text-right">
-                                    <span class="btn btn-action" type="submit" v-on:click="confirm">注册</span>
+                                    <span class="btn btn-action" type="submit" v-on:click="confirm">修改</span>
                                 </div>
                             </div>
                         </form>
@@ -106,7 +111,9 @@
 
     </div>
 </div>    <!-- /container -->
-<script src="${request.contextPath}/js/register.js"></script>
+
+</div>
+<script src="${request.contextPath}/js/volunteerInfo.js"></script>
 
 </body>
 <#include "common/footer.html">
