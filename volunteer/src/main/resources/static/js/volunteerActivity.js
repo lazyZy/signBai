@@ -63,6 +63,11 @@ var vm = new Vue({
     },
     methods: {
         confirm:function(){
+            if(vm.activity.name === "" || vm.activity.region === "" || vm.activity.introduce === "" || vm.activity.startTime>vm.activity.endTime){
+                alert("提示：请输入相应信息");
+               localtion.reload();
+            }
+
             axios.post('../../volunteer/applyActivity', {
                 teamId: vm.activity.teamId,
                 leaderId: vm.activity.leaderId,
@@ -74,7 +79,7 @@ var vm = new Vue({
             })
                 .then(function (response) {
                     if (response.data.code === 200) {
-                        alert("申请成功，等待管理员审核");
+                        alert("活动申请已提交，等待管理员审核");
                         location.href = "/page/volunteerIndex";
                     } else{
                         alert(response.data.message);

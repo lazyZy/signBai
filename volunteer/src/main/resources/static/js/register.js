@@ -26,6 +26,10 @@ var vm = new Vue({
         },
 
         confirm: function () {
+            if(vm.register.pwd.length < 7){
+                alert("提示：密码至少为8位");
+                location.reload();
+            }
             axios.post('../../register/volunteer', {
                 volunteerMail: vm.register.email,
                 volunteerPwd: vm.register.pwd,

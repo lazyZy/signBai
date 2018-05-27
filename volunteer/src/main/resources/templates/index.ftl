@@ -24,6 +24,9 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right">
                 <li><a href="/page/index">首页</a></li>
+                <li><a href="/page/volunteerIndex">志愿者首页</a></li>
+                <li><a href="/page/volunteer_team">我的团队</a></li>
+                <li><a href="/page/volunteer_info">修改我的信息</a></li>
                 <li class="active"><a class="btn" href="/page/login">登录/注册</a></li>
             </ul>
         </div><!--/.nav-collapse -->
@@ -36,6 +39,7 @@
     <div class="container">
         <div class="row">
             <h1 id="vm" class="lead">{{title}}</h1>
+            <h3 id="vm" v-if="volunteer.volunteerName.length > 0">欢迎{{volunteer.volunteerName}}</h3>
             <p class="tagline">以心化力，投身公益。</p>
         </div>
     </div>

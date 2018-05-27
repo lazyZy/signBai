@@ -4,9 +4,25 @@ var vm = new Vue({
         title: "\"心·青年\"志愿活动平台",
         activities:[],
         volunteers:[],
-        stars:""
+        stars:"",
+        volunteer: {
+            id: "",
+            volunteerName: "",
+            volunteerSex: "",
+            volunteerPhone: "",
+            volunteerEmail: "",
+            volunteerAdrress: ""
+        }
     },
     mounted: function () {
+        if(localStorage.getItem("token") != null && localStorage.getItem("token").length > 0){
+        axios.post('../../login/volunteerLoginInfo?token=' + localStorage.getItem("token"), {})
+            .then(function (response) {
+                if (response.data.code === 200) {
+                    console.log(response.data.data);
+                    console.log(response.data.data.volunteerName);
+                    vm.volunteer = response.data.data;}});
+        }
         axios.post('/admin/getDoOrFinishActivity', {})
             .then(function (response) {
                 if (response.data.code === 200) {
