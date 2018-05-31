@@ -86,4 +86,10 @@ public class PageController {
         logger.info("进入团队注册页");
         return htmlConst.volunteerInfoPage;
     }
+
+    @RequestMapping("/vote")
+    public String toVote() {
+        logger.info("进入投票页");
+        return htmlConst.votePage;
+    }
 }

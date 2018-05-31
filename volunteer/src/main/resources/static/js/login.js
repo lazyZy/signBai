@@ -25,6 +25,12 @@ var vm1 = new Vue({
             //         }
             //     }
             // });
+            if(vm1.login.email.length < 1){
+                alert("账号不能为空");
+            }
+            if(vm1.login.pwd < 1){
+                alert("密码不能为空");
+            }
             var url = vm1.login.isAdmin?'../../login/admin':'../../login/volunteer';
             axios.post(url+"", {
                 email: vm1.login.email,

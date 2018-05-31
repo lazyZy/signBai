@@ -26,6 +26,10 @@ var vm = new Vue({
         },
 
         confirm: function () {
+            if(vm.register.pwd.email < 6){
+                alert("提示：邮箱至少6位");
+                location.reload();
+            }
             if(vm.register.pwd.length < 7){
                 alert("提示：密码至少为8位");
                 location.reload();
